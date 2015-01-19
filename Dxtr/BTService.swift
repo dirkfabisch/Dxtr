@@ -27,7 +27,6 @@ class BTService: NSObject, CBPeripheralDelegate {
   
   func startDiscoveringServices() {
     peripheral?.discoverServices([BLEServiceUUID])
-    //peripheral?.discoverServices(nil)
   }
   
   func reset() {
@@ -58,10 +57,6 @@ class BTService: NSObject, CBPeripheralDelegate {
     let myPeripheral = peripheral
     let uuid = myPeripheral.identifier.UUIDString;
     
-    logger.verbose(uuid)
-    
-    logger.verbose("\(peripheral)")
-    logger.verbose("\(peripheral.services)")
     if ((peripheral.services == nil) || (peripheral.services.count == 0)) {
       logger.error("No Services")
       return
@@ -83,20 +78,16 @@ class BTService: NSObject, CBPeripheralDelegate {
     }
     
     if (error != nil) {
+      logger.error("\(error.description)")
       return
     }
     logger.verbose(">> didDiscoversCharacteristics")
-    logger.verbose("Service:\(service)")
-    logger.verbose("Description:\(service.description)")
-    logger.verbose("UUID:\(service.UUID)")
-    let cha = service.characteristics
-    logger.verbose("\(cha)")
     for characteristic in service.characteristics {
       if characteristic.UUID == BLECharacteristicsUUID {
         self.positionCharacteristic = (characteristic as CBCharacteristic)
         peripheral.setNotifyValue(true, forCharacteristic: characteristic as CBCharacteristic)
 
-        logger.verbose("<< characteristics")
+        logger.verbose("matching characteristics")
         
         // Send notification that Bluetooth is connected and all required characteristics are discovered
         self.sendBTServiceNotificationWithIsBluetoothConnected(true)

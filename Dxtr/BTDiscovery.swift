@@ -18,8 +18,6 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate {
   
   override init() {
     super.init()
-    
-    
     let centralQueue = dispatch_queue_create("com.base68", DISPATCH_QUEUE_SERIAL)
     centralManager = CBCentralManager(delegate: self, queue: centralQueue)
   }
@@ -44,11 +42,11 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate {
   func centralManager(central: CBCentralManager!, didDiscoverPeripheral peripheral: CBPeripheral!, advertisementData: [NSObject : AnyObject]!, RSSI: NSNumber!) {
     // Be sure to retain the peripheral or it will fail during connection.
     logger.verbose("++didDiscoverPeripheral")
-    logger.verbose("\(peripheral)")
     // Validate peripheral information
-//    if ((peripheral == nil) || (peripheral.name == nil) || (peripheral.name == "")) {
-//      return
-//    }
+    if ((peripheral == nil) || (peripheral.name == nil) || (peripheral.name == "")) {
+      logger.error("No Peripheral included")
+      return
+    }
     
     // If not already connected to a peripheral, then connect to this one
     if ((self.peripheralBLE == nil) || (self.peripheralBLE?.state == CBPeripheralState.Disconnected)) {
@@ -66,8 +64,8 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate {
   func centralManager(central: CBCentralManager!, didConnectPeripheral peripheral: CBPeripheral!) {
    
     logger.verbose("++didConnectPeripheral")
-    logger.verbose("per: \(peripheral.description)")
     if (peripheral == nil) {
+      logger.error("No Peripheral included")
       return;
     }
     
@@ -86,6 +84,7 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate {
     
     logger.verbose("++didDisconnectPeripheral")
     if (peripheral == nil) {
+      logger.error("No Peripheral included")
       return;
     }
     
