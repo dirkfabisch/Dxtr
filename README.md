@@ -3,9 +3,9 @@ iOS App for reading Dexcom sensor data
 
 Based on the work from Stephen Black (http://stephenblackwasalreadytaken.github.io/DexDrip).
 
-It uses the DexDrip Wixel Hardware descibed on his site. 
+It uses the DexDrip Wixel Hardware described on his site. 
 
-The iOS app will connect tor the HW via Bluetooth and read the sensor data.
+The iOS app will connect tor the HW via Bluetooth and read the sensor data via wifi.
 
 ## Done
 * Basic Setup 
