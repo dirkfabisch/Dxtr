@@ -7,9 +7,12 @@
 //
 
 import UIKit
-
+import CoreData
 
 class ViewController: UIViewController {
+  
+  // set by AppDelegate on application startup
+  var managedObjectContext: NSManagedObjectContext?
   
   @IBOutlet weak var btConnectionState: UILabel!
   

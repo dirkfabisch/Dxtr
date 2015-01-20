@@ -12,7 +12,7 @@ import CoreBluetooth
 
 class BTService: NSObject, CBPeripheralDelegate {
   var peripheral: CBPeripheral?
-  var positionCharacteristic: CBCharacteristic?
+  var recieverCharacteristic: CBCharacteristic?
   
   init(initWithPeripheral peripheral: CBPeripheral) {
     super.init()
@@ -84,22 +84,32 @@ class BTService: NSObject, CBPeripheralDelegate {
     logger.verbose(">> didDiscoversCharacteristics")
     for characteristic in service.characteristics {
       if characteristic.UUID == BLECharacteristicsUUID {
-        self.positionCharacteristic = (characteristic as CBCharacteristic)
+        recieverCharacteristic = (characteristic as CBCharacteristic)
         peripheral.setNotifyValue(true, forCharacteristic: characteristic as CBCharacteristic)
 
         logger.verbose("matching characteristics")
         
         // Send notification that Bluetooth is connected and all required characteristics are discovered
-        self.sendBTServiceNotificationWithIsBluetoothConnected(true)
+        sendBTServiceNotificationWithIsBluetoothConnected(true)
       }
     }
   }
   
-  // Mark: - Private
-  
-  func writePosition(position: UInt8) {
+  func peripheral(peripheral: CBPeripheral!, didUpdateValueForCharacteristic characteristic: CBCharacteristic!, error: NSError!) {
+    if (characteristic != recieverCharacteristic) {
+      logger.error("Wrong Characteristcs")
+      return
+    }
+
+    if (error != nil) {
+      logger.error("\(error.description)")
+      return
+    }
     
-    /******** (1) CODE TO BE ADDED *******/
+    logger.verbose(">> didUpdateValueForCharacteristic")
+    logger.verbose("\(characteristic.description)")
+    logger.verbose("\(characteristic.value.description)")
+    logger.verbose("Value Length: \(characteristic.value.length)")
     
   }
   

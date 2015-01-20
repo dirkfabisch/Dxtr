@@ -13,6 +13,9 @@
 		43CB86CC1A66D9BE00CA6D84 /* SwiftOverlays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CB86CB1A66D9BE00CA6D84 /* SwiftOverlays.swift */; };
 		43CB86D41A6707E000CA6D84 /* XCGLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 435854AB1A664FB500940764 /* XCGLogger.framework */; };
 		43CB86D51A6707E000CA6D84 /* XCGLogger.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 435854AB1A664FB500940764 /* XCGLogger.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		43DF0D061A6D96B700686779 /* dxtrDBModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 43DF0D041A6D96B700686779 /* dxtrDBModel.xcdatamodeld */; };
+		43DF0D081A6D9ADD00686779 /* DxtrModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DF0D071A6D9ADD00686779 /* DxtrModel.swift */; };
+		43DF0D0A1A6DA2B800686779 /* TransmitterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DF0D091A6DA2B800686779 /* TransmitterData.swift */; };
 		43E536261A62CE480037EED0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E536251A62CE480037EED0 /* AppDelegate.swift */; };
 		43E536281A62CE480037EED0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E536271A62CE480037EED0 /* ViewController.swift */; };
 		43E5362B1A62CE480037EED0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43E536291A62CE480037EED0 /* Main.storyboard */; };
@@ -86,6 +89,10 @@
 		43BBDF991A642D850006B61F /* BTService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTService.swift; sourceTree = "<group>"; };
 		43BBDF9D1A642DC40006B61F /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		43CB86CB1A66D9BE00CA6D84 /* SwiftOverlays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftOverlays.swift; path = "../../../../Downloads/SwiftOverlays-master/SwiftOverlays/SwiftOverlays.swift"; sourceTree = "<group>"; };
+		43DF0D051A6D96B700686779 /* dxtrDBModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = dxtrDBModel.xcdatamodel; sourceTree = "<group>"; };
+		43DF0D071A6D9ADD00686779 /* DxtrModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DxtrModel.swift; sourceTree = "<group>"; };
+		43DF0D091A6DA2B800686779 /* TransmitterData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransmitterData.swift; sourceTree = "<group>"; };
+		43DF0D0B1A6EB09D00686779 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		43E536201A62CE480037EED0 /* Dxtr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dxtr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43E536241A62CE480037EED0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43E536251A62CE480037EED0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -154,9 +161,20 @@
 			name = BluetoothStack;
 			sourceTree = "<group>";
 		};
+		43DF0D011A6D969600686779 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				43DF0D041A6D96B700686779 /* dxtrDBModel.xcdatamodeld */,
+				43DF0D071A6D9ADD00686779 /* DxtrModel.swift */,
+				43DF0D091A6DA2B800686779 /* TransmitterData.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		43E536171A62CE480037EED0 = {
 			isa = PBXGroup;
 			children = (
+				43DF0D0B1A6EB09D00686779 /* CoreData.framework */,
 				43E536221A62CE480037EED0 /* Dxtr */,
 				43E536381A62CE480037EED0 /* DxtrTests */,
 				43E536211A62CE480037EED0 /* Products */,
@@ -180,6 +198,7 @@
 				43E536251A62CE480037EED0 /* AppDelegate.swift */,
 				43E536271A62CE480037EED0 /* ViewController.swift */,
 				43E536291A62CE480037EED0 /* Main.storyboard */,
+				43DF0D011A6D969600686779 /* Model */,
 				43E5362C1A62CE480037EED0 /* Images.xcassets */,
 				43E5362E1A62CE480037EED0 /* LaunchScreen.xib */,
 				43E536231A62CE480037EED0 /* Supporting Files */,
@@ -384,6 +403,9 @@
 				43BBDF9E1A642DC50006B61F /* Constants.swift in Sources */,
 				43E536281A62CE480037EED0 /* ViewController.swift in Sources */,
 				43BBDF9B1A642D850006B61F /* BTService.swift in Sources */,
+				43DF0D061A6D96B700686779 /* dxtrDBModel.xcdatamodeld in Sources */,
+				43DF0D081A6D9ADD00686779 /* DxtrModel.swift in Sources */,
+				43DF0D0A1A6DA2B800686779 /* TransmitterData.swift in Sources */,
 				43BBDF9A1A642D850006B61F /* BTDiscovery.swift in Sources */,
 				43E536261A62CE480037EED0 /* AppDelegate.swift in Sources */,
 			);
@@ -605,6 +627,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		43DF0D041A6D96B700686779 /* dxtrDBModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				43DF0D051A6D96B700686779 /* dxtrDBModel.xcdatamodel */,
+			);
+			currentVersion = 43DF0D051A6D96B700686779 /* dxtrDBModel.xcdatamodel */;
+			path = dxtrDBModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 43E536181A62CE480037EED0 /* Project object */;
 }
