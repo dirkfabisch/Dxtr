@@ -96,6 +96,7 @@ class BTService: NSObject, CBPeripheralDelegate {
   }
   
   func peripheral(peripheral: CBPeripheral!, didUpdateValueForCharacteristic characteristic: CBCharacteristic!, error: NSError!) {
+    
     if (characteristic != recieverCharacteristic) {
       logger.error("Wrong Characteristcs")
       return
@@ -107,9 +108,53 @@ class BTService: NSObject, CBPeripheralDelegate {
     }
     
     logger.verbose(">> didUpdateValueForCharacteristic")
-    logger.verbose("\(characteristic.description)")
-    logger.verbose("\(characteristic.value.description)")
-    logger.verbose("Value Length: \(characteristic.value.length)")
+    // Check if we got a whole data tuple
+    // Sometimes HM-10 Sends batterie status and sensor data seperatly
+    if (characteristic.value.length < 6) {
+      logger.warning("Only battery status recieved")
+      return
+    }
+    
+    if let datastring = NSString(data:characteristic.value, encoding: NSUTF8StringEncoding) {
+      // data array should look like this if complete
+      // [0] sensor raw data
+      // [1] battery level of the sensor
+      // [2] battery level of the wixel HW
+      // data array should look like this if only raw data
+      // [0] sensor raw data
+      // [1] battery level of the wixel HW
+      
+      // split the datastring
+      var data_components = datastring.componentsSeparatedByString(" ")
+      
+      fileLog.debug("\(data_components)")
+      logger.verbose("\(data_components)")
+
+      // check if we have a reading with battery reading
+      // their are 3 elements in the data array
+      if data_components.count > 2 {
+        // Create the database object
+        var transmitterData = TransmitterData(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!)
+        transmitterData.rawData = (data_components[0] as NSString).doubleValue
+        transmitterData.sensorBatteryLevel = (data_components[1] as NSString).integerValue
+      } else {
+        if ((data_components[0] as Double) < 1000) {
+          logger.warning("we recieved only a batterie reading")
+          return
+        } else {
+          // Create the database object
+          var transmitterData = TransmitterData(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!)
+          transmitterData.rawData = (data_components[0] as NSString).doubleValue
+        }
+      }
+      
+      // save data
+      DxtrModel.sharedInstance.saveContext()
+    } else {
+      logger.error("Could not convert data from sensor")
+      return
+    }
+    
     
   }
   

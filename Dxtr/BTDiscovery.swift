@@ -112,9 +112,11 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate {
       
     case CBCentralManagerState.Unauthorized:
       // Indicate to user that the iOS device does not support BLE.
+      logger.error("Device did not support BLE")
       break
       
     case CBCentralManagerState.Unknown:
+      logger.error("Device state unknown")
       // Wait for another event
       break
       
@@ -127,6 +129,7 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate {
       self.clearDevices()
       
     case CBCentralManagerState.Unsupported:
+      logger.error("Device did not support BLE")
       break
       
     default:

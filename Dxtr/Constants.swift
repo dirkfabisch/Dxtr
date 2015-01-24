@@ -22,3 +22,7 @@ let BLEDiscoveryScanningNotification = "kBLEDiscoveryScanningNotification"
 
 // Define logging instance
 let logger = XCGLogger.defaultInstance()
+
+// logging instance for file logging
+let fileLog = XCGLogger()
+
