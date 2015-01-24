@@ -128,23 +128,24 @@ class BTService: NSObject, CBPeripheralDelegate {
       var data_components = datastring.componentsSeparatedByString(" ")
       
       fileLog.debug("\(data_components)")
-      logger.verbose("\(data_components)")
 
       // check if we have a reading with battery reading
       // their are 3 elements in the data array
       if data_components.count > 2 {
         // Create the database object
         var transmitterData = TransmitterData(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!)
-        transmitterData.rawData = (data_components[0] as NSString).doubleValue
-        transmitterData.sensorBatteryLevel = (data_components[1] as NSString).integerValue
+        transmitterData.rawData = NSNumber(int:(data_components[0] as NSString).intValue)
+        transmitterData.sensorBatteryLevel = NSNumber(int:(data_components[1] as NSString).intValue)
+        transmitterData.sendTDNewValueNotificcation()
       } else {
-        if ((data_components[0] as Double) < 1000) {
+        if ((data_components[0] as Int) < 1000) {
           logger.warning("we recieved only a batterie reading")
           return
         } else {
           // Create the database object
           var transmitterData = TransmitterData(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!)
-          transmitterData.rawData = (data_components[0] as NSString).doubleValue
+          transmitterData.rawData = NSNumber(int:(data_components[0] as NSString).intValue)
+          transmitterData.sendTDNewValueNotificcation()
         }
       }
       

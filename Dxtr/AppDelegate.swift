@@ -34,7 +34,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     vc.managedObjectContext = managedObjectContext!
     DxtrModel.sharedInstance.managedObjectContext = managedObjectContext
     #if SIMULATOR
-      logger.info("Running on the simulator --> no BT")
+      logger.verbose("Running on Simulator")
+      // We are running in the simmulator. Generate transmitter data
+      var testData = TestRawData()
+      testData.createTestRawData(managedObjectContext!)
+      
+      let entity = _TransmitterData.entity(managedObjectContext)
+      var fetchRequest = NSFetchRequest(entityName: entity.name!)
+      let sd = NSSortDescriptor(key: "timeStamp" , ascending: true)
+      fetchRequest.sortDescriptors = [sd]
+      
+      if let results = self.managedObjectContext!.executeFetchRequest(fetchRequest, error:nil) {
+        for ao in results {
+          if let td = ao as? TransmitterData {
+            logger.verbose("\(td.description)")
+          }
+        }
+      }
+      #else
+      logger.verbose("Running on Device")
     #endif
     return true
   }
@@ -84,7 +102,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("dxtr.sqlite")
     var error: NSError? = nil
     var failureReason = "There was an error creating or loading the application's saved data."
-    if coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil, error: &error) == nil {
+    #if SIMULATOR
+    if coordinator!.addPersistentStoreWithType(NSInMemoryStoreType, configuration: nil, URL: nil, options: nil, error: &error) == nil {
+      logger.verbose("In Memory Store")
       coordinator = nil
       // Report any error we got.
       let dict = NSMutableDictionary()
@@ -96,8 +116,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
       NSLog("Unresolved error \(error), \(error!.userInfo)")
       abort()
+      }
+    #else
+    if coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil, error: &error) == nil {
+      coordinator = nil
+      logger.verbose("File store")
+      // Report any error we got.
+      let dict = NSMutableDictionary()
+      dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
+      dict[NSLocalizedFailureReasonErrorKey] = failureReason
+      dict[NSUnderlyingErrorKey] = error
+      error = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict)
+      // Replace this with code to handle the error appropriately.
+      // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+      NSLog("Unresolved error \(error), \(error!.userInfo)")
+      abort()
     }
-    
+    #endif
     return coordinator
     }()
   
