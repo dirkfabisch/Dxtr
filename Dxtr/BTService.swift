@@ -96,6 +96,11 @@ class BTService: NSObject, CBPeripheralDelegate {
   }
   
   func peripheral(peripheral: CBPeripheral!, didUpdateValueForCharacteristic characteristic: CBCharacteristic!, error: NSError!) {
+  
+    if (!Sensor.isSensorActive(DxtrModel.sharedInstance.managedObjectContext!)) {
+      // we have no active sensor -> do nothing
+      return
+    }
     
     if (characteristic != recieverCharacteristic) {
       logger.error("Wrong Characteristcs")
@@ -134,7 +139,7 @@ class BTService: NSObject, CBPeripheralDelegate {
       if data_components.count > 2 {
         // Create the database object
         var transmitterData = TransmitterData(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!)
-        transmitterData.rawData = NSNumber(int:(data_components[0] as NSString).intValue)
+        transmitterData.rawData = NSNumber(double: (data_components[0] as NSString).doubleValue)
         transmitterData.sensorBatteryLevel = NSNumber(int:(data_components[1] as NSString).intValue)
         transmitterData.sendTDNewValueNotificcation()
       } else {
@@ -144,7 +149,7 @@ class BTService: NSObject, CBPeripheralDelegate {
         } else {
           // Create the database object
           var transmitterData = TransmitterData(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!)
-          transmitterData.rawData = NSNumber(int:(data_components[0] as NSString).intValue)
+          transmitterData.rawData = NSNumber(double:(data_components[0] as NSString).doubleValue)
           transmitterData.sendTDNewValueNotificcation()
         }
       }

@@ -35,22 +35,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     DxtrModel.sharedInstance.managedObjectContext = managedObjectContext
     #if SIMULATOR
       logger.verbose("Running on Simulator")
-      // We are running in the simmulator. Generate transmitter data
+      // We are running in the simmulator. 
+
+      // create fake sensor
+      let ss = Sensor(managedObjectContext: managedObjectContext!, timeStamp: START_TIME_OF_SENSOR)
+
+      // create 1st reading
+      	
+      // create 2nd reading
+      
+      // add calibration - 1
+      
+      // add calibration - 2
+
+      // Generate transmitter data
       var testData = TestRawData()
       testData.createTestRawData(managedObjectContext!)
       
-      let entity = _TransmitterData.entity(managedObjectContext)
-      var fetchRequest = NSFetchRequest(entityName: entity.name!)
-      let sd = NSSortDescriptor(key: "timeStamp" , ascending: true)
-      fetchRequest.sortDescriptors = [sd]
+//      let entity = _TransmitterData.entity(managedObjectContext)
+//      var fetchRequest = NSFetchRequest(entityName: entity.name!)
+//      let sd = NSSortDescriptor(key: "timeStamp" , ascending: true)
+//      fetchRequest.sortDescriptors = [sd]
+//      
+//      if let results = self.managedObjectContext!.executeFetchRequest(fetchRequest, error:nil) {
+//        for ao in results {
+//          if let td = ao as? TransmitterData {
+//            logger.verbose("\(td.description)")
+//          }
+//        }
+//      }
+//      
       
-      if let results = self.managedObjectContext!.executeFetchRequest(fetchRequest, error:nil) {
-        for ao in results {
-          if let td = ao as? TransmitterData {
-            logger.verbose("\(td.description)")
-          }
-        }
-      }
+      //
+      
       #else
       logger.verbose("Running on Device")
     #endif

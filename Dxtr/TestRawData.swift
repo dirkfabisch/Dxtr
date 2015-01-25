@@ -16,22 +16,22 @@ import CoreData
 class TestRawData {
   
   // default battery level
-  let sensorBatteryLevel : Int32 = 217
+  let sensorBatteryLevel : Int = 217
   
-  func random(range: Range<Int32>) -> Int32 {
-    return range.startIndex + Int32(arc4random_uniform(range.endIndex - range.startIndex + 1))
+  func random(range: Range<Int>) -> Int {
+    return range.startIndex + Int(arc4random_uniform(range.endIndex - range.startIndex + 1))
   }
   
   // create random values
   func createTestRawData(moc: NSManagedObjectContext) {
     
     // add raw data from the "past" by going back in time 495 minutes
-    let startTime = NSDate().dateByAddingTimeInterval(-29700)
+    let startTime = NSDate().dateByAddingTimeInterval(PAST_TIME)
 
-    for var num = 0.0; num < 100; num++ {
-      var td = TransmitterData(managedObjectContext: moc, timeStamp: (startTime.dateByAddingTimeInterval(num * 300)))
-      td.rawData = NSNumber(int: random(170000...180000))
-      td.sensorBatteryLevel = NSNumber(int: sensorBatteryLevel)
+    for var num = 0; num < NUMBER_OF_READINGS; num++ {
+      var td = TransmitterData(managedObjectContext: moc, timeStamp: (startTime.dateByAddingTimeInterval(Double(num * 300))))
+      td.rawData = NSNumber(double: Double(random(170000...180000)))
+      td.sensorBatteryLevel = NSNumber(int: Int32(sensorBatteryLevel))
       DxtrModel.sharedInstance.saveContext()
     }
   }
@@ -39,8 +39,8 @@ class TestRawData {
   // create on random test data value
   func createOneTestRawData(moc: NSManagedObjectContext) {
       var td = TransmitterData(managedObjectContext: moc)
-      td.rawData = NSNumber(int: random(170000...180000))
-      td.sensorBatteryLevel = NSNumber(int: sensorBatteryLevel)
+      td.rawData = NSNumber(double: Double(random(170000...180000)))
+      td.sensorBatteryLevel = NSNumber(int: Int32(sensorBatteryLevel))
       td.sendTDNewValueNotificcation()
       DxtrModel.sharedInstance.saveContext()
   }

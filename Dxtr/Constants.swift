@@ -28,3 +28,11 @@ let logger = XCGLogger.defaultInstance()
 // logging instance for file logging
 let fileLog = XCGLogger()
 
+// all values for a simulated run on simulator
+let NUMBER_OF_READINGS = 100
+let PAST_TIME:Double = -29700 // 495 Minutes == 100 Readings
+let START_TIME_OF_SENSOR = NSDate().dateByAddingTimeInterval(Double(PAST_TIME+(-7200)))
+
+// calculation constant
+let MMOLL_TO_MGDL = 18.0182
+let MGDL_TO_MMOLL = 1 / MMOLL_TO_MGDL

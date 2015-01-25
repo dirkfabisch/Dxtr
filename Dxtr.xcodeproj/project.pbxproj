@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		4319167B1A72E7F500FE123D /* TestRawData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4319167A1A72E7F500FE123D /* TestRawData.swift */; };
+		434534A71A751E70000D591E /* _BGReading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434534A11A751E70000D591E /* _BGReading.swift */; };
+		434534A81A751E70000D591E /* _Calibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434534A21A751E70000D591E /* _Calibration.swift */; };
+		434534A91A751E70000D591E /* _Sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434534A31A751E70000D591E /* _Sensor.swift */; };
+		434534AA1A751E70000D591E /* BGReading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434534A41A751E70000D591E /* BGReading.swift */; };
+		434534AB1A751E70000D591E /* Calibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434534A51A751E70000D591E /* Calibration.swift */; };
+		434534AC1A751E70000D591E /* Sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434534A61A751E70000D591E /* Sensor.swift */; };
 		435C921B1A6F9C9B00807847 /* _TransmitterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435C92191A6F9C9B00807847 /* _TransmitterData.swift */; };
 		435C921C1A6F9C9B00807847 /* TransmitterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435C921A1A6F9C9B00807847 /* TransmitterData.swift */; };
 		43BBDF9A1A642D850006B61F /* BTDiscovery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BBDF981A642D850006B61F /* BTDiscovery.swift */; };
@@ -87,6 +93,12 @@
 
 /* Begin PBXFileReference section */
 		4319167A1A72E7F500FE123D /* TestRawData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestRawData.swift; sourceTree = "<group>"; };
+		434534A11A751E70000D591E /* _BGReading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _BGReading.swift; sourceTree = "<group>"; };
+		434534A21A751E70000D591E /* _Calibration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Calibration.swift; sourceTree = "<group>"; };
+		434534A31A751E70000D591E /* _Sensor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Sensor.swift; sourceTree = "<group>"; };
+		434534A41A751E70000D591E /* BGReading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BGReading.swift; sourceTree = "<group>"; };
+		434534A51A751E70000D591E /* Calibration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calibration.swift; sourceTree = "<group>"; };
+		434534A61A751E70000D591E /* Sensor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sensor.swift; sourceTree = "<group>"; };
 		4358549C1A664FB400940764 /* XCGLogger.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = XCGLogger.xcodeproj; sourceTree = "<group>"; };
 		435C92191A6F9C9B00807847 /* _TransmitterData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _TransmitterData.swift; sourceTree = "<group>"; };
 		435C921A1A6F9C9B00807847 /* TransmitterData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransmitterData.swift; sourceTree = "<group>"; };
@@ -159,7 +171,13 @@
 		435C92181A6F9B1B00807847 /* ModelObjects */ = {
 			isa = PBXGroup;
 			children = (
+				434534A11A751E70000D591E /* _BGReading.swift */,
+				434534A21A751E70000D591E /* _Calibration.swift */,
+				434534A31A751E70000D591E /* _Sensor.swift */,
 				435C92191A6F9C9B00807847 /* _TransmitterData.swift */,
+				434534A41A751E70000D591E /* BGReading.swift */,
+				434534A51A751E70000D591E /* Calibration.swift */,
+				434534A61A751E70000D591E /* Sensor.swift */,
 				435C921A1A6F9C9B00807847 /* TransmitterData.swift */,
 			);
 			path = ModelObjects;
@@ -429,16 +447,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				43CB86CC1A66D9BE00CA6D84 /* SwiftOverlays.swift in Sources */,
+				434534AC1A751E70000D591E /* Sensor.swift in Sources */,
 				43BBDF9E1A642DC50006B61F /* Constants.swift in Sources */,
 				4319167B1A72E7F500FE123D /* TestRawData.swift in Sources */,
 				43E536281A62CE480037EED0 /* ViewController.swift in Sources */,
+				434534AB1A751E70000D591E /* Calibration.swift in Sources */,
 				435C921B1A6F9C9B00807847 /* _TransmitterData.swift in Sources */,
 				43BBDF9B1A642D850006B61F /* BTService.swift in Sources */,
 				43DF0D061A6D96B700686779 /* dxtrDBModel.xcdatamodeld in Sources */,
+				434534A91A751E70000D591E /* _Sensor.swift in Sources */,
+				434534A81A751E70000D591E /* _Calibration.swift in Sources */,
 				43DF0D081A6D9ADD00686779 /* DxtrModel.swift in Sources */,
 				43BBDF9A1A642D850006B61F /* BTDiscovery.swift in Sources */,
+				434534A71A751E70000D591E /* _BGReading.swift in Sources */,
 				43E536261A62CE480037EED0 /* AppDelegate.swift in Sources */,
 				435C921C1A6F9C9B00807847 /* TransmitterData.swift in Sources */,
+				434534AA1A751E70000D591E /* BGReading.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
