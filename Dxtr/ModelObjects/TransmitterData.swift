@@ -4,11 +4,11 @@ import CoreData
 class TransmitterData: _TransmitterData {
 
   convenience init (managedObjectContext: NSManagedObjectContext) {
-    self.init (managedObjectContext: managedObjectContext, timeStamp: NSDate())
+    self.init (managedObjectContext: managedObjectContext, timeStamp: NSDate().getTime())
     
   }
   
-  convenience init (managedObjectContext: NSManagedObjectContext, timeStamp: NSDate) {
+  convenience init (managedObjectContext: NSManagedObjectContext, timeStamp: Double) {
   
     let entity = _TransmitterData.entity(managedObjectContext)
     self.init(entity: entity, insertIntoManagedObjectContext: managedObjectContext)

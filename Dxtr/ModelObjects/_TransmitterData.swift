@@ -47,7 +47,7 @@ class _TransmitterData: NSManagedObject {
     // func validateSensorBatteryLevel(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
-    var timeStamp: NSDate?
+    var timeStamp: NSNumber?
 
     // func validateTimeStamp(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 

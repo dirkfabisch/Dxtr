@@ -29,7 +29,7 @@ class TestRawData {
     let startTime = NSDate().dateByAddingTimeInterval(PAST_TIME)
 
     for var num = 0; num < NUMBER_OF_READINGS; num++ {
-      var td = TransmitterData(managedObjectContext: moc, timeStamp: (startTime.dateByAddingTimeInterval(Double(num * 300))))
+      var td = TransmitterData(managedObjectContext: moc, timeStamp: (startTime.dateByAddingTimeInterval(Double(num * 300)).getTime()))
       td.rawData = NSNumber(double: Double(random(170000...180000)))
       td.sensorBatteryLevel = NSNumber(int: Int32(sensorBatteryLevel))
       DxtrModel.sharedInstance.saveContext()

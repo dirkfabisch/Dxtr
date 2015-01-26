@@ -47,12 +47,12 @@ class _Sensor: NSManagedObject {
     // func validateLastBatteryLevel(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
-    var sensorStarted: NSDate?
+    var sensorStarted: NSNumber?
 
     // func validateSensorStarted(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
-    var sensorStopped: NSDate?
+    var sensorStopped: NSNumber?
 
     // func validateSensorStopped(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 

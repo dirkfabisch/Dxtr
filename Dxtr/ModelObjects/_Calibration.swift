@@ -88,7 +88,7 @@ class _Calibration: NSManagedObject {
     // func validatePossibleBad(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
-    var rawTimeStamp: NSDate?
+    var rawTimeStamp: NSNumber?
 
     // func validateRawTimeStamp(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
@@ -98,7 +98,7 @@ class _Calibration: NSManagedObject {
     // func validateRawValue(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
-    var sensorAgeAtTimeOfEstimation: NSDate?
+    var sensorAgeAtTimeOfEstimation: NSNumber?
 
     // func validateSensorAgeAtTimeOfEstimation(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
@@ -118,7 +118,7 @@ class _Calibration: NSManagedObject {
     // func validateSlopeConfidence(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
-    var timeStamp: NSDate?
+    var timeStamp: NSNumber?
 
     // func validateTimeStamp(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 

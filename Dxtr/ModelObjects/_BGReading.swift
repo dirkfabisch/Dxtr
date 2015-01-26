@@ -113,12 +113,12 @@ class _BGReading: NSManagedObject {
     // func validateSynced(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
-    var timeSinceSensorStarted: NSDate?
+    var timeSinceSensorStarted: NSNumber?
 
     // func validateTimeSinceSensorStarted(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
-    var timeStamp: NSDate?
+    var timeStamp: NSNumber?
 
     // func validateTimeStamp(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 

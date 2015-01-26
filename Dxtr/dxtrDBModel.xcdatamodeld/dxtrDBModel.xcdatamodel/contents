@@ -13,8 +13,8 @@
         <attribute name="rb" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="rc" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="synced" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="timeSinceSensorStarted" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="timeStamp" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="timeSinceSensorStarted" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="timeStamp" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="calibration" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Calibration" inverseName="bgReadings" inverseEntity="Calibration" syncable="YES"/>
         <relationship name="sensor" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Sensor" inverseName="bgReadings" inverseEntity="Sensor" syncable="YES"/>
@@ -27,21 +27,21 @@
         <attribute name="estimateRawAtTimeOfCalibration" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="intercept" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="possibleBad" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="rawTimeStamp" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="rawTimeStamp" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="rawValue" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="sensorAgeAtTimeOfEstimation" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="sensorAgeAtTimeOfEstimation" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="sensorConfidence" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="slope" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="slopeConfidence" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="timeStamp" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="timeStamp" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="bgReadings" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BGReading" inverseName="calibration" inverseEntity="BGReading" syncable="YES"/>
         <relationship name="sensor" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Sensor" inverseName="calibrations" inverseEntity="Sensor" syncable="YES"/>
     </entity>
     <entity name="Sensor" representedClassName="Sensor" syncable="YES">
         <attribute name="lastBatteryLevel" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="sensorStarted" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="sensorStopped" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="sensorStarted" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="sensorStopped" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="bgReadings" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BGReading" inverseName="sensor" inverseEntity="BGReading" syncable="YES"/>
         <relationship name="calibrations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Calibration" inverseName="sensor" inverseEntity="Calibration" syncable="YES"/>
@@ -49,13 +49,13 @@
     <entity name="TransmitterData" representedClassName="TransmitterData" syncable="YES">
         <attribute name="rawData" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="sensorBatteryLevel" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="timeStamp" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="timeStamp" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="TransmitterData" positionX="133" positionY="-150" width="128" height="103"/>
-        <element name="Sensor" positionX="459" positionY="-52" width="128" height="133"/>
-        <element name="Calibration" positionX="673" positionY="207" width="128" height="298"/>
-        <element name="BGReading" positionX="97" positionY="237" width="128" height="298"/>
+        <element name="TransmitterData" positionX="108" positionY="-4" width="128" height="103"/>
+        <element name="Sensor" positionX="432" positionY="488" width="128" height="133"/>
+        <element name="Calibration" positionX="673" positionY="134" width="209" height="298"/>
+        <element name="BGReading" positionX="106" positionY="135" width="182" height="298"/>
     </elements>
 </model>

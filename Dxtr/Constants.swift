@@ -31,8 +31,21 @@ let fileLog = XCGLogger()
 // all values for a simulated run on simulator
 let NUMBER_OF_READINGS = 100
 let PAST_TIME:Double = -29700 // 495 Minutes == 100 Readings
-let START_TIME_OF_SENSOR = NSDate().dateByAddingTimeInterval(Double(PAST_TIME+(-7200)))
+let START_TIME_OF_SENSOR = NSDate().dateByAddingTimeInterval(Double(PAST_TIME+(-7200))).getTime()
 
 // calculation constant
 let MMOLL_TO_MGDL = 18.0182
 let MGDL_TO_MMOLL = 1 / MMOLL_TO_MGDL
+
+//TODO: Have these as adjustable settings!!
+
+let READINGS_BESTOFFSET = Double(60000 * 0) // Assume readings are about x minutes off from actual!
+
+
+// extension  for handling time in the same way than android 
+// avoids confusion in calculation with time and values
+extension NSDate {
+  func getTime() -> NSTimeInterval {
+    return NSDate().timeIntervalSince1970 * 1000
+  }
+}
