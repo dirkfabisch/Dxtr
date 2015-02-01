@@ -1,4 +1,6 @@
 import CoreData
+import QueryKit
+
 @objc(Calibration)
 class Calibration: _Calibration {
 
@@ -73,6 +75,26 @@ class Calibration: _Calibration {
       var w : Double
     }
   }
+  
+  func getCalibrations(managedObjectContext : NSManagedObjectContext,
+                                     sensor : Sensor,
+                               numberOfDays : Int)
+                              -> [Calibration]?
+  {
+    var searchTimeStamp : Double = round(NSDate().getTime() - Double(60000 * 60 * 24 * numberOfDays))
+                                
+    var qs = Calibration.queryset(managedObjectContext).filter(
+      Calibration.attributes.sensor == sensor &&
+      Calibration.attributes.sensorConfidence != 0 &&
+      Calibration.attributes.slopeConfidence != 0 &&
+      Calibration.attributes.timeStamp > NSNumber(double: searchTimeStamp)
+    )
+    
+    return qs.array()
+  }
+  
+  
+
   
 //  public static void calculate_w_l_s() {
 //  if (Sensor.isActive()) {

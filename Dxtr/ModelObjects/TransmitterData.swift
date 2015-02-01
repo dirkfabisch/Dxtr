@@ -22,7 +22,7 @@ class TransmitterData: _TransmitterData {
   }
   
   override var description: String {
-    return "UUID: \(uuid)\nTimeStamp: \(timeStamp)\nRaw Value: \(rawData)\nBattery Sensor: \(sensorBatteryLevel)\n"
+    return "\nUUID: \(uuid)\nTimeStamp: \(timeStamp)\nRaw Value: \(rawData)\nBattery Sensor: \(sensorBatteryLevel)\n"
   }
   
   func sendTDNewValueNotificcation() {

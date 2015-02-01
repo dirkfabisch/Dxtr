@@ -2,41 +2,85 @@
 // Make changes to Calibration.swift instead.
 
 import CoreData
-
-enum CalibrationAttributes: String {
-    case adjustedRawValue = "adjustedRawValue"
-    case bg = "bg"
-    case distanceFromEstimate = "distanceFromEstimate"
-    case estimateBgAtTimeOfCalibration = "estimateBgAtTimeOfCalibration"
-    case estimateRawAtTimeOfCalibration = "estimateRawAtTimeOfCalibration"
-    case intercept = "intercept"
-    case possibleBad = "possibleBad"
-    case rawTimeStamp = "rawTimeStamp"
-    case rawValue = "rawValue"
-    case sensorAgeAtTimeOfEstimation = "sensorAgeAtTimeOfEstimation"
-    case sensorConfidence = "sensorConfidence"
-    case slope = "slope"
-    case slopeConfidence = "slopeConfidence"
-    case timeStamp = "timeStamp"
-    case uuid = "uuid"
-}
-
-enum CalibrationRelationships: String {
-    case bgReadings = "bgReadings"
-    case sensor = "sensor"
-}
+import QueryKit
 
 @objc
 class _Calibration: NSManagedObject {
 
+    class func queryset(context:NSManagedObjectContext) -> QuerySet<Calibration> {
+        return QuerySet<Calibration>(context, entityName)
+    }
+
+    struct Attributes {
+
+        var adjustedRawValue:Attribute<NSNumber?> {
+            return Attribute<NSNumber?>("adjustedRawValue")
+        }
+        var bg:Attribute<NSNumber?> {
+            return Attribute<NSNumber?>("bg")
+        }
+        var distanceFromEstimate:Attribute<NSNumber?> {
+            return Attribute<NSNumber?>("distanceFromEstimate")
+        }
+        var estimateBgAtTimeOfCalibration:Attribute<NSNumber?> {
+            return Attribute<NSNumber?>("estimateBgAtTimeOfCalibration")
+        }
+        var estimateRawAtTimeOfCalibration:Attribute<NSNumber?> {
+            return Attribute<NSNumber?>("estimateRawAtTimeOfCalibration")
+        }
+        var intercept:Attribute<NSNumber?> {
+            return Attribute<NSNumber?>("intercept")
+        }
+        var possibleBad:Attribute<NSNumber?> {
+            return Attribute<NSNumber?>("possibleBad")
+        }
+        var rawTimeStamp:Attribute<NSNumber?> {
+            return Attribute<NSNumber?>("rawTimeStamp")
+        }
+        var rawValue:Attribute<NSNumber?> {
+            return Attribute<NSNumber?>("rawValue")
+        }
+        var sensorAgeAtTimeOfEstimation:Attribute<NSNumber?> {
+            return Attribute<NSNumber?>("sensorAgeAtTimeOfEstimation")
+        }
+        var sensorConfidence:Attribute<NSNumber?> {
+            return Attribute<NSNumber?>("sensorConfidence")
+        }
+        var slope:Attribute<NSNumber?> {
+            return Attribute<NSNumber?>("slope")
+        }
+        var slopeConfidence:Attribute<NSNumber?> {
+            return Attribute<NSNumber?>("slopeConfidence")
+        }
+        var timeStamp:Attribute<NSNumber?> {
+            return Attribute<NSNumber?>("timeStamp")
+        }
+        var uuid:Attribute<String?> {
+            return Attribute<String?>("uuid")
+        }
+
+        var bgReadings:Attribute<BGReading?> {
+            return Attribute<BGReading?>("bgReadings")
+        }
+
+        var sensor:Attribute<Sensor?> {
+            return Attribute<Sensor?>("sensor")
+        }
+
+    }
+
+    class var attributes:Attributes {
+        return Attributes()
+    }
+
     // MARK: - Class methods
 
-    class func entityName () -> String {
+    class var entityName:String {
         return "Calibration"
     }
 
-    class func entity(managedObjectContext: NSManagedObjectContext!) -> NSEntityDescription! {
-        return NSEntityDescription.entityForName(self.entityName(), inManagedObjectContext: managedObjectContext);
+    class func entity(managedObjectContext: NSManagedObjectContext) -> NSEntityDescription! {
+        return NSEntityDescription.entityForName(self.entityName, inManagedObjectContext: managedObjectContext)
     }
 
     // MARK: - Life cycle methods

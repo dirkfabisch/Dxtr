@@ -2,41 +2,85 @@
 // Make changes to BGReading.swift instead.
 
 import CoreData
-
-enum BGReadingAttributes: String {
-    case a = "a"
-    case ageAdjustedRawValue = "ageAdjustedRawValue"
-    case b = "b"
-    case c = "c"
-    case calculatedValue = "calculatedValue"
-    case calculatedValueSlope = "calculatedValueSlope"
-    case calibrationFlag = "calibrationFlag"
-    case ra = "ra"
-    case rawData = "rawData"
-    case rb = "rb"
-    case rc = "rc"
-    case synced = "synced"
-    case timeSinceSensorStarted = "timeSinceSensorStarted"
-    case timeStamp = "timeStamp"
-    case uuid = "uuid"
-}
-
-enum BGReadingRelationships: String {
-    case calibration = "calibration"
-    case sensor = "sensor"
-}
+import QueryKit
 
 @objc
 class _BGReading: NSManagedObject {
 
+    class func queryset(context:NSManagedObjectContext) -> QuerySet<BGReading> {
+        return QuerySet<BGReading>(context, entityName)
+    }
+
+    struct Attributes {
+
+        var a:Attribute<NSNumber?> {
+            return Attribute<NSNumber?>("a")
+        }
+        var ageAdjustedRawValue:Attribute<NSNumber?> {
+            return Attribute<NSNumber?>("ageAdjustedRawValue")
+        }
+        var b:Attribute<NSNumber?> {
+            return Attribute<NSNumber?>("b")
+        }
+        var c:Attribute<NSNumber?> {
+            return Attribute<NSNumber?>("c")
+        }
+        var calculatedValue:Attribute<NSNumber?> {
+            return Attribute<NSNumber?>("calculatedValue")
+        }
+        var calculatedValueSlope:Attribute<NSNumber?> {
+            return Attribute<NSNumber?>("calculatedValueSlope")
+        }
+        var calibrationFlag:Attribute<NSNumber?> {
+            return Attribute<NSNumber?>("calibrationFlag")
+        }
+        var ra:Attribute<NSNumber?> {
+            return Attribute<NSNumber?>("ra")
+        }
+        var rawData:Attribute<NSNumber?> {
+            return Attribute<NSNumber?>("rawData")
+        }
+        var rb:Attribute<NSNumber?> {
+            return Attribute<NSNumber?>("rb")
+        }
+        var rc:Attribute<NSNumber?> {
+            return Attribute<NSNumber?>("rc")
+        }
+        var synced:Attribute<NSNumber?> {
+            return Attribute<NSNumber?>("synced")
+        }
+        var timeSinceSensorStarted:Attribute<NSNumber?> {
+            return Attribute<NSNumber?>("timeSinceSensorStarted")
+        }
+        var timeStamp:Attribute<NSNumber?> {
+            return Attribute<NSNumber?>("timeStamp")
+        }
+        var uuid:Attribute<String?> {
+            return Attribute<String?>("uuid")
+        }
+
+        var calibration:Attribute<Calibration?> {
+            return Attribute<Calibration?>("calibration")
+        }
+
+        var sensor:Attribute<Sensor?> {
+            return Attribute<Sensor?>("sensor")
+        }
+
+    }
+
+    class var attributes:Attributes {
+        return Attributes()
+    }
+
     // MARK: - Class methods
 
-    class func entityName () -> String {
+    class var entityName:String {
         return "BGReading"
     }
 
-    class func entity(managedObjectContext: NSManagedObjectContext!) -> NSEntityDescription! {
-        return NSEntityDescription.entityForName(self.entityName(), inManagedObjectContext: managedObjectContext);
+    class func entity(managedObjectContext: NSManagedObjectContext) -> NSEntityDescription! {
+        return NSEntityDescription.entityForName(self.entityName, inManagedObjectContext: managedObjectContext)
     }
 
     // MARK: - Life cycle methods

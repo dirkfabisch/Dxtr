@@ -1,4 +1,6 @@
 import CoreData
+import QueryKit
+
 
 @objc(Sensor)
 class Sensor: _Sensor {
@@ -12,49 +14,43 @@ class Sensor: _Sensor {
   convenience init (managedObjectContext: NSManagedObjectContext, timeStamp: Double) {
     let entity = _Sensor.entity(managedObjectContext)
     self.init(entity: entity, insertIntoManagedObjectContext: managedObjectContext)
-  
-    sensorStarted = timeStamp
-    uuid = NSUUID().UUIDString
     
+    // check if an sensor is active an stop sensor.
+    if let cSensor = Sensor.currentSensor(managedObjectContext) {
+      stopSensor(cSensor)
+    }
+    sensorStarted = round(timeStamp) // make sure we get only defined timestamps
+    uuid = NSUUID().UUIDString
   }
   
   class func currentSensor(managedObjectContext: NSManagedObjectContext) -> Sensor? {
+    var qs = Sensor.queryset(managedObjectContext).filter(
+        Sensor.attributes.sensorStarted != 0 &&
+        Sensor.attributes.sensorStopped == 0)
     
-    let entity = _Sensor.entity(managedObjectContext)
-    var fetchRequest = NSFetchRequest(entityName: entity.name!)
-    var predicate = NSPredicate(format: "sensorStarted != nil && sensorStopped = nil")
-    fetchRequest.predicate = predicate
-    
-    if let results = managedObjectContext.executeFetchRequest(fetchRequest, error:nil) {
-      for ao in results {
-        if let sensor = ao as? Sensor {
-          return sensor
-        }
-      }
+    if (qs.count() != nil) {
+      return qs[0]
     }
     return nil
   }
   
   class func isSensorActive(managedObjectContext: NSManagedObjectContext) -> Bool {
     
-    let entity = _Sensor.entity(managedObjectContext)
-    var fetchRequest = NSFetchRequest(entityName: entity.name!)
-    var predicate = NSPredicate(format: "sensorStarted != nil && sensorStopped = nil")
-    fetchRequest.predicate = predicate
-    
-    if let results = managedObjectContext.executeFetchRequest(fetchRequest, error:nil) {
-      for ao in results {
-        if let sensor = ao as? Sensor {
-          return true
-        }
-      }
+    var qs = Sensor.queryset(managedObjectContext).filter(
+        Sensor.attributes.sensorStarted != 0 &&
+        Sensor.attributes.sensorStopped == 0)
+
+    if (qs.count() != nil) {
+      return true
     }
     return false
   }
 
   override var description: String {
-    return "UUID: \(uuid)\nsensor started: \(sensorStarted)\nsensor Stopped: \(sensorStopped)\nBattery Sensor: \(lastBatteryLevel)\n"
+    return "\nUUID: \(uuid)\nsensor started: \(sensorStarted)\nsensor Stopped: \(sensorStopped)\nBattery Sensor: \(lastBatteryLevel)\n"
   }
 
-
+  func stopSensor(sensor : Sensor) {
+    sensor.sensorStopped = round(NSDate().getTime())
+  }
 }

@@ -2,25 +2,44 @@
 // Make changes to TransmitterData.swift instead.
 
 import CoreData
-
-enum TransmitterDataAttributes: String {
-    case rawData = "rawData"
-    case sensorBatteryLevel = "sensorBatteryLevel"
-    case timeStamp = "timeStamp"
-    case uuid = "uuid"
-}
+import QueryKit
 
 @objc
 class _TransmitterData: NSManagedObject {
 
+    class func queryset(context:NSManagedObjectContext) -> QuerySet<TransmitterData> {
+        return QuerySet<TransmitterData>(context, entityName)
+    }
+
+    struct Attributes {
+
+        var rawData:Attribute<NSNumber?> {
+            return Attribute<NSNumber?>("rawData")
+        }
+        var sensorBatteryLevel:Attribute<NSNumber?> {
+            return Attribute<NSNumber?>("sensorBatteryLevel")
+        }
+        var timeStamp:Attribute<NSNumber?> {
+            return Attribute<NSNumber?>("timeStamp")
+        }
+        var uuid:Attribute<String?> {
+            return Attribute<String?>("uuid")
+        }
+
+    }
+
+    class var attributes:Attributes {
+        return Attributes()
+    }
+
     // MARK: - Class methods
 
-    class func entityName () -> String {
+    class var entityName:String {
         return "TransmitterData"
     }
 
-    class func entity(managedObjectContext: NSManagedObjectContext!) -> NSEntityDescription! {
-        return NSEntityDescription.entityForName(self.entityName(), inManagedObjectContext: managedObjectContext);
+    class func entity(managedObjectContext: NSManagedObjectContext) -> NSEntityDescription! {
+        return NSEntityDescription.entityForName(self.entityName, inManagedObjectContext: managedObjectContext)
     }
 
     // MARK: - Life cycle methods

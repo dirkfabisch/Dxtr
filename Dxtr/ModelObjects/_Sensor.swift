@@ -2,30 +2,52 @@
 // Make changes to Sensor.swift instead.
 
 import CoreData
-
-enum SensorAttributes: String {
-    case lastBatteryLevel = "lastBatteryLevel"
-    case sensorStarted = "sensorStarted"
-    case sensorStopped = "sensorStopped"
-    case uuid = "uuid"
-}
-
-enum SensorRelationships: String {
-    case bgReadings = "bgReadings"
-    case calibrations = "calibrations"
-}
+import QueryKit
 
 @objc
 class _Sensor: NSManagedObject {
 
+    class func queryset(context:NSManagedObjectContext) -> QuerySet<Sensor> {
+        return QuerySet<Sensor>(context, entityName)
+    }
+
+    struct Attributes {
+
+        var lastBatteryLevel:Attribute<NSNumber?> {
+            return Attribute<NSNumber?>("lastBatteryLevel")
+        }
+        var sensorStarted:Attribute<NSNumber?> {
+            return Attribute<NSNumber?>("sensorStarted")
+        }
+        var sensorStopped:Attribute<NSNumber?> {
+            return Attribute<NSNumber?>("sensorStopped")
+        }
+        var uuid:Attribute<String?> {
+            return Attribute<String?>("uuid")
+        }
+
+        var bgReadings:Attribute<NSSet> {
+            return Attribute<NSSet>("bgReadings")
+        }
+
+        var calibrations:Attribute<NSSet> {
+            return Attribute<NSSet>("calibrations")
+        }
+
+    }
+
+    class var attributes:Attributes {
+        return Attributes()
+    }
+
     // MARK: - Class methods
 
-    class func entityName () -> String {
+    class var entityName:String {
         return "Sensor"
     }
 
-    class func entity(managedObjectContext: NSManagedObjectContext!) -> NSEntityDescription! {
-        return NSEntityDescription.entityForName(self.entityName(), inManagedObjectContext: managedObjectContext);
+    class func entity(managedObjectContext: NSManagedObjectContext) -> NSEntityDescription! {
+        return NSEntityDescription.entityForName(self.entityName, inManagedObjectContext: managedObjectContext)
     }
 
     // MARK: - Life cycle methods
@@ -85,13 +107,13 @@ extension _Sensor {
         self.bgReadings = mutable.copy() as NSSet
     }
 
-    func addBgReadingsObject(value: BGReading!) {
+    func addBgReadingsObject(value: BGReading) {
         let mutable = self.bgReadings.mutableCopy() as NSMutableSet
         mutable.addObject(value)
         self.bgReadings = mutable.copy() as NSSet
     }
 
-    func removeBgReadingsObject(value: BGReading!) {
+    func removeBgReadingsObject(value: BGReading) {
         let mutable = self.bgReadings.mutableCopy() as NSMutableSet
         mutable.removeObject(value)
         self.bgReadings = mutable.copy() as NSSet
@@ -113,16 +135,17 @@ extension _Sensor {
         self.calibrations = mutable.copy() as NSSet
     }
 
-    func addCalibrationsObject(value: Calibration!) {
+    func addCalibrationsObject(value: Calibration) {
         let mutable = self.calibrations.mutableCopy() as NSMutableSet
         mutable.addObject(value)
         self.calibrations = mutable.copy() as NSSet
     }
 
-    func removeCalibrationsObject(value: Calibration!) {
+    func removeCalibrationsObject(value: Calibration) {
         let mutable = self.calibrations.mutableCopy() as NSMutableSet
         mutable.removeObject(value)
         self.calibrations = mutable.copy() as NSSet
     }
 
 }
+

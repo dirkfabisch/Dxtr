@@ -1,0 +1,24 @@
+PODS:
+  - QueryKit/Attribute/Swift (0.9.1):
+    - QueryKit/QuerySet/Swift
+  - QueryKit/QuerySet/Swift (0.9.1)
+  - QueryKit/Swift (0.9.1):
+    - QueryKit/Attribute/Swift
+    - QueryKit/QuerySet/Swift
+
+DEPENDENCIES:
+  - QueryKit/Swift (from `https://github.com/QueryKit/QueryKit`)
+
+EXTERNAL SOURCES:
+  QueryKit:
+    :git: https://github.com/QueryKit/QueryKit
+
+CHECKOUT OPTIONS:
+  QueryKit:
+    :commit: 78f6769114ec2af33d288e0d4166714d9eef44e1
+    :git: https://github.com/QueryKit/QueryKit
+
+SPEC CHECKSUMS:
+  QueryKit: 7e11bce924368eb670e4079f49ca062b0938eb6b
+
+COCOAPODS: 0.36.0.beta.2
