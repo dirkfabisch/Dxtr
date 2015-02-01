@@ -48,18 +48,20 @@ class ViewController: UIViewController {
     dispatch_async(dispatch_get_main_queue(), {
       // Set image based on connection status
       if let isConnected: Bool = userInfo["isConnected"] {
+        let notification = UILocalNotification()
         if isConnected {
           self.btConnectionState.text = "Connected"
-          
           //                    self.imgBluetoothStatus.image = UIImage(named: "Bluetooth_Connected")
-          
+          notification.alertBody = "Wixel Connected"
           // Send current slider position
           //                    self.sendPosition(UInt8( self.positionSlider.value))
         } else {
           self.btConnectionState.text = "disconected"
           self.showWaitOverlayWithText("Connecting")
+          notification.alertBody = "Wixel Disconnected"
           //    image                self.imgBluetoothStatus.image = UIImage(named: "Bluetooth_Disconnected")
         }
+        UIApplication.sharedApplication().presentLocalNotificationNow(notification)
       }
     })
   }
