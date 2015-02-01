@@ -107,7 +107,7 @@
 		43BBDF981A642D850006B61F /* BTDiscovery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTDiscovery.swift; sourceTree = "<group>"; };
 		43BBDF991A642D850006B61F /* BTService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTService.swift; sourceTree = "<group>"; };
 		43BBDF9D1A642DC40006B61F /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		43CB86CB1A66D9BE00CA6D84 /* SwiftOverlays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftOverlays.swift; path = "../../../../Downloads/SwiftOverlays-master/SwiftOverlays/SwiftOverlays.swift"; sourceTree = "<group>"; };
+		43CB86CB1A66D9BE00CA6D84 /* SwiftOverlays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftOverlays.swift; path = "../SwiftOverlays-master/SwiftOverlays/SwiftOverlays.swift"; sourceTree = "<group>"; };
 		43DF0D051A6D96B700686779 /* dxtrDBModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = dxtrDBModel.xcdatamodel; sourceTree = "<group>"; };
 		43DF0D071A6D9ADD00686779 /* DxtrModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DxtrModel.swift; sourceTree = "<group>"; };
 		43DF0D0B1A6EB09D00686779 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -160,7 +160,7 @@
 				4358549C1A664FB400940764 /* XCGLogger.xcodeproj */,
 			);
 			name = XCGLogger;
-			path = ../../../git_downloads/XCGLogger/XCGLogger/Library;
+			path = "../XCGLogger-master/XCGLogger/Library";
 			sourceTree = "<group>";
 		};
 		4358549D1A664FB400940764 /* Products */ = {
@@ -202,7 +202,6 @@
 			children = (
 				43DF0D041A6D96B700686779 /* dxtrDBModel.xcdatamodeld */,
 				43DF0D071A6D9ADD00686779 /* DxtrModel.swift */,
-				4319167A1A72E7F500FE123D /* TestRawData.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -346,10 +345,11 @@
 				TargetAttributes = {
 					43E5361F1A62CE480037EED0 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = YV6CG57Z4A;
+						DevelopmentTeam = L57T999M9X;
 					};
 					43E536341A62CE480037EED0 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = L57T999M9X;
 						TestTargetID = 43E5361F1A62CE480037EED0;
 					};
 				};
@@ -481,6 +481,7 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "cd \"$PROJECT_DIR/Dxtr\" && /usr/local/bin/mogenerator --swift -m dxtrDBModel.xcdatamodeld/dxtrDBModel.xcdatamodel  --output-dir ./ModelObjects --template-path ~/.querykit-mogenerator-template";
+			shellScript = "cd \"$PROJECT_DIR/Dxtr\" && mogenerator --swift -m dxtrDBModel.xcdatamodeld/dxtrDBModel.xcdatamodel  --output-dir ./ModelObjects";
 		};
 		43CB86CA1A66D19200CA6D84 /* Insert Sketch Ressources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -494,7 +495,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# AppIcon\n/usr/local/bin/sketchtool export artboards \"$PROJECT_DIR\"/\"Graphics Resources/AppIcon.sketch\" --output=\"$PROJECT_DIR\"/\"$PROJECT_NAME\"/Images.xcassets/AppIcon.appiconset --formats=\"png\"";
+			shellScript = "# AppIcon\n#/usr/local/bin/sketchtool export artboards \"$PROJECT_DIR\"/\"Graphics Resources/AppIcon.sketch\" --output=\"$PROJECT_DIR\"/\"$PROJECT_NAME\"/Images.xcassets/AppIcon.appiconset --formats=\"png\"";
 		};
 		6AC7309B179A3963E7ABBDB6 /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -521,7 +522,6 @@
 				43CB86CC1A66D9BE00CA6D84 /* SwiftOverlays.swift in Sources */,
 				434534AC1A751E70000D591E /* Sensor.swift in Sources */,
 				43BBDF9E1A642DC50006B61F /* Constants.swift in Sources */,
-				4319167B1A72E7F500FE123D /* TestRawData.swift in Sources */,
 				43E536281A62CE480037EED0 /* ViewController.swift in Sources */,
 				434534AB1A751E70000D591E /* Calibration.swift in Sources */,
 				435C921B1A6F9C9B00807847 /* _TransmitterData.swift in Sources */,
@@ -603,6 +603,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -645,7 +646,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -684,7 +686,7 @@
 			baseConfigurationReference = 0AFAD76CD12C94905DFF9A02 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Dxtr/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;

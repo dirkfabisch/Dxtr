@@ -20,6 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     // Override point for customization after application launch.
+    let settings = UIUserNotificationSettings(forTypes: .Alert, categories: nil)
+    application.registerUserNotificationSettings(settings)
+    
     logger.setup(logLevel: .Verbose, showLogLevel: false, showFileNames: false, showLineNumbers: true, writeToFile: nil)
     
     // Setup XCGLogger
@@ -66,6 +69,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       logger.verbose("Running on Device")
     #endif
     return true
+  }
+  
+  func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+    if (application.applicationState == .Background) {
+      application.presentLocalNotificationNow(notification)
+    }
   }
   
   func applicationWillResignActive(application: UIApplication) {
