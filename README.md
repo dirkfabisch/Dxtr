@@ -16,6 +16,7 @@ The iOS app will connect tor the HW via Bluetooth and read the sensor data via w
 
 ## Working on
 * enable dummy data when running in simulator for faste development (dont want to wait always for 5 minutes for a new reading)
+* Adding [QueryKit](http://querykit.org/) for easier CoreData access 
 
 ## Backlog
 * manage sensor (add, start, stop)
