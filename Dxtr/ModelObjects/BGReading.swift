@@ -4,18 +4,181 @@ import QueryKit
 @objc(BGReading)
 class BGReading: _BGReading {
 
-	// Custom logic goes here.
-  
+  // Custom logic goes here.
   convenience init (managedObjectContext: NSManagedObjectContext, rawData :Double) {
+    self.init(managedObjectContext: managedObjectContext, timeStamp: NSDate().getTime(),rawData: rawData)
+  }
+  
+  convenience init (managedObjectContext: NSManagedObjectContext, timeStamp : Double, rawData :Double) {
     let entity = _Sensor.entity(managedObjectContext)
     self.init(entity: entity, insertIntoManagedObjectContext: managedObjectContext)
+
+    if let currentSensor = Sensor.currentSensor(managedObjectContext) {
+      if let lastCalibration = Calibration.lastCalibration(managedObjectContext) {
+        sensor = currentSensor
+        calibration = lastCalibration
+        self.rawData = rawData / 1000
+        self.timeStamp = NSDate().getTime()
+        uuid = NSUUID().UUIDString
+        timeSinceSensorStarted = self.timeStamp!.doubleValue - currentSensor.sensorStarted!.doubleValue
+        synced = false
+
+        //TODO: THIS IS A BIG SILLY IDEA, THIS WILL HAVE TO CHANGE ONCE WE GET SOME REAL DATA FROM THE START OF SENSOR LIFE
+        var adjustFor = (86400000 * 1.9) -  timeSinceSensorStarted!.doubleValue
+        if (adjustFor > 0) {
+          ageAdjustedRawValue = (((0.45) * (adjustFor / (86400000 * 1.9))) * (rawData/1000)) + (rawData/1000);
+          logger.verbose("RAW VALUE ADJUSTMENT: FROM: \(rawData/1000) TO: \(ageAdjustedRawValue)")
+        } else {
+          ageAdjustedRawValue = rawData / 1000
+        }
+        
+        if let lastBGReading = BGReading.lastBGReading(managedObjectContext) {
+          if lastBGReading.calibration != nil {
+            if (lastBGReading.calibrationFlag?.boolValue == true && ((lastBGReading.timeStamp!.doubleValue + (60000 * 20)) > self.timeStamp!.doubleValue) && (lastBGReading.calibration!.timeStamp!.doubleValue + (60000 * 20) > self.timeStamp!.doubleValue)) {
+              var weightedAverageRawValue = weightedAverageRaw(lastBGReading.timeStamp!.doubleValue, timeB: self.timeStamp!.doubleValue, calibrationTime: lastBGReading.calibration!.timeStamp!.doubleValue, rawA: lastBGReading.ageAdjustedRawValue!.doubleValue, rawB: ageAdjustedRawValue!.doubleValue)
+              lastBGReading.calibration!.rawValueOverride(managedObjectContext, rawValue: weightedAverageRawValue)
+            }
+          }
+        }
+        //TODO: Support for Dexcom 505 calibration readings missing
+//        if(calibration.check_in) {
+//          double firstAdjSlope = calibration.first_slope + (calibration.first_decay * (Math.ceil(new Date().getTime() - calibration.timestamp)/(1000 * 60 * 10)));
+//          //                    double secondAdjSlope = calibration.first_slope + (calibration.first_decay * ((new Date().getTime() - calibration.timestamp)/(1000 * 60 * 10)));
+//          double calSlope = (calibration.first_scale / firstAdjSlope)*1000;
+//          double calIntercept = ((calibration.first_scale * calibration.first_intercept) / firstAdjSlope)*-1;
+//          //                    double calSlope = ((calibration.second_scale / secondAdjSlope) + (3 * calibration.first_scale / firstAdjSlope)) * 250;
+//          //                    double calIntercept = (((calibration.second_scale * calibration.second_intercept) / secondAdjSlope) + ((3 * calibration.first_scale * calibration.first_intercept) / firstAdjSlope)) / -4;
+//          
+//          bgReading.calculated_value = (((calSlope * bgReading.raw_data) + calIntercept) - 5);
+//        } else {
+//          bgReading.calculated_value = ((calibration.slope * bgReading.age_adjusted_raw_value) + calibration.intercept);
+//        }
+        calculatedValue = ((calibration!.slope!.doubleValue * ageAdjustedRawValue!.doubleValue) + calibration!.intercept!.doubleValue)
+        if (calculatedValue!.doubleValue <= 40) {
+          calculatedValue = 40
+        } else  {
+          if (calculatedValue!.doubleValue >= 400) {
+            calculatedValue = 400
+          }
+        }
+        logger.verbose("NEW VALUE CALCULATED AT: \(calculatedValue)")
+
+        DxtrModel.sharedInstance.saveContext()
+        performCalculations(managedObjectContext)
+
+        //TODO: Send notification we have a new BGReading
+
+      } else {
+        sensor = currentSensor
+        self.rawData = rawData / 1000
+        self.timeStamp = NSDate().getTime()
+        uuid = NSUUID().UUIDString
+        timeSinceSensorStarted = self.timeStamp!.doubleValue - currentSensor.sensorStarted!.doubleValue
+        synced = false
+        calibrationFlag = false
+        
+        //TODO: THIS IS A BIG SILLY IDEA, THIS WILL HAVE TO CHANGE ONCE WE GET SOME REAL DATA FROM THE START OF SENSOR LIFE
+        var adjustFor = (86400000 * 1.8) -  timeSinceSensorStarted!.doubleValue
+        if (adjustFor > 0) {
+          ageAdjustedRawValue = ((50 / 20) * (adjustFor / (86400000 * 1.8))) * (rawData / 1000)
+          logger.verbose("RAW VALUE ADJUSTMENT: FROM: \(rawData) TO: \(ageAdjustedRawValue)")
+        } else {
+          ageAdjustedRawValue = rawData / 1000
+        }
+
+        
+        performCalculations(managedObjectContext)
+        
+      }
+    }
     
+//          BgReading lastBgReading = BgReading.last();
+//          if (lastBgReading != null && lastBgReading.calibration != null) {
+//            if (lastBgReading.calibration_flag == true && ((lastBgReading.timestamp + (60000 * 20)) > bgReading.timestamp) && ((lastBgReading.calibration.timestamp + (60000 * 20)) > bgReading.timestamp)) {
+//              lastBgReading.calibration.rawValueOverride(BgReading.weightedAverageRaw(lastBgReading.timestamp, bgReading.timestamp, lastBgReading.calibration.timestamp, lastBgReading.age_adjusted_raw_value, bgReading.age_adjusted_raw_value), context);
+//            }
+//          }
+//          
+//          if(calibration.check_in) {
+//            double firstAdjSlope = calibration.first_slope + (calibration.first_decay * (Math.ceil(new Date().getTime() - calibration.timestamp)/(1000 * 60 * 10)));
+//            //                    double secondAdjSlope = calibration.first_slope + (calibration.first_decay * ((new Date().getTime() - calibration.timestamp)/(1000 * 60 * 10)));
+//            double calSlope = (calibration.first_scale / firstAdjSlope)*1000;
+//            double calIntercept = ((calibration.first_scale * calibration.first_intercept) / firstAdjSlope)*-1;
+//            //                    double calSlope = ((calibration.second_scale / secondAdjSlope) + (3 * calibration.first_scale / firstAdjSlope)) * 250;
+//            //                    double calIntercept = (((calibration.second_scale * calibration.second_intercept) / secondAdjSlope) + ((3 * calibration.first_scale * calibration.first_intercept) / firstAdjSlope)) / -4;
+//            
+//            bgReading.calculated_value = (((calSlope * bgReading.raw_data) + calIntercept) - 5);
+//          } else {
+//            bgReading.calculated_value = ((calibration.slope * bgReading.age_adjusted_raw_value) + calibration.intercept);
+//          }
+//          if (bgReading.calculated_value <= 40) {
+//            bgReading.calculated_value = 40;
+//          } else if (bgReading.calculated_value >= 400) {
+//            bgReading.calculated_value = 400;
+//          }
+//          Log.w(TAG, "NEW VALUE CALCULATED AT: " + bgReading.calculated_value);
+//          
+//          bgReading.save();
+//          bgReading.perform_calculations();
+//          Notifications.notificationSetter(context);
+//          BgSendQueue.addToQueue(bgReading, "create", context);
+//        }
+//      }
+//      Log.w("BG GSON: ",bgReading.toS());
+//      
+//      return bgReading;
+//    }
   }
 
 
   // Calculations !!!!
   //*******************
 
+  func weightedAverageRaw (timeA : Double,
+                           timeB : Double,
+                 calibrationTime : Double,
+                            rawA : Double,
+                            rawB : Double)
+  -> Double
+  {
+    var relativeSlope = (rawB -  rawA)/(timeB - timeA)
+    var relativeIntercept = rawA - (relativeSlope * timeA)
+    return ((relativeSlope * calibrationTime) + relativeIntercept)
+  }
+  
+//  public static double weightedAverageRaw(double timeA, double timeB, double calibrationTime, double rawA, double rawB) {
+//  double relativeSlope = (rawB -  rawA)/(timeB - timeA);
+//  double relativeIntercept = rawA - (relativeSlope * timeA);
+//  return ((relativeSlope * calibrationTime) + relativeIntercept);
+//  }
+
+  private func performCalculations(managedObjectContext: NSManagedObjectContext) {
+    findRawCurve(managedObjectContext)
+    findNewRawCurve(managedObjectContext)
+    findSlope(managedObjectContext)
+  }
+
+  func findSlope(managedObjectContext: NSManagedObjectContext) {
+    if let last2 = BGReading.lastBGReadings(managedObjectContext, numberOfBGReadings: 2) {
+      if (last2.count == 2) {
+        let secondLatest = last2[1]
+        var y1 = calculatedValue!.doubleValue
+        var x1 = timeStamp!.doubleValue
+        var y2 = secondLatest.calculatedValue!.doubleValue
+        var x2 = secondLatest.timeStamp!.doubleValue
+        if (y1 == y2) {
+          calculatedValueSlope = 0
+        } else {
+          calculatedValueSlope = (y2 - y1)/(x2 - x1);
+        }
+      } else {
+        calculatedValueSlope = 0
+      }
+    } else {
+      logger.error("NO BG? COULDNT FIND SLOPE!")
+    }
+  }
+  
   func findNewRawCurve(managedObjectContext: NSManagedObjectContext) {
     if let last3 = BGReading.lastBGReadings(managedObjectContext, numberOfBGReadings: 3) {
       if last3.count == 3 {

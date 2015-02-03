@@ -69,6 +69,14 @@ class Calibration: _Calibration {
   // Calculations !!!!
   //*******************
   
+  func rawValueOverride (managedObjectContext : NSManagedObjectContext, rawValue:Double) {
+    estimateRawAtTimeOfCalibration = rawValue
+    calculate_w_l_s(managedObjectContext)
+    DxtrModel.sharedInstance.saveContext()
+    // CalibrationSendQueue.addToQueue(this, context);
+  }
+
+  
   /**
   This just adjust the last 30 bg readings transition from one calibration point to the next
   
