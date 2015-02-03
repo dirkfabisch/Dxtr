@@ -22,7 +22,7 @@ class DxtrModel 	 {
   
   init() {
     // Watch Scanning
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("btScanning:"), name: BLEDiscoveryScanningNotification, object: nil)
+//    NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("btScanning:"), name: BLEDiscoveryScanningNotification, object: nil)
   }
   
   func saveContext () {
@@ -39,8 +39,8 @@ class DxtrModel 	 {
     }
   }
 
-  func btScanning(notification: NSNotification) {
-    
-  }
+//  func btScanning(notification: NSNotification) {
+//    
+//  }
   
 }
