@@ -20,6 +20,11 @@ class DxtrModel 	 {
   
   var managedObjectContext : NSManagedObjectContext?
   
+  init() {
+    // Watch Scanning
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("btScanning:"), name: BLEDiscoveryScanningNotification, object: nil)
+  }
+  
   func saveContext () {
     if let moc = self.managedObjectContext {
       var error: NSError? = nil
@@ -28,6 +33,8 @@ class DxtrModel 	 {
         // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
         NSLog("Unresolved error \(error), \(error!.userInfo)")
         abort()
+      } else {
+        logger.info("data saved !")
       }
     }
   }

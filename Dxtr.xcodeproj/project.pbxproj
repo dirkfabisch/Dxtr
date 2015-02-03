@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4319167B1A72E7F500FE123D /* TestRawData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4319167A1A72E7F500FE123D /* TestRawData.swift */; };
+		434534A71A751E70000D591E /* _BGReading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434534A11A751E70000D591E /* _BGReading.swift */; };
+		434534A81A751E70000D591E /* _Calibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434534A21A751E70000D591E /* _Calibration.swift */; };
+		434534A91A751E70000D591E /* _Sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434534A31A751E70000D591E /* _Sensor.swift */; };
+		434534AA1A751E70000D591E /* BGReading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434534A41A751E70000D591E /* BGReading.swift */; };
+		434534AB1A751E70000D591E /* Calibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434534A51A751E70000D591E /* Calibration.swift */; };
+		434534AC1A751E70000D591E /* Sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434534A61A751E70000D591E /* Sensor.swift */; };
 		435C921B1A6F9C9B00807847 /* _TransmitterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435C92191A6F9C9B00807847 /* _TransmitterData.swift */; };
 		435C921C1A6F9C9B00807847 /* TransmitterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435C921A1A6F9C9B00807847 /* TransmitterData.swift */; };
 		43BBDF9A1A642D850006B61F /* BTDiscovery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BBDF981A642D850006B61F /* BTDiscovery.swift */; };
@@ -23,6 +30,7 @@
 		43E5362D1A62CE480037EED0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43E5362C1A62CE480037EED0 /* Images.xcassets */; };
 		43E536301A62CE480037EED0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43E5362E1A62CE480037EED0 /* LaunchScreen.xib */; };
 		43E5363C1A62CE480037EED0 /* DxtrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E5363B1A62CE480037EED0 /* DxtrTests.swift */; };
+		B44A2CAB3799B1C9D5A72105 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE74BA18BFC6C534602170C6 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +93,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0AFAD76CD12C94905DFF9A02 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		4319167A1A72E7F500FE123D /* TestRawData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestRawData.swift; sourceTree = "<group>"; };
+		434534A11A751E70000D591E /* _BGReading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _BGReading.swift; sourceTree = "<group>"; };
+		434534A21A751E70000D591E /* _Calibration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Calibration.swift; sourceTree = "<group>"; };
+		434534A31A751E70000D591E /* _Sensor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Sensor.swift; sourceTree = "<group>"; };
+		434534A41A751E70000D591E /* BGReading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BGReading.swift; sourceTree = "<group>"; };
+		434534A51A751E70000D591E /* Calibration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calibration.swift; sourceTree = "<group>"; };
+		434534A61A751E70000D591E /* Sensor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sensor.swift; sourceTree = "<group>"; };
 		4358549C1A664FB400940764 /* XCGLogger.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = XCGLogger.xcodeproj; sourceTree = "<group>"; };
 		435C92191A6F9C9B00807847 /* _TransmitterData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _TransmitterData.swift; sourceTree = "<group>"; };
 		435C921A1A6F9C9B00807847 /* TransmitterData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransmitterData.swift; sourceTree = "<group>"; };
@@ -105,6 +121,8 @@
 		43E536351A62CE480037EED0 /* DxtrTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DxtrTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		43E5363A1A62CE480037EED0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43E5363B1A62CE480037EED0 /* DxtrTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DxtrTests.swift; sourceTree = "<group>"; };
+		57DC9078F7D8977543930054 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		EE74BA18BFC6C534602170C6 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +131,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				43CB86D41A6707E000CA6D84 /* XCGLogger.framework in Frameworks */,
+				B44A2CAB3799B1C9D5A72105 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,7 +176,13 @@
 		435C92181A6F9B1B00807847 /* ModelObjects */ = {
 			isa = PBXGroup;
 			children = (
+				434534A11A751E70000D591E /* _BGReading.swift */,
+				434534A21A751E70000D591E /* _Calibration.swift */,
+				434534A31A751E70000D591E /* _Sensor.swift */,
 				435C92191A6F9C9B00807847 /* _TransmitterData.swift */,
+				434534A41A751E70000D591E /* BGReading.swift */,
+				434534A51A751E70000D591E /* Calibration.swift */,
+				434534A61A751E70000D591E /* Sensor.swift */,
 				435C921A1A6F9C9B00807847 /* TransmitterData.swift */,
 			);
 			path = ModelObjects;
@@ -184,10 +209,11 @@
 		43E536171A62CE480037EED0 = {
 			isa = PBXGroup;
 			children = (
-				43DF0D0B1A6EB09D00686779 /* CoreData.framework */,
 				43E536221A62CE480037EED0 /* Dxtr */,
 				43E536381A62CE480037EED0 /* DxtrTests */,
 				43E536211A62CE480037EED0 /* Products */,
+				7167F3BB18FEA2B8DAD9270D /* Pods */,
+				9C7D713F43BA3CB094568147 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -243,6 +269,24 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		7167F3BB18FEA2B8DAD9270D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				57DC9078F7D8977543930054 /* Pods.debug.xcconfig */,
+				0AFAD76CD12C94905DFF9A02 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		9C7D713F43BA3CB094568147 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				43DF0D0B1A6EB09D00686779 /* CoreData.framework */,
+				EE74BA18BFC6C534602170C6 /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -250,6 +294,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 43E5363F1A62CE480037EED0 /* Build configuration list for PBXNativeTarget "Dxtr" */;
 			buildPhases = (
+				2F57E84C083ED5172E7329EF /* Check Pods Manifest.lock */,
 				435C92151A6F9A0400807847 /* Object Model Generator */,
 				435854B11A6687AB00940764 /* Increase Build Number */,
 				43CB86CA1A66D19200CA6D84 /* Insert Sketch Ressources */,
@@ -257,6 +302,8 @@
 				43E5361D1A62CE480037EED0 /* Frameworks */,
 				43E5361E1A62CE480037EED0 /* Resources */,
 				43CB86D81A6707E000CA6D84 /* Embed Frameworks */,
+				6AC7309B179A3963E7ABBDB6 /* Embed Pods Frameworks */,
+				007C32A469EF957452E5B03E /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -377,6 +424,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		007C32A469EF957452E5B03E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2F57E84C083ED5172E7329EF /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		435854B11A6687AB00940764 /* Increase Build Number */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -403,6 +480,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
+			shellScript = "cd \"$PROJECT_DIR/Dxtr\" && /usr/local/bin/mogenerator --swift -m dxtrDBModel.xcdatamodeld/dxtrDBModel.xcdatamodel  --output-dir ./ModelObjects --template-path ~/.querykit-mogenerator-template";
 			shellScript = "cd \"$PROJECT_DIR/Dxtr\" && mogenerator --swift -m dxtrDBModel.xcdatamodeld/dxtrDBModel.xcdatamodel  --output-dir ./ModelObjects";
 		};
 		43CB86CA1A66D19200CA6D84 /* Insert Sketch Ressources */ = {
@@ -419,6 +497,21 @@
 			shellPath = /bin/sh;
 			shellScript = "# AppIcon\n#/usr/local/bin/sketchtool export artboards \"$PROJECT_DIR\"/\"Graphics Resources/AppIcon.sketch\" --output=\"$PROJECT_DIR\"/\"$PROJECT_NAME\"/Images.xcassets/AppIcon.appiconset --formats=\"png\"";
 		};
+		6AC7309B179A3963E7ABBDB6 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -427,15 +520,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				43CB86CC1A66D9BE00CA6D84 /* SwiftOverlays.swift in Sources */,
+				434534AC1A751E70000D591E /* Sensor.swift in Sources */,
 				43BBDF9E1A642DC50006B61F /* Constants.swift in Sources */,
 				43E536281A62CE480037EED0 /* ViewController.swift in Sources */,
+				434534AB1A751E70000D591E /* Calibration.swift in Sources */,
 				435C921B1A6F9C9B00807847 /* _TransmitterData.swift in Sources */,
 				43BBDF9B1A642D850006B61F /* BTService.swift in Sources */,
 				43DF0D061A6D96B700686779 /* dxtrDBModel.xcdatamodeld in Sources */,
+				434534A91A751E70000D591E /* _Sensor.swift in Sources */,
+				434534A81A751E70000D591E /* _Calibration.swift in Sources */,
 				43DF0D081A6D9ADD00686779 /* DxtrModel.swift in Sources */,
 				43BBDF9A1A642D850006B61F /* BTDiscovery.swift in Sources */,
+				434534A71A751E70000D591E /* _BGReading.swift in Sources */,
 				43E536261A62CE480037EED0 /* AppDelegate.swift in Sources */,
 				435C921C1A6F9C9B00807847 /* TransmitterData.swift in Sources */,
+				434534AA1A751E70000D591E /* BGReading.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -568,6 +667,7 @@
 		};
 		43E536401A62CE480037EED0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 57DC9078F7D8977543930054 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -583,6 +683,7 @@
 		};
 		43E536411A62CE480037EED0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0AFAD76CD12C94905DFF9A02 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";

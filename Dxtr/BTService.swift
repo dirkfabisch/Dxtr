@@ -96,6 +96,11 @@ class BTService: NSObject, CBPeripheralDelegate {
   }
   
   func peripheral(peripheral: CBPeripheral!, didUpdateValueForCharacteristic characteristic: CBCharacteristic!, error: NSError!) {
+  
+    if (!Sensor.isSensorActive(DxtrModel.sharedInstance.managedObjectContext!)) {
+      // we have no active sensor -> do nothing
+      return
+    }
     
     if (characteristic != recieverCharacteristic) {
       logger.error("Wrong Characteristcs")
@@ -129,23 +134,24 @@ class BTService: NSObject, CBPeripheralDelegate {
       data_components = data_components.filter { countElements($0) > 0 }
       
       fileLog.debug("\(data_components)")
-      logger.verbose("\(data_components)")
 
       // check if we have a reading with battery reading
       // their are 3 elements in the data array
       if data_components.count > 2 {
         // Create the database object
         var transmitterData = TransmitterData(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!)
-        transmitterData.rawData = (data_components[0] as NSString).doubleValue
-        transmitterData.sensorBatteryLevel = (data_components[1] as NSString).integerValue
+        transmitterData.rawData = NSNumber(double: (data_components[0] as NSString).doubleValue)
+        transmitterData.sensorBatteryLevel = NSNumber(int:(data_components[1] as NSString).intValue)
+        transmitterData.sendTDNewValueNotificcation()
       } else {
-        if ((data_components[0] as NSString).doubleValue < 1000) {
+        if ((data_components[0] as NSString).intValue < 1000) {
           logger.warning("we recieved only a batterie reading")
           return
         } else {
           // Create the database object
           var transmitterData = TransmitterData(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!)
-          transmitterData.rawData = (data_components[0] as NSString).doubleValue
+          transmitterData.rawData = NSNumber(double:(data_components[0] as NSString).doubleValue)
+          transmitterData.sendTDNewValueNotificcation()
         }
       }
       
