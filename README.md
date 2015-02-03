@@ -13,13 +13,17 @@ The iOS app will connect tor the HW via Bluetooth and read the sensor data via w
 * Connect to DexDrip and read raw data
 * Create database stub
 * Store data in DB
+* Adding [QueryKit](http://querykit.org/) for easier CoreData access
+* manage sensor (add)
+* add calibration data
 
 ## Working on
 * enable dummy data when running in simulator for faste development (dont want to wait always for 5 minutes for a new reading)
-* Adding [QueryKit](http://querykit.org/) for easier CoreData access 
+* adding BG values to DB
+* calculate BG value from raw data
 
 ## Backlog
-* manage sensor (add, start, stop)
+* manage sensor (start, stop)
 * Get calibration data
 * calculate BG value from raw data
 * display BG value as graph
