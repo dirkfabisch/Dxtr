@@ -39,5 +39,8 @@ class DxtrModel 	 {
     }
   }
 
+  func btScanning(notification: NSNotification) {
+    
+  }
   
 }
