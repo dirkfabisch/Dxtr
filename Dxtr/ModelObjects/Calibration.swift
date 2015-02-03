@@ -13,7 +13,7 @@ class Calibration: _Calibration {
   
   
   convenience init (managedObjectContext: NSManagedObjectContext, newBG :Double) {
-    let entity = _Sensor.entity(managedObjectContext)
+    let entity = _Calibration.entity(managedObjectContext)
     self.init(entity: entity, insertIntoManagedObjectContext: managedObjectContext)
     
     // store all bg in mgdl 

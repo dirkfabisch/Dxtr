@@ -10,12 +10,12 @@ class BGReading: _BGReading {
   }
   
   convenience init (managedObjectContext: NSManagedObjectContext, timeStamp : Double, rawData :Double) {
-    let entity = _Sensor.entity(managedObjectContext)
+    let entity = _BGReading.entity(managedObjectContext)
     self.init(entity: entity, insertIntoManagedObjectContext: managedObjectContext)
 
     if let currentSensor = Sensor.currentSensor(managedObjectContext) {
       if let lastCalibration = Calibration.lastCalibration(managedObjectContext) {
-        sensor = currentSensor
+        self.sensor = currentSensor
         calibration = lastCalibration
         self.rawData = rawData / 1000
         self.timeStamp = NSDate().getTime()
@@ -69,7 +69,10 @@ class BGReading: _BGReading {
         //TODO: Send notification we have a new BGReading
 
       } else {
-        sensor = currentSensor
+        
+        logger.verbose("current Sensor\(currentSensor.description)")
+
+        self.sensor = currentSensor
         self.rawData = rawData / 1000
         self.timeStamp = NSDate().getTime()
         uuid = NSUUID().UUIDString
