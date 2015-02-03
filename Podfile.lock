@@ -15,7 +15,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   QueryKit:
-    :commit: 78f6769114ec2af33d288e0d4166714d9eef44e1
+    :commit: 7efaf130a971b6e23cd6eb8047d1a8c976825a8e
     :git: https://github.com/QueryKit/QueryKit
 
 SPEC CHECKSUMS:

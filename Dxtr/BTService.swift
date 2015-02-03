@@ -97,10 +97,10 @@ class BTService: NSObject, CBPeripheralDelegate {
   
   func peripheral(peripheral: CBPeripheral!, didUpdateValueForCharacteristic characteristic: CBCharacteristic!, error: NSError!) {
   
-    if (!Sensor.isSensorActive(DxtrModel.sharedInstance.managedObjectContext!)) {
-      // we have no active sensor -> do nothing
-      return
-    }
+//    if (!Sensor.isSensorActive(DxtrModel.sharedInstance.managedObjectContext!)) {
+//      // we have no active sensor -> do nothing
+//      return
+//    }
     
     if (characteristic != recieverCharacteristic) {
       logger.error("Wrong Characteristcs")

@@ -19,12 +19,7 @@ class DxtrModel 	 {
   }
   
   var managedObjectContext : NSManagedObjectContext?
-  
-  init() {
-    // Watch Scanning
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("btScanning:"), name: BLEDiscoveryScanningNotification, object: nil)
-  }
-  
+   
   func saveContext () {
     if let moc = self.managedObjectContext {
       var error: NSError? = nil

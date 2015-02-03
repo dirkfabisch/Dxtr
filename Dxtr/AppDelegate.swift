@@ -44,14 +44,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       var ss = Sensor(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!, timeStamp: START_TIME_OF_SENSOR)
       DxtrModel.sharedInstance.saveContext()
       
-      if let cs = Sensor.currentSensor(managedObjectContext!) {
-        logger.verbose(cs.description)
-        logger.verbose("current sensor")
-      }
-      
-      if Sensor.isSensorActive(managedObjectContext!) {
-        logger.verbose("active Sensor")
-      }
       // create 1st reading
       	
       // create 2nd reading
