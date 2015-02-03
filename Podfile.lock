@@ -15,10 +15,10 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   QueryKit:
-    :commit: 78f6769114ec2af33d288e0d4166714d9eef44e1
+    :commit: 7efaf130a971b6e23cd6eb8047d1a8c976825a8e
     :git: https://github.com/QueryKit/QueryKit
 
 SPEC CHECKSUMS:
-  QueryKit: 7e11bce924368eb670e4079f49ca062b0938eb6b
+  QueryKit: d978c6c9351506769f7b6f7138773dd6cc4a394b
 
 COCOAPODS: 0.36.0.beta.2

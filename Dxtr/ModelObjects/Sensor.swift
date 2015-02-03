@@ -35,12 +35,7 @@ class Sensor: _Sensor {
   }
   
   class func isSensorActive(managedObjectContext: NSManagedObjectContext) -> Bool {
-    
-    var qs = Sensor.queryset(managedObjectContext).filter(
-        Sensor.attributes.sensorStarted != 0 &&
-        Sensor.attributes.sensorStopped == 0)
-
-    if (qs.count() != nil) {
+    if let currentSensor = Sensor.currentSensor(managedObjectContext) {
       return true
     }
     return false

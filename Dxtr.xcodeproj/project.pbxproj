@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4319167B1A72E7F500FE123D /* TestRawData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4319167A1A72E7F500FE123D /* TestRawData.swift */; };
 		434534A71A751E70000D591E /* _BGReading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434534A11A751E70000D591E /* _BGReading.swift */; };
 		434534A81A751E70000D591E /* _Calibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434534A21A751E70000D591E /* _Calibration.swift */; };
 		434534A91A751E70000D591E /* _Sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434534A31A751E70000D591E /* _Sensor.swift */; };
@@ -94,7 +93,6 @@
 
 /* Begin PBXFileReference section */
 		0AFAD76CD12C94905DFF9A02 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		4319167A1A72E7F500FE123D /* TestRawData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestRawData.swift; sourceTree = "<group>"; };
 		434534A11A751E70000D591E /* _BGReading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _BGReading.swift; sourceTree = "<group>"; };
 		434534A21A751E70000D591E /* _Calibration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Calibration.swift; sourceTree = "<group>"; };
 		434534A31A751E70000D591E /* _Sensor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Sensor.swift; sourceTree = "<group>"; };
@@ -480,8 +478,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd \"$PROJECT_DIR/Dxtr\" && /usr/local/bin/mogenerator --swift -m dxtrDBModel.xcdatamodeld/dxtrDBModel.xcdatamodel  --output-dir ./ModelObjects --template-path ~/.querykit-mogenerator-template";
-			shellScript = "cd \"$PROJECT_DIR/Dxtr\" && mogenerator --swift -m dxtrDBModel.xcdatamodeld/dxtrDBModel.xcdatamodel  --output-dir ./ModelObjects";
+			shellScript = "cd \"$PROJECT_DIR/Dxtr\" && mogenerator --swift -m dxtrDBModel.xcdatamodeld/dxtrDBModel.xcdatamodel  --output-dir ./ModelObjects --template-path ~/.querykit-mogenerator-template";
 		};
 		43CB86CA1A66D19200CA6D84 /* Insert Sketch Ressources */ = {
 			isa = PBXShellScriptBuildPhase;
