@@ -125,7 +125,8 @@ class BTService: NSObject, CBPeripheralDelegate {
       // [1] battery level of the wixel HW
       
       // split the datastring
-      var data_components = datastring.componentsSeparatedByString(" ")
+      var data_components = datastring.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceCharacterSet()) as [String]
+      data_components = data_components.filter { countElements($0) > 0 }
       
       fileLog.debug("\(data_components)")
       logger.verbose("\(data_components)")
@@ -138,7 +139,7 @@ class BTService: NSObject, CBPeripheralDelegate {
         transmitterData.rawData = (data_components[0] as NSString).doubleValue
         transmitterData.sensorBatteryLevel = (data_components[1] as NSString).integerValue
       } else {
-        if ((data_components[0] as Double) < 1000) {
+        if ((data_components[0] as NSString).doubleValue < 1000) {
           logger.warning("we recieved only a batterie reading")
           return
         } else {
