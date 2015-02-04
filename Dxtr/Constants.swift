@@ -41,6 +41,8 @@ let MGDL_TO_MMOLL = 1 / MMOLL_TO_MGDL
 
 let READINGS_BESTOFFSET = Double(60000 * 0) // Assume readings are about x minutes off from actual!
 
+let NIGHTSCOUT_BASE_URI = "https://cgm-test.azurewebsites.net/api/v1"
+let NIGHTSCOUT_API_SECRET = "thismustbe12characters"
 
 // extension  for handling time in the same way than android 
 // avoids confusion in calculation with time and values

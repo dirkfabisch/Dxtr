@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (1.1.4)
   - QueryKit/Attribute/Swift (0.9.1):
     - QueryKit/QuerySet/Swift
   - QueryKit/QuerySet/Swift (0.9.1)
@@ -7,6 +8,7 @@ PODS:
     - QueryKit/QuerySet/Swift
 
 DEPENDENCIES:
+  - Alamofire (~> 1.1)
   - QueryKit/Swift (from `https://github.com/QueryKit/QueryKit`)
 
 EXTERNAL SOURCES:
@@ -19,6 +21,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/QueryKit/QueryKit
 
 SPEC CHECKSUMS:
+  Alamofire: 524225da382071ee3e6d0badd0ee4b4dc36740de
   QueryKit: 7e11bce924368eb670e4079f49ca062b0938eb6b
 
 COCOAPODS: 0.36.0.beta.2
