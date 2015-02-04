@@ -14,7 +14,7 @@ import XCGLogger
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
   
-  var window: UIWindow?
+  var window: UIWindow!
   lazy var dxtrModel = DxtrModel.sharedInstance
   
   
@@ -32,8 +32,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     fileLog.setup(logLevel: .Debug, showLogLevel: false, showFileNames: false, showLineNumbers: false, writeToFile: logPath.URLByAppendingPathComponent("raw_data.log"))
     
     fileLog.info("File log of all raw data")
+
+    let nav = window.rootViewController as UINavigationController
+    let vc = nav.viewControllers[0] as MasterViewController
     
-    let vc = window?.rootViewController as ViewController
     vc.managedObjectContext = managedObjectContext!
     DxtrModel.sharedInstance.managedObjectContext = managedObjectContext
     #if SIMULATOR
