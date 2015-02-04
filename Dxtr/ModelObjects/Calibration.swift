@@ -15,7 +15,7 @@ class Calibration: _Calibration {
     self.init(managedObjectContext: managedObjectContext, newBG :newBG, timeStamp : NSDate().getTime())
   }
   
-  convenience init (managedObjectContext: NSManagedObjectContext, newBG :Double, timeStamp : Double ) {
+  convenience init (managedObjectContext: NSManagedObjectContext, newBG :Double, timeStamp newTimeStamp: Double ) {
     let entity = _Calibration.entity(managedObjectContext)
     self.init(entity: entity, insertIntoManagedObjectContext: managedObjectContext)
     
@@ -30,8 +30,9 @@ class Calibration: _Calibration {
       if let lastBGReading = BGReading.lastBGReading(managedObjectContext) {
         sensor = Sensor.currentSensor(managedObjectContext)!
         bg = newBG
-        self.timeStamp = timeStamp
+        timeStamp = newTimeStamp
         rawValue = lastBGReading.rawData
+        adjustedRawValue = lastBGReading.ageAdjustedRawValue
         slopeConfidence = min(max(((4 - abs((lastBGReading.calculatedValueSlope)!.doubleValue * 60000))/4), 0), 1)
         
         let estimated_raw_bg = BGReading.estimatedRawBG(managedObjectContext, timeStamp: NSDate().getTime())
@@ -45,7 +46,7 @@ class Calibration: _Calibration {
 
         // approximate parabolic curve of the sensor confidence intervals from dexcom
         sensorConfidence = max(((-0.0018 * bg!.doubleValue * bg!.doubleValue) + (0.6657 * bg!.doubleValue) + 36.7505) / 100, 0)
-        sensorAgeAtTimeOfEstimation = self.timeStamp!.doubleValue - sensor!.sensorStarted!.doubleValue
+        sensorAgeAtTimeOfEstimation = timeStamp!.doubleValue - sensor!.sensorStarted!.doubleValue
         uuid = NSUUID().UUIDString
         lastBGReading.calibration = self
         lastBGReading.calibrationFlag = true
