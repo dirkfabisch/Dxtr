@@ -18,8 +18,10 @@ class BGReading: _BGReading {
         self.sensor = currentSensor
         calibration = lastCalibration
         self.rawData = rawData / 1000
-        self.timeStamp = NSDate().getTime()
+        self.timeStamp = timeStamp
         uuid = NSUUID().UUIDString
+        
+        
         timeSinceSensorStarted = self.timeStamp!.doubleValue - currentSensor.sensorStarted!.doubleValue
         synced = false
 
@@ -70,11 +72,9 @@ class BGReading: _BGReading {
 
       } else {
         
-        logger.verbose("current Sensor\(currentSensor.description)")
-
         self.sensor = currentSensor
         self.rawData = rawData / 1000
-        self.timeStamp = NSDate().getTime()
+        self.timeStamp = timeStamp
         uuid = NSUUID().UUIDString
         timeSinceSensorStarted = self.timeStamp!.doubleValue - currentSensor.sensorStarted!.doubleValue
         synced = false
@@ -84,7 +84,7 @@ class BGReading: _BGReading {
         var adjustFor = (86400000 * 1.8) -  timeSinceSensorStarted!.doubleValue
         if (adjustFor > 0) {
           ageAdjustedRawValue = ((50 / 20) * (adjustFor / (86400000 * 1.8))) * (rawData / 1000)
-          logger.verbose("RAW VALUE ADJUSTMENT: FROM: \(rawData) TO: \(ageAdjustedRawValue)")
+          logger.verbose("RAW VALUE ADJUSTMENT: FROM: \(self.rawData) TO: \(ageAdjustedRawValue)")
         } else {
           ageAdjustedRawValue = rawData / 1000
         }
