@@ -20,56 +20,90 @@ class NightscoutUploader: NSObject {
   }
   
   func uploadReading(reading: BGReading) {
-    Alamofire.request(Router.Readings(readingAsDictionary(reading)))
-      .responseJSON { (request, response, JSON, error) in
-        if error == nil {
-          println(response)
-          println(JSON)
-          reading.synced = NSNumber(bool: true)
-          DxtrModel.sharedInstance.saveContext()
-        } else {
-          logger.error("Error uploading reading: \(error)")
-        }
-      }
-  }
-  
-  func uploadCalibrationRecord(calibrationRecord: Calibration) {
-    Alamofire.request(Router.CalibrationRecords(calibrationRecordAsDictionary(calibrationRecord)))
-      .responseJSON { (request, response, JSON, error) in
-        if error == nil {
-          println(response)
-          println(JSON)
-        } else {
-          logger.error("Error uploading calibration record: \(error)")
-        }
-      }
-  }
-  
-  func uploadMeterRecord(meterRecord: Calibration) {
-    Alamofire.request(Router.MeterRecords(meterRecordAsDictionary(meterRecord)))
-      .responseJSON { (request, response, JSON, error) in
-        if error == nil {
-          println(response)
-          println(JSON)
-        } else {
-          logger.error("Error uploading meter record: \(error)")
-        }
-      }
-  }
-  
-  // TODO: Pass device status
-  func uploadDeviceStatus() {
-    Alamofire.request(Router.DeviceStatus(deviceStatusAsDictionary()))
-      .responseJSON { (request, response, JSON, error) in
-        if error == nil {
-          
-        } else {
-          logger.error("Error uploading device status: \(error)")
+    if NightscoutUploader.canUpload() {
+      Alamofire.request(Router.Readings(readingAsDictionary(reading)))
+        .responseJSON { (request, response, JSON, error) in
+          if error == nil {
+            println(response)
+            println(JSON)
+            reading.synced = NSNumber(bool: true)
+            DxtrModel.sharedInstance.saveContext()
+          } else {
+            logger.error("Error uploading reading: \(error)")
+          }
         }
     }
   }
   
+  func uploadCalibrationRecord(calibrationRecord: Calibration) {
+    if NightscoutUploader.canUpload() {
+      Alamofire.request(Router.CalibrationRecords(calibrationRecordAsDictionary(calibrationRecord)))
+        .responseJSON { (request, response, JSON, error) in
+          if error == nil {
+            println(response)
+            println(JSON)
+          } else {
+            logger.error("Error uploading calibration record: \(error)")
+          }
+        }
+    }
+  }
+  
+  func uploadMeterRecord(meterRecord: Calibration) {
+    if NightscoutUploader.canUpload() {
+      Alamofire.request(Router.MeterRecords(meterRecordAsDictionary(meterRecord)))
+        .responseJSON { (request, response, JSON, error) in
+          if error == nil {
+            println(response)
+            println(JSON)
+          } else {
+            logger.error("Error uploading meter record: \(error)")
+          }
+        }
+    }
+  }
+  
+  // TODO: Pass device status
+  func uploadDeviceStatus() {
+    if NightscoutUploader.canUpload() {
+      Alamofire.request(Router.DeviceStatus(deviceStatusAsDictionary()))
+        .responseJSON { (request, response, JSON, error) in
+          if error == nil {
+            
+          } else {
+            logger.error("Error uploading device status: \(error)")
+          }
+      }
+    }
+  }
+  
+  class func canUpload() -> Bool {
+    return NightscoutUploader.isUploadEnabled() &&
+      NightscoutUploader.isNightscoutURLValid() &&
+      NightscoutUploader.isNightscoutAPISecretValid()
+  }
+  
   // MARK: Private
+  
+  class func isUploadEnabled() -> Bool {
+    return SettingsManager.sharedInstance.isNightscoutUploadEnabled()
+  }
+  
+  class func isNightscoutURLValid() -> Bool {
+    if let urlString = SettingsManager.sharedInstance.getNightscoutURL() {
+      if let url = NSURL(string: urlString) {
+        return true
+      }
+    }
+    return false
+  }
+  
+  class func isNightscoutAPISecretValid() -> Bool {
+    if let apiSecret = SettingsManager.sharedInstance.getNightscoutAPISecret() {
+      return countElements(apiSecret) >= NIGHTSCOUT_API_SECRET_MIN_LENGTH
+    }
+    return false
+  }
   
   func readingAsDictionary(reading: BGReading) -> [String: AnyObject] {
     var dictionary = [String: AnyObject]()
@@ -140,9 +174,6 @@ class NightscoutUploader: NSObject {
   
   enum Router: URLRequestConvertible {
     
-    static let baseURL = NIGHTSCOUT_BASE_URI
-    static var apiSecret: String?
-    
     case Readings([String: AnyObject])
     case CalibrationRecords([String: AnyObject])
     case MeterRecords([String: AnyObject])
@@ -158,20 +189,20 @@ class NightscoutUploader: NSObject {
     var path: String {
       switch self {
       case .Readings, .CalibrationRecords, .MeterRecords:
-        return "/entries"
+        return "entries"
       case .DeviceStatus:
-        return "/devicestatus"
+        return "devicestatus"
       }
     }
     
     // MARK: URLRequestConvertible
     
     var URLRequest: NSURLRequest {
-      let URL = NSURL(string: Router.baseURL)!
+      let URL = NSURL(string: SettingsManager.sharedInstance.getNightscoutURL()!)!
       let mutableURLRequest = NSMutableURLRequest(URL: URL.URLByAppendingPathComponent(path))
       mutableURLRequest.HTTPMethod = method.rawValue
-      
-      if let secret = Router.apiSecret?.sha1() {
+
+      if let secret = SettingsManager.sharedInstance.getNightscoutAPISecret()?.sha1()?.lowercaseString {
         Alamofire.Manager.sharedInstance.session.configuration.HTTPAdditionalHeaders = ["api-secret": secret]
       } else {
         logger.error("Expected API secret")

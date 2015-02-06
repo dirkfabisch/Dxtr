@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D4531201A84682C00BDFE7F /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1D45311F1A84682C00BDFE7F /* Settings.bundle */; };
+		1D4531271A8473FB00BDFE7F /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4531261A8473FB00BDFE7F /* SettingsManager.swift */; };
 		1DD153611A8193CA003E7CFD /* NightscoutUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD153601A8193CA003E7CFD /* NightscoutUploader.swift */; };
 		1DD1536B1A81A3CD003E7CFD /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DD153681A81A38B003E7CFD /* CryptoSwift.framework */; };
 		43027B171A7FBD1C00DE47F8 /* TestRawData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43027B161A7FBD1C00DE47F8 /* TestRawData.swift */; };
@@ -93,6 +95,8 @@
 
 /* Begin PBXFileReference section */
 		0AFAD76CD12C94905DFF9A02 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		1D45311F1A84682C00BDFE7F /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		1D4531261A8473FB00BDFE7F /* SettingsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 		1DD153601A8193CA003E7CFD /* NightscoutUploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NightscoutUploader.swift; sourceTree = "<group>"; };
 		1DD153621A81A38B003E7CFD /* CryptoSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CryptoSwift.xcodeproj; path = CryptoSwift/CryptoSwift.xcodeproj; sourceTree = "<group>"; };
 		43027B161A7FBD1C00DE47F8 /* TestRawData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestRawData.swift; sourceTree = "<group>"; };
@@ -237,6 +241,8 @@
 				43E536251A62CE480037EED0 /* AppDelegate.swift */,
 				43E536271A62CE480037EED0 /* ViewController.swift */,
 				1DD153601A8193CA003E7CFD /* NightscoutUploader.swift */,
+				1D4531261A8473FB00BDFE7F /* SettingsManager.swift */,
+				1D45311F1A84682C00BDFE7F /* Settings.bundle */,
 				43E536291A62CE480037EED0 /* Main.storyboard */,
 				435C92181A6F9B1B00807847 /* ModelObjects */,
 				43DF0D011A6D969600686779 /* Model */,
@@ -428,6 +434,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D4531201A84682C00BDFE7F /* Settings.bundle in Resources */,
 				43E5362B1A62CE480037EED0 /* Main.storyboard in Resources */,
 				43E536301A62CE480037EED0 /* LaunchScreen.xib in Resources */,
 				43E5362D1A62CE480037EED0 /* Images.xcassets in Resources */,
@@ -546,6 +553,7 @@
 				43BBDF9E1A642DC50006B61F /* Constants.swift in Sources */,
 				43E536281A62CE480037EED0 /* ViewController.swift in Sources */,
 				4324ED8D1A812DDA0002BEE6 /* _TransmitterData.swift in Sources */,
+				1D4531271A8473FB00BDFE7F /* SettingsManager.swift in Sources */,
 				434534AB1A751E70000D591E /* Calibration.swift in Sources */,
 				43BBDF9B1A642D850006B61F /* BTService.swift in Sources */,
 				4324ED8A1A812DDA0002BEE6 /* _BGReading.swift in Sources */,

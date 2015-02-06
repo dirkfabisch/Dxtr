@@ -45,10 +45,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       DxtrModel.sharedInstance.saveContext()
       
       // create 1st reading
-      BGReading(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!, timeStamp: START_TIME_OF_SENSOR + 300 * 1000 , rawData: 156416)
+      let bg1 = BGReading(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!, timeStamp: START_TIME_OF_SENSOR + 300 * 1000 , rawData: 156416)
       	
       // create 2nd reading
-      BGReading(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!, timeStamp: START_TIME_OF_SENSOR + 600 * 1000 , rawData: 156160)
+      let bg2 = BGReading(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!, timeStamp: START_TIME_OF_SENSOR + 600 * 1000 , rawData: 156160)
       
       // add calibration - 1
       Calibration(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!, newBG: 162, timeStamp: START_TIME_OF_SENSOR + 630 * 1000)
@@ -59,8 +59,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       // Generate transmitter data
       //      var testData = TestRawData()
       //  testData.createTestRawData(managedObjectContext!)
-
       
+      NightscoutUploader.sharedInstance.uploadReading(bg1)
+      NightscoutUploader.sharedInstance.uploadReading(bg2)
+
       #else
       logger.verbose("Running on Device")
     #endif
