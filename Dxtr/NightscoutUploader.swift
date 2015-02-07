@@ -85,11 +85,11 @@ class NightscoutUploader: NSObject {
   
   // MARK: Private
   
-  class func isUploadEnabled() -> Bool {
+  private class func isUploadEnabled() -> Bool {
     return SettingsManager.sharedInstance.isNightscoutUploadEnabled()
   }
   
-  class func isNightscoutURLValid() -> Bool {
+  private class func isNightscoutURLValid() -> Bool {
     if let urlString = SettingsManager.sharedInstance.getNightscoutURL() {
       if let url = NSURL(string: urlString) {
         return true
@@ -98,14 +98,14 @@ class NightscoutUploader: NSObject {
     return false
   }
   
-  class func isNightscoutAPISecretValid() -> Bool {
+  private class func isNightscoutAPISecretValid() -> Bool {
     if let apiSecret = SettingsManager.sharedInstance.getNightscoutAPISecret() {
       return countElements(apiSecret) >= NIGHTSCOUT_API_SECRET_MIN_LENGTH
     }
     return false
   }
   
-  func readingAsDictionary(reading: BGReading) -> [String: AnyObject] {
+  private func readingAsDictionary(reading: BGReading) -> [String: AnyObject] {
     var dictionary = [String: AnyObject]()
     dictionary["device"] = "dexcom"
     if let timeStamp = reading.timeStamp {
@@ -126,7 +126,7 @@ class NightscoutUploader: NSObject {
     return dictionary
   }
   
-  func calibrationRecordAsDictionary(calibrationRecord: Calibration) -> [String: AnyObject] {
+  private func calibrationRecordAsDictionary(calibrationRecord: Calibration) -> [String: AnyObject] {
     var dictionary = [String: AnyObject]()
     dictionary["device"] = "dexcom"
     dictionary["type"] = "cal"
@@ -145,7 +145,7 @@ class NightscoutUploader: NSObject {
     return dictionary
   }
   
-  func meterRecordAsDictionary(meterRecord: Calibration) -> [String: AnyObject] {
+  private func meterRecordAsDictionary(meterRecord: Calibration) -> [String: AnyObject] {
     var dictionary = [String: AnyObject]()
     dictionary["device"] = "dexcom"
     dictionary["type"] = "mbg"
@@ -160,13 +160,13 @@ class NightscoutUploader: NSObject {
     return dictionary
   }
   
-  func deviceStatusAsDictionary() -> [String: AnyObject] {
+  private func deviceStatusAsDictionary() -> [String: AnyObject] {
     var dictionary = [String: AnyObject]()
     dictionary["uploaderBattery"] = 100
     return dictionary
   }
   
-  func dateFormatter() -> NSDateFormatter {
+  private func dateFormatter() -> NSDateFormatter {
     let formatter = NSDateFormatter()
     formatter.dateFormat = "MM/dd/yyyy HH:mm:ss a"
     return formatter
