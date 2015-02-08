@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 import CryptoSwift
+import QueryKit
 
 class NightscoutUploader: NSObject {
     
@@ -19,9 +20,58 @@ class NightscoutUploader: NSObject {
       return Singleton.instance
   }
   
+  func processFailedUpload(failedUpload: FailedUpload) {
+    if NightscoutUploader.canUpload() {
+      if let managedObjectID = DxtrModel.sharedInstance.managedObjectContext!.persistentStoreCoordinator?.managedObjectIDForURIRepresentation(failedUpload.managedObjectID as NSURL) {
+        var error: NSError?
+        var managedObject = DxtrModel.sharedInstance.managedObjectContext!.existingObjectWithID(managedObjectID, error: &error)
+        if error != nil {
+          if let actualManagedObject = managedObject {
+            var router: Router?
+            if let uploadType = UploadType(rawValue: failedUpload.type) {
+              switch uploadType {
+              case .Reading:
+                router = Router.Readings(readingAsDictionary(actualManagedObject as BGReading))
+              case .CalibrationRecord:
+                router = Router.CalibrationRecords(calibrationRecordAsDictionary(actualManagedObject as Calibration))
+              case .MeterRecord:
+                router = Router.MeterRecords(meterRecordAsDictionary(actualManagedObject as Calibration))
+              }
+            }
+            if let actualRouter = router {
+              Alamofire.request(actualRouter)
+                .responseJSON { (request, response, JSON, error) in
+                  if error == nil {
+                    logger.debug("Uploaded failed upload")
+                    // TODO: Do we need to set 'synced' property of 'actualManagedObject'?
+                    DxtrModel.sharedInstance.managedObjectContext!.deleteObject(failedUpload)
+                    DxtrModel.sharedInstance.saveContext()
+                  } else {
+                    logger.error("Error uploading failed upload: \(error)")
+                    failedUpload.incrementFailed()
+                    if failedUpload.isMaxFailed() {
+                      DxtrModel.sharedInstance.managedObjectContext?.deleteObject(failedUpload)
+                    } else {
+                      logger.debug("Will try failed upload again")
+                    }
+                    DxtrModel.sharedInstance.saveContext()
+                  }
+              }
+            }
+          } else {
+            logger.warning("Couldn't find managed object with ID: \(managedObjectID)")
+          }
+        } else {
+          logger.error("Error fetching managed object: \(error)")
+        }
+      }
+    }
+  }
+  
   func uploadReading(reading: BGReading) {
     if NightscoutUploader.canUpload() {
-      Alamofire.request(Router.Readings(readingAsDictionary(reading)))
+      let data = readingAsDictionary(reading)
+      Alamofire.request(Router.Readings(data))
         .responseJSON { (request, response, JSON, error) in
           if error == nil {
             println(response)
@@ -30,6 +80,8 @@ class NightscoutUploader: NSObject {
             DxtrModel.sharedInstance.saveContext()
           } else {
             logger.error("Error uploading reading: \(error)")
+            FailedUpload(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!, managedObject: reading, type: UploadType.Reading)
+            DxtrModel.sharedInstance.saveContext()
           }
         }
     }
@@ -37,13 +89,16 @@ class NightscoutUploader: NSObject {
   
   func uploadCalibrationRecord(calibrationRecord: Calibration) {
     if NightscoutUploader.canUpload() {
-      Alamofire.request(Router.CalibrationRecords(calibrationRecordAsDictionary(calibrationRecord)))
+      let data = calibrationRecordAsDictionary(calibrationRecord)
+      Alamofire.request(Router.CalibrationRecords(data))
         .responseJSON { (request, response, JSON, error) in
           if error == nil {
             println(response)
             println(JSON)
           } else {
             logger.error("Error uploading calibration record: \(error)")
+            FailedUpload(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!, managedObject: calibrationRecord, type: UploadType.CalibrationRecord)
+            DxtrModel.sharedInstance.saveContext()
           }
         }
     }
@@ -51,13 +106,16 @@ class NightscoutUploader: NSObject {
   
   func uploadMeterRecord(meterRecord: Calibration) {
     if NightscoutUploader.canUpload() {
-      Alamofire.request(Router.MeterRecords(meterRecordAsDictionary(meterRecord)))
+      let data = meterRecordAsDictionary(meterRecord)
+      Alamofire.request(Router.MeterRecords(data))
         .responseJSON { (request, response, JSON, error) in
           if error == nil {
             println(response)
             println(JSON)
           } else {
             logger.error("Error uploading meter record: \(error)")
+            FailedUpload(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!, managedObject: meterRecord, type: UploadType.MeterRecord)
+            DxtrModel.sharedInstance.saveContext()
           }
         }
     }
@@ -66,12 +124,14 @@ class NightscoutUploader: NSObject {
   // TODO: Pass device status
   func uploadDeviceStatus() {
     if NightscoutUploader.canUpload() {
+      let data = 
       Alamofire.request(Router.DeviceStatus(deviceStatusAsDictionary()))
         .responseJSON { (request, response, JSON, error) in
           if error == nil {
             
           } else {
             logger.error("Error uploading device status: \(error)")
+            // Don't think we want to re-attempt a failed device status upload
           }
       }
     }
@@ -219,5 +279,11 @@ class NightscoutUploader: NSObject {
         return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: parameters).0
       }
     }
+  }
+  
+  enum UploadType: String {
+    case Reading = "Reading"
+    case CalibrationRecord = "CalibrationRecord"
+    case MeterRecord = "MeterRecord"
   }
 }
