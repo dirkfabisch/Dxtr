@@ -12,7 +12,9 @@ import CryptoSwift
 import QueryKit
 
 class NightscoutUploader: NSObject {
-    
+  
+  var timer: NSTimer?
+  
   class var sharedInstance: NightscoutUploader {
       struct Singleton {
           static let instance: NightscoutUploader = NightscoutUploader()
@@ -20,52 +22,9 @@ class NightscoutUploader: NSObject {
       return Singleton.instance
   }
   
-  func processFailedUpload(failedUpload: FailedUpload) {
-    if NightscoutUploader.canUpload() {
-      if let managedObjectID = DxtrModel.sharedInstance.managedObjectContext!.persistentStoreCoordinator?.managedObjectIDForURIRepresentation(failedUpload.managedObjectID as NSURL) {
-        var error: NSError?
-        var managedObject = DxtrModel.sharedInstance.managedObjectContext!.existingObjectWithID(managedObjectID, error: &error)
-        if error != nil {
-          if let actualManagedObject = managedObject {
-            var router: Router?
-            if let uploadType = UploadType(rawValue: failedUpload.type) {
-              switch uploadType {
-              case .Reading:
-                router = Router.Readings(readingAsDictionary(actualManagedObject as BGReading))
-              case .CalibrationRecord:
-                router = Router.CalibrationRecords(calibrationRecordAsDictionary(actualManagedObject as Calibration))
-              case .MeterRecord:
-                router = Router.MeterRecords(meterRecordAsDictionary(actualManagedObject as Calibration))
-              }
-            }
-            if let actualRouter = router {
-              Alamofire.request(actualRouter)
-                .responseJSON { (request, response, JSON, error) in
-                  if error == nil {
-                    logger.debug("Uploaded failed upload")
-                    // TODO: Do we need to set 'synced' property of 'actualManagedObject'?
-                    DxtrModel.sharedInstance.managedObjectContext!.deleteObject(failedUpload)
-                    DxtrModel.sharedInstance.saveContext()
-                  } else {
-                    logger.error("Error uploading failed upload: \(error)")
-                    failedUpload.incrementFailed()
-                    if failedUpload.isMaxFailed() {
-                      DxtrModel.sharedInstance.managedObjectContext?.deleteObject(failedUpload)
-                    } else {
-                      logger.debug("Will try failed upload again")
-                    }
-                    DxtrModel.sharedInstance.saveContext()
-                  }
-              }
-            }
-          } else {
-            logger.warning("Couldn't find managed object with ID: \(managedObjectID)")
-          }
-        } else {
-          logger.error("Error fetching managed object: \(error)")
-        }
-      }
-    }
+  override init() {
+    super.init()
+    self.timer = NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: Selector("processFailed:"), userInfo: nil, repeats: true)
   }
   
   func uploadReading(reading: BGReading) {
@@ -144,6 +103,65 @@ class NightscoutUploader: NSObject {
   }
   
   // MARK: Private
+  
+  @objc private func processFailed(timer: NSTimer) {
+    var queryset = FailedUpload.queryset(DxtrModel.sharedInstance.managedObjectContext!)
+    queryset = queryset.filter(FailedUpload.attributes.nextAttempt <= NSDate())
+    queryset = queryset.orderBy(FailedUpload.attributes.nextAttempt.ascending())
+    for failedUpload in queryset {
+      logger.debug("Processing failed upload")
+      processFailedUpload(failedUpload)
+    }
+  }
+  
+  private func processFailedUpload(failedUpload: FailedUpload) {
+    if NightscoutUploader.canUpload() {
+      if let managedObjectID = DxtrModel.sharedInstance.managedObjectContext!.persistentStoreCoordinator?.managedObjectIDForURIRepresentation(failedUpload.managedObjectID as NSURL) {
+        logger.debug("Processing failed upload with ID: \(managedObjectID)")
+        var error: NSError?
+        var managedObject = DxtrModel.sharedInstance.managedObjectContext!.existingObjectWithID(managedObjectID, error: &error)
+        if let actualError = error {
+          logger.error("Error fetching managed object: \(actualError)")
+        } else {
+          if let actualManagedObject = managedObject {
+            var router: Router?
+            if let uploadType = UploadType(rawValue: failedUpload.type) {
+              switch uploadType {
+              case .Reading:
+                router = Router.Readings(readingAsDictionary(actualManagedObject as BGReading))
+              case .CalibrationRecord:
+                router = Router.CalibrationRecords(calibrationRecordAsDictionary(actualManagedObject as Calibration))
+              case .MeterRecord:
+                router = Router.MeterRecords(meterRecordAsDictionary(actualManagedObject as Calibration))
+              }
+            }
+            if let actualRouter = router {
+              Alamofire.request(actualRouter)
+                .responseJSON { (request, response, JSON, error) in
+                  if error == nil {
+                    logger.debug("Uploaded failed upload")
+                    // TODO: Do we need to set 'synced' property of 'actualManagedObject'?
+                    DxtrModel.sharedInstance.managedObjectContext!.deleteObject(failedUpload)
+                    DxtrModel.sharedInstance.saveContext()
+                  } else {
+                    logger.error("Error uploading failed upload: \(error)")
+                    failedUpload.incrementFailed()
+                    if failedUpload.isMaxFailed() {
+                      DxtrModel.sharedInstance.managedObjectContext?.deleteObject(failedUpload)
+                    } else {
+                      logger.debug("Will try failed upload again")
+                    }
+                    DxtrModel.sharedInstance.saveContext()
+                  }
+              }
+            }
+          } else {
+            logger.warning("Couldn't find managed object with ID: \(managedObjectID)")
+          }
+        }
+      }
+    }
+  }
   
   private class func isUploadEnabled() -> Bool {
     return SettingsManager.sharedInstance.isNightscoutUploadEnabled()
