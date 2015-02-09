@@ -20,6 +20,7 @@ class MasterViewController: UIViewController {
   @IBOutlet weak var addDoubleCalibrationButton: UIButton!
   @IBOutlet weak var addCalibration: UIButton!
   @IBOutlet weak var logWindow: UITextView!
+  @IBOutlet weak var startSensorActivity: UIActivityIndicatorView!
   
   // all possible states during start of dxtr
   enum proccessState {
@@ -37,6 +38,12 @@ class MasterViewController: UIViewController {
   // saved state if wixel is disconected
   var savedState : proccessState = .sensorStopped
   
+  // Counter for Sensor Warmup (2h == 7200 seconds
+  var sensorWarmupCounter = 7200
+  
+  // timer for sensor warmup
+  var sensorTimer = NSTimer()
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     // Watch Bluetooth connection
@@ -45,6 +52,9 @@ class MasterViewController: UIViewController {
     NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("btScanning:"), name: BLEDiscoveryScanningNotification, object: nil)
     
     setProcessState()
+    
+    logWindow.text = ""
+    startSensorActivity.stopAnimating()
     
     // Start the Bluetooth discovery process
     btDiscoverySharedInstance
@@ -117,6 +127,9 @@ class MasterViewController: UIViewController {
           let loc_nav = self.navigationController!
           loc_nav.popViewControllerAnimated(true)
           self.currentState = .sensorStarted
+          var sensor = Sensor.currentSensor(self.managedObjectContext!)
+          self.logWindow.text = self.logWindow.text + "\n Sensor Started: " + sensor!.sensorStarted!.doubleValue.getDate().description
+          self.sensorWarmup()
           self.setProcessState()
         }
       default:
@@ -124,6 +137,36 @@ class MasterViewController: UIViewController {
       }
   }
 
+  
+  func sensorWarmup() {
+    var sensor = Sensor.currentSensor(managedObjectContext!)
+    var sensorStart = sensor!.sensorStarted!.doubleValue.getDate()
+    if (sensorStart.timeIntervalSinceNow <= 7200) {
+      // the sensor is warming up
+      // set sensor wamup counter
+      sensorWarmupCounter = sensorWarmupCounter + Int(sensorStart.timeIntervalSinceNow)
+      sensorTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("sensorWarmupActivity"), userInfo: nil, repeats: true)
+        startSensorActivity.startAnimating()
+    } else {
+      sensorWarmupCounter = 0
+    }
+  }
+  
+  func sensorWarmupActivity() {
+    if sensorWarmupCounter != 0 {
+      sensorWarmupCounter--
+      if sensorWarmupCounter % 60 == 0 {
+        var minutes = sensorWarmupCounter / 60
+        logWindow.text = logWindow.text + "\n" + "Sensor Warmup: \(minutes) minutes remaining"
+      }
+    } else {
+      sensorTimer.invalidate()
+      logWindow.text = logWindow.text + "\n" + "Sensor Warmup: Done!\nWaiting for the first reading"
+      startSensorActivity.stopAnimating()
+      currentState = .firstReading
+    }
+  }
+  
   
   
   //MARK: Notifications

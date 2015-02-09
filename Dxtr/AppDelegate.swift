@@ -43,20 +43,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       // We are running in the simmulator. 
 
       // create fake sensor
-      var ss = Sensor(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!, timeStamp: START_TIME_OF_SENSOR)
-      DxtrModel.sharedInstance.saveContext()
-      
-      // create 1st reading
-      BGReading(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!, timeStamp: START_TIME_OF_SENSOR + 300 * 1000 , rawData: 156416)
-      	
-      // create 2nd reading
-      BGReading(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!, timeStamp: START_TIME_OF_SENSOR + 600 * 1000 , rawData: 156160)
-      
-      // add calibration - 1
-      Calibration(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!, newBG: 162, timeStamp: START_TIME_OF_SENSOR + 630 * 1000)
-      
-      // add calibration - 2
-      Calibration(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!, newBG: 160, timeStamp: START_TIME_OF_SENSOR + 630 * 1000)
+//      var ss = Sensor(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!, timeStamp: START_TIME_OF_SENSOR)
+//      DxtrModel.sharedInstance.saveContext()
+//      
+//      // create 1st reading
+//      BGReading(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!, timeStamp: START_TIME_OF_SENSOR + 300 * 1000 , rawData: 156416)
+//      	
+//      // create 2nd reading
+//      BGReading(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!, timeStamp: START_TIME_OF_SENSOR + 600 * 1000 , rawData: 156160)
+//      
+//      // add calibration - 1
+//      Calibration(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!, newBG: 162, timeStamp: START_TIME_OF_SENSOR + 630 * 1000)
+//      
+//      // add calibration - 2
+//      Calibration(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!, newBG: 160, timeStamp: START_TIME_OF_SENSOR + 630 * 1000)
 
       // Generate transmitter data
       //      var testData = TestRawData()

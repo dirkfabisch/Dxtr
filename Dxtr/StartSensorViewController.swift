@@ -19,9 +19,9 @@ class StartSensorViewController : UIViewController {
   var didCancel: DidCancelDelegate?
   var didFinish: DidFinishDelegate?
   
-  var managedObjectContext : NSManagedObjectContext?
-  
+  var managedObjectContext : NSManagedObjectContext? 
 
+  @IBOutlet weak var datePicker: UIDatePicker!
   
   //MARK: - Exit functions
   // "Cancel" action notifies "Cancel" delegate
@@ -35,8 +35,9 @@ class StartSensorViewController : UIViewController {
   // "Done" action notifies "Finish" delegate
   @IBAction func done(sender: AnyObject) {
     // Create a new Sensor object and start the sensor
-    // TODO: Create Timer for the waiting
-    Sensor(managedObjectContext: managedObjectContext!)
+    var sensDate = datePicker.date
+    Sensor(managedObjectContext: managedObjectContext!, timeStamp: sensDate.getTime())
+    DxtrModel.sharedInstance.saveContext()
     // notify delegate (master list scene view controller)
     self.didFinish!(self)
   }

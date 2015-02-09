@@ -253,16 +253,15 @@
 		43E536221A62CE480037EED0 /* Dxtr */ = {
 			isa = PBXGroup;
 			children = (
-				4300FCC61A82935000CC8CE1 /* Views */,
 				43BBDF9D1A642DC40006B61F /* Constants.swift */,
-				43BBDF9C1A642D910006B61F /* BluetoothStack */,
 				43E536251A62CE480037EED0 /* AppDelegate.swift */,
-				4300FCD21A82C72A00CC8CE1 /* ViewController */,
+				4300FCC61A82935000CC8CE1 /* Views */,
+				43BBDF9C1A642D910006B61F /* BluetoothStack */,
 				1DD153601A8193CA003E7CFD /* NightscoutUploader.swift */,
+				4300FCD21A82C72A00CC8CE1 /* ViewController */,
 				435C92181A6F9B1B00807847 /* ModelObjects */,
 				43DF0D011A6D969600686779 /* Model */,
 				43E5362C1A62CE480037EED0 /* Images.xcassets */,
-				43E5362E1A62CE480037EED0 /* LaunchScreen.xib */,
 				43E536231A62CE480037EED0 /* Supporting Files */,
 				43583B421A664E3000940764 /* Libraries */,
 			);
@@ -272,6 +271,7 @@
 		43E536231A62CE480037EED0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				43E5362E1A62CE480037EED0 /* LaunchScreen.xib */,
 				4300FCD01A82C3DB00CC8CE1 /* default_background.jpeg */,
 				43E536241A62CE480037EED0 /* Info.plist */,
 			);
