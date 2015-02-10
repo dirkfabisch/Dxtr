@@ -21,6 +21,7 @@ class MasterViewController: UIViewController {
   @IBOutlet weak var addCalibration: UIButton!
   @IBOutlet weak var logWindow: UITextView!
   @IBOutlet weak var startSensorActivity: UIActivityIndicatorView!
+  @IBOutlet weak var createReadingButton: UIButton!
   
   // all possible states during start of dxtr
   enum proccessState {
@@ -29,7 +30,9 @@ class MasterViewController: UIViewController {
     case sensorWarmup
     case firstReading
     case secondReading
+    case waitingCalibration
     case doubleCalibrated
+    case readingLoop
     case disconected
   }
   
@@ -75,36 +78,55 @@ class MasterViewController: UIViewController {
       stopSensorButton.enabled = false
       addDoubleCalibrationButton.enabled = false
       addCalibration.enabled = false
+      createReadingButton.enabled = false
     case .sensorStarted:
       startSensorButton.enabled = false
       stopSensorButton.enabled = true
       addDoubleCalibrationButton.enabled = false
       addCalibration.enabled = false
+      createReadingButton.enabled = false
     case .sensorWarmup:
       startSensorButton.enabled = false
       stopSensorButton.enabled = true
       addDoubleCalibrationButton.enabled = false
       addCalibration.enabled = false
+      createReadingButton.enabled = false
     case .firstReading:
       startSensorButton.enabled = false
       stopSensorButton.enabled = true
       addDoubleCalibrationButton.enabled = false
       addCalibration.enabled = false
+      createReadingButton.enabled = true
     case .secondReading:
+      startSensorButton.enabled = false
+      stopSensorButton.enabled = true
+      addDoubleCalibrationButton.enabled = false
+      addCalibration.enabled = false
+      createReadingButton.enabled = true
+    case .waitingCalibration:
       startSensorButton.enabled = false
       stopSensorButton.enabled = true
       addDoubleCalibrationButton.enabled = true
       addCalibration.enabled = false
+      createReadingButton.enabled = false
     case .doubleCalibrated:
       startSensorButton.enabled = false
       stopSensorButton.enabled = true
       addDoubleCalibrationButton.enabled = false
       addCalibration.enabled = true
+      createReadingButton.enabled = true
+    case .readingLoop:
+      startSensorButton.enabled = false
+      stopSensorButton.enabled = false
+      addDoubleCalibrationButton.enabled = false
+      addCalibration.enabled = false
+      createReadingButton.enabled = true
     case .disconected:
       startSensorButton.enabled = false
       stopSensorButton.enabled = false
       addDoubleCalibrationButton.enabled = false
       addCalibration.enabled = false
+      createReadingButton.enabled = false
     }
   }
   
@@ -128,8 +150,47 @@ class MasterViewController: UIViewController {
           loc_nav.popViewControllerAnimated(true)
           self.currentState = .sensorStarted
           var sensor = Sensor.currentSensor(self.managedObjectContext!)
-          self.logWindow.text = self.logWindow.text + "\n Sensor Started: " + sensor!.sensorStarted!.doubleValue.getDate().description
+          self.writeDisplayLog("Sensor Started: \(sensor!.sensorStarted!.doubleValue.getDate().description)")
           self.sensorWarmup()
+          self.setProcessState()
+        }
+      case "addBGReadingSegue":
+        let bGReadingView = nav.topViewController as AddBGReadingViewController
+        bGReadingView.managedObjectContext = managedObjectContext
+        bGReadingView.didCancel = { cont in
+          let loc_nav = self.navigationController!
+          loc_nav.popViewControllerAnimated(true)
+        }
+        bGReadingView.didFinish = { cont in
+          let loc_nav = self.navigationController!
+          loc_nav.popViewControllerAnimated(true)
+          if self.currentState == .firstReading {
+            self.writeDisplayLog("Added first reading")
+            self.currentState = .secondReading
+          } else {
+            if self.currentState  == .secondReading {
+              self.writeDisplayLog("Added second reading")
+              self.currentState = .waitingCalibration
+            } else {
+              if self.currentState == .doubleCalibrated {
+                self.currentState = .readingLoop
+              }
+            }
+          }
+          self.setProcessState()
+        }
+      case "addDoubleCalibrationSegue":
+        let doubleCalibrationView = nav.topViewController as AddDoubleCalibrationViewController
+        doubleCalibrationView.managedObjectContext = managedObjectContext
+        doubleCalibrationView.didCancel = { cont in
+          let loc_nav = self.navigationController!
+          loc_nav.popViewControllerAnimated(true)
+        }
+        doubleCalibrationView.didFinish = { cont in
+          let loc_nav = self.navigationController!
+          loc_nav.popViewControllerAnimated(true)
+          self.writeDisplayLog("Double Calibration Done")
+          self.currentState = .doubleCalibrated
           self.setProcessState()
         }
       default:
@@ -141,7 +202,8 @@ class MasterViewController: UIViewController {
   func sensorWarmup() {
     var sensor = Sensor.currentSensor(managedObjectContext!)
     var sensorStart = sensor!.sensorStarted!.doubleValue.getDate()
-    if (sensorStart.timeIntervalSinceNow <= 7200) {
+    logger.verbose("\(sensor?.sensorStarted?.doubleValue)")
+    if (sensorStart.timeIntervalSinceNow > -7200) {
       // the sensor is warming up
       // set sensor wamup counter
       sensorWarmupCounter = sensorWarmupCounter + Int(sensorStart.timeIntervalSinceNow)
@@ -149,6 +211,7 @@ class MasterViewController: UIViewController {
         startSensorActivity.startAnimating()
     } else {
       sensorWarmupCounter = 0
+      sensorWarmupActivity()
     }
   }
   
@@ -157,13 +220,14 @@ class MasterViewController: UIViewController {
       sensorWarmupCounter--
       if sensorWarmupCounter % 60 == 0 {
         var minutes = sensorWarmupCounter / 60
-        logWindow.text = logWindow.text + "\n" + "Sensor Warmup: \(minutes) minutes remaining"
+        writeDisplayLog("Sensor Warmup: \(minutes) minutes remaining")
       }
     } else {
       sensorTimer.invalidate()
-      logWindow.text = logWindow.text + "\n" + "Sensor Warmup: Done!\nWaiting for the first reading"
+      writeDisplayLog("Sensor Warmup: Done!\nWaiting for the first reading")
       startSensorActivity.stopAnimating()
       currentState = .firstReading
+      setProcessState()
     }
   }
   
@@ -221,6 +285,10 @@ class MasterViewController: UIViewController {
         }
       }
     })
+  }
+  
+  private func writeDisplayLog(message: String) {
+    logWindow.text = logWindow.text + "\n" + message
   }
  
 }

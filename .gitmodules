@@ -2,5 +2,5 @@
 	path = CryptoSwift
 	url = https://github.com/krzyzanowskim/CryptoSwift.git
 [submodule "B68FloatingLabelTextField"]
-		path = B68FloatingLabelTextField
-		url = https://github.com/dirkfabisch/B68FloatingLabelTextField.git
+	path = B68FloatingLabelTextField
+	url = https://github.com/dirkfabisch/B68FloatingLabelTextField.git
