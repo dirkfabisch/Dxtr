@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="KQ3-cb-hmx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6750" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="KQ3-cb-hmx">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6735"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -43,6 +43,9 @@
                                 <state key="normal" title="Stop Sensor">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="stopSensor:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="CnZ-s9-1mH"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ky7-w8-nk0">
                                 <rect key="frame" x="16" y="189" width="160" height="30"/>
@@ -139,6 +142,9 @@
                                 <date key="date" timeIntervalSinceReferenceDate="444764428.04518002">
                                     <!--2015-02-04 17:40:28 +0000-->
                                 </date>
+                                <connections>
+                                    <action selector="dateChanged:" destination="2gu-8T-ids" eventType="valueChanged" id="Dh8-yI-9U5"/>
+                                </connections>
                             </datePicker>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* you can find the start time in your Dexcom reciever (Settings -&gt; Device Info -&gt; Insertion Time)" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mww-qq-KcB">
                                 <rect key="frame" x="16" y="533" width="568" height="15"/>
@@ -182,6 +188,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="datePicker" destination="H86-EZ-kZB" id="fyq-TC-eJc"/>
+                        <outlet property="saveButton" destination="7ZK-9N-S2J" id="Qcw-gb-ebT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DP0-uW-aEK" userLabel="First Responder" sceneMemberID="firstResponder"/>

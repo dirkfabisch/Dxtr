@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class MasterViewController: UIViewController {
+class MasterViewController: UIViewController, UIAlertViewDelegate {
   
   // set by AppDelegate on application startup
   var managedObjectContext: NSManagedObjectContext?
@@ -231,7 +231,28 @@ class MasterViewController: UIViewController {
     }
   }
   
+  //MARK: IBActions
   
+  @IBAction func stopSensor(sender: AnyObject) {
+    let confirmAlert = UIAlertView(title: "Stop Sensor", message: "Are you sure you want to stop the sensor?", delegate: self, cancelButtonTitle: "No", otherButtonTitles: "Yes")
+    confirmAlert.show()
+  }
+  
+  //MARK: UIAlertViewDelegate
+  
+  func alertView(alertView: UIAlertView, didDismissWithButtonIndex buttonIndex: Int) {
+    if buttonIndex == 1 {
+      if let currentSensor = Sensor.currentSensor(self.managedObjectContext!) {
+        Sensor.stopSensor(currentSensor)
+        DxtrModel.sharedInstance.saveContext()
+        startSensorActivity.stopAnimating()
+        startSensorActivity.stopAnimating()
+        writeDisplayLog("Sensor Stopped: \(currentSensor.sensorStopped!.doubleValue.getDate().description)")
+        self.currentState = .sensorStopped
+        setProcessState()
+      }
+    }
+  }
   
   //MARK: Notifications
   

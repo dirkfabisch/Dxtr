@@ -11,7 +11,7 @@ import UIKit
 import CoreData
 
 
-class StartSensorViewController : UIViewController {
+class StartSensorViewController : UIViewController, UIPickerViewDelegate {
 
   // custom types for "Cancel" and "Finish" delegates
   typealias DidCancelDelegate = (StartSensorViewController) -> ()
@@ -21,6 +21,7 @@ class StartSensorViewController : UIViewController {
   
   var managedObjectContext : NSManagedObjectContext? 
 
+  @IBOutlet weak var saveButton: UIBarButtonItem!
   @IBOutlet weak var datePicker: UIDatePicker!
   
   //MARK: - Exit functions
@@ -40,5 +41,13 @@ class StartSensorViewController : UIViewController {
     DxtrModel.sharedInstance.saveContext()
     // notify delegate (master list scene view controller)
     self.didFinish!(self)
+  }
+  
+  @IBAction func dateChanged(sender: AnyObject) {
+    if datePicker.date.getDateWithZeroSeconds().compare(NSDate()) == .OrderedDescending {
+      self.saveButton.enabled = false
+    } else {
+      self.saveButton.enabled = true
+    }
   }
 }

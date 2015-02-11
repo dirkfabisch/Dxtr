@@ -53,6 +53,11 @@ extension NSDate {
     return round(self.timeIntervalSince1970 * 1000)
   }
   
+  func getDateWithZeroSeconds() -> NSDate {
+    let time = floor(self.timeIntervalSince1970 / 60.0) * 60.0;
+    return NSDate(timeIntervalSince1970: time)
+  }
+  
 }
 
 // extension for gettimg a real date from the double values in time stamps
