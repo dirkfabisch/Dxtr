@@ -50,6 +50,15 @@ let NIGHTSCOUT_API_SECRET_MIN_LENGTH = 12
 // avoids confusion in calculation with time and values
 extension NSDate {
   func getTime() -> NSTimeInterval {
-    return round(NSDate().timeIntervalSince1970 * 1000)
+    return round(self.timeIntervalSince1970 * 1000)
+  }
+  
+}
+
+// extension for gettimg a real date from the double values in time stamps
+extension Double {
+  func getDate() -> NSDate {
+    var ts = self
+    return NSDate(timeIntervalSince1970: round(ts/1000))
   }
 }

@@ -14,7 +14,7 @@ import XCGLogger
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
   
-  var window: UIWindow?
+  var window: UIWindow!
   lazy var dxtrModel = DxtrModel.sharedInstance
   
   
@@ -32,8 +32,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     fileLog.setup(logLevel: .Debug, showLogLevel: false, showFileNames: false, showLineNumbers: false, writeToFile: logPath.URLByAppendingPathComponent("raw_data.log"))
     
     fileLog.info("File log of all raw data")
+
+    let nav = window.rootViewController as UINavigationController
+    let vc = nav.viewControllers[0] as MasterViewController
     
-    let vc = window?.rootViewController as ViewController
     vc.managedObjectContext = managedObjectContext!
     DxtrModel.sharedInstance.managedObjectContext = managedObjectContext
     #if SIMULATOR
@@ -41,27 +43,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       // We are running in the simmulator. 
 
       // create fake sensor
-      var ss = Sensor(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!, timeStamp: START_TIME_OF_SENSOR)
-      DxtrModel.sharedInstance.saveContext()
-      
-      // create 1st reading
-      let bg1 = BGReading(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!, timeStamp: START_TIME_OF_SENSOR + 300 * 1000 , rawData: 156416)
-      	
-      // create 2nd reading
-      let bg2 = BGReading(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!, timeStamp: START_TIME_OF_SENSOR + 600 * 1000 , rawData: 156160)
-      
-      // add calibration - 1
-      Calibration(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!, newBG: 162, timeStamp: START_TIME_OF_SENSOR + 630 * 1000)
-      
-      // add calibration - 2
-      Calibration(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!, newBG: 160, timeStamp: START_TIME_OF_SENSOR + 630 * 1000)
+
+//      var ss = Sensor(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!, timeStamp: START_TIME_OF_SENSOR)
+//      DxtrModel.sharedInstance.saveContext()
+//      
+//      // create 1st reading
+//      BGReading(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!, timeStamp: START_TIME_OF_SENSOR + 300 * 1000 , rawData: 156416)
+//      	
+//      // create 2nd reading
+//      BGReading(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!, timeStamp: START_TIME_OF_SENSOR + 600 * 1000 , rawData: 156160)
+//      
+//      // add calibration - 1
+//      Calibration(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!, newBG: 162, timeStamp: START_TIME_OF_SENSOR + 630 * 1000)
+//      
+//      // add calibration - 2
+//      Calibration(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!, newBG: 160, timeStamp: START_TIME_OF_SENSOR + 630 * 1000)
 
       // Generate transmitter data
       //      var testData = TestRawData()
       //  testData.createTestRawData(managedObjectContext!)
       
-      NightscoutUploader.sharedInstance.uploadReading(bg1)
-      NightscoutUploader.sharedInstance.uploadReading(bg2)
+//      NightscoutUploader.sharedInstance.uploadReading(bg1)
+//      NightscoutUploader.sharedInstance.uploadReading(bg2)
 
       #else
       logger.verbose("Running on Device")
