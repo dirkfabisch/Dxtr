@@ -63,6 +63,17 @@ class MasterViewController: UIViewController {
     btDiscoverySharedInstance
   }
   
+  override func viewDidAppear(animated: Bool) {
+    super.viewDidAppear(animated)
+
+    // check if EULA is accepted
+    let defaults = NSUserDefaults.standardUserDefaults()
+    if !defaults.boolForKey(USER_SETTING_EULA_CHECKED) {
+      // present EULA
+      performSegueWithIdentifier("eulaSegue", sender: self)
+    }
+  }
+  
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
@@ -193,11 +204,21 @@ class MasterViewController: UIViewController {
           self.currentState = .doubleCalibrated
           self.setProcessState()
         }
+      case "eulaSegue":
+        let eulaView = nav.topViewController as EulaViewController
+        eulaView.managedObjectContext = managedObjectContext
+        eulaView.didFinish = { cont in
+          let loc_nav = self.navigationController!
+          loc_nav.popViewControllerAnimated(true)
+          self.writeDisplayLog("EULA Accepted")
+        }
       default:
         logger.error("wrong segue.identifier \(segue.identifier)")
       }
   }
 
+  
+  //MARK: Sensor handling
   
   func sensorWarmup() {
     var sensor = Sensor.currentSensor(managedObjectContext!)

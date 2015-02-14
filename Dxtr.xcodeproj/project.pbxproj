@@ -17,6 +17,7 @@
 		4324ED8C1A812DDA0002BEE6 /* _Sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4324ED881A812DDA0002BEE6 /* _Sensor.swift */; };
 		4324ED8D1A812DDA0002BEE6 /* _TransmitterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4324ED891A812DDA0002BEE6 /* _TransmitterData.swift */; };
 		432771B61A8A8BC900F42162 /* AddDoubleCalibrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432771B51A8A8BC900F42162 /* AddDoubleCalibrationViewController.swift */; };
+		432771BF1A8AA47D00F42162 /* EulaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432771BE1A8AA47D00F42162 /* EulaViewController.swift */; };
 		434534AA1A751E70000D591E /* BGReading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434534A41A751E70000D591E /* BGReading.swift */; };
 		434534AB1A751E70000D591E /* Calibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434534A51A751E70000D591E /* Calibration.swift */; };
 		434534AC1A751E70000D591E /* Sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434534A61A751E70000D591E /* Sensor.swift */; };
@@ -108,6 +109,7 @@
 		4324ED881A812DDA0002BEE6 /* _Sensor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Sensor.swift; sourceTree = "<group>"; };
 		4324ED891A812DDA0002BEE6 /* _TransmitterData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _TransmitterData.swift; sourceTree = "<group>"; };
 		432771B51A8A8BC900F42162 /* AddDoubleCalibrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDoubleCalibrationViewController.swift; sourceTree = "<group>"; };
+		432771BE1A8AA47D00F42162 /* EulaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EulaViewController.swift; sourceTree = "<group>"; };
 		434534A41A751E70000D591E /* BGReading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BGReading.swift; sourceTree = "<group>"; };
 		434534A51A751E70000D591E /* Calibration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calibration.swift; sourceTree = "<group>"; };
 		434534A61A751E70000D591E /* Sensor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sensor.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				4300FCD31A82C75E00CC8CE1 /* StartSensorViewController.swift */,
 				43D890C21A8921A6009C9F40 /* AddBGReadingViewController.swift */,
 				432771B51A8A8BC900F42162 /* AddDoubleCalibrationViewController.swift */,
+				432771BE1A8AA47D00F42162 /* EulaViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -576,6 +579,7 @@
 				438FFC921A7EBD1D0025D655 /* SwiftOverlays.swift in Sources */,
 				43027B171A7FBD1C00DE47F8 /* TestRawData.swift in Sources */,
 				434534AC1A751E70000D591E /* Sensor.swift in Sources */,
+				432771BF1A8AA47D00F42162 /* EulaViewController.swift in Sources */,
 				43BBDF9E1A642DC50006B61F /* Constants.swift in Sources */,
 				4300FCD41A82C75E00CC8CE1 /* StartSensorViewController.swift in Sources */,
 				43E536281A62CE480037EED0 /* MasterViewController.swift in Sources */,
