@@ -20,7 +20,7 @@ let BLEServiceUUID = CBUUID(string: "0000ffe0-0000-1000-8000-00805f9b34fb")
 let BLEServiceChangedStatusNotification = "kBLEServiceChangedStatusNotification"
 let BLEDiscoveryScanningNotification = "kBLEDiscoveryScanningNotification"
 // Notification Send if new Value comes from the transmitter
-let TDNewValueNotificcation = "kTDNewValueNotificcation"
+let TDNewValueNotification = "kTDNewValueNotification"
 
 // Define logging instance
 let logger = XCGLogger.defaultInstance()

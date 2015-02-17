@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class MasterViewController: UIViewController {
+class MasterViewController: UIViewController, DxtrModelDelegate {
   
   // set by AppDelegate on application startup
   var managedObjectContext: NSManagedObjectContext?
@@ -55,12 +55,17 @@ class MasterViewController: UIViewController {
     NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("btScanning:"), name: BLEDiscoveryScanningNotification, object: nil)
     
     setProcessState()
-    
+  
     logWindow.text = ""
     startSensorActivity.stopAnimating()
+  
+    // assign delegate
+    var dxtrModel = DxtrModel.sharedInstance
+    dxtrModel.delegate = self
     
     // Start the Bluetooth discovery process
     btDiscoverySharedInstance
+  
   }
   
   override func viewDidAppear(animated: Bool) {
@@ -77,6 +82,11 @@ class MasterViewController: UIViewController {
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
+  }
+  
+  //MARK: - DxtrModelDelegate implementation
+  func modelChanged() {
+    logger.verbose("Model Changed")
   }
   
   /**
