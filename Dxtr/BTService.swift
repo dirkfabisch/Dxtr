@@ -139,8 +139,7 @@ class BTService: NSObject, CBPeripheralDelegate {
       // their are 3 elements in the data array
       if data_components.count > 2 {
         // Create the database object
-        var transmitterData = TransmitterData(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!)
-        transmitterData.rawData = NSNumber(double: (data_components[0] as NSString).doubleValue)
+        var transmitterData = TransmitterData(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!, rawData: (data_components[0] as NSString).doubleValue)
         transmitterData.sensorBatteryLevel = NSNumber(int:(data_components[1] as NSString).intValue)
         transmitterData.sendTDNewValueNotificcation()
       } else {
@@ -149,8 +148,8 @@ class BTService: NSObject, CBPeripheralDelegate {
           return
         } else {
           // Create the database object
-          var transmitterData = TransmitterData(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!)
-          transmitterData.rawData = NSNumber(double:(data_components[0] as NSString).doubleValue)
+          let rv = (data_components[0] as NSString).doubleValue
+          var transmitterData = TransmitterData(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!, rawData: (data_components[0] as NSString).doubleValue)
           transmitterData.sendTDNewValueNotificcation()
         }
       }
