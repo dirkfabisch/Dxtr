@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let settings = UIUserNotificationSettings(forTypes: .Alert, categories: nil)
     application.registerUserNotificationSettings(settings)
     
-    logger.setup(logLevel: .Verbose, showLogLevel: false, showFileNames: false, showLineNumbers: true, writeToFile: nil)
+    logger.setup(logLevel: .Verbose, showLogLevel: false, showFileNames: true, showLineNumbers: true, writeToFile: nil)
     
     // Setup XCGLogger
     let logPath : NSURL = applicationDocumentsDirectory
