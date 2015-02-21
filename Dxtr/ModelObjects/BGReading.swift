@@ -363,7 +363,37 @@ class BGReading: _BGReading {
     return nil
   }
 
-  
+  class func bgReadingsSinceDate(managedObjectContext: NSManagedObjectContext, date: NSDate) -> [BGReading]? {
+//    var qs = BGReading.queryset(managedObjectContext)
+//      .filter(BGReading.attributes.timeStamp >= NSNumber(double: date.getTime()))
+//      .orderBy(BGReading.attributes.timeStamp.ascending())
+//    return qs.array()
+    var readings: [BGReading] = []
+    let now = NSDate()
+    var d = date
+    var val = 90
+    var up = true
+    while d.compare(now) == .OrderedAscending {
+      let reading = BGReading(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!, timeStamp: d.getTime(), rawData: 17500)
+      reading.calculatedValue = val
+      readings.append(reading)
+      d = d.dateByAddingTimeInterval(5 * 60)
+      if up {
+        val += Int(rand() % 6)
+      } else {
+        val -= Int(rand() % 6)
+      }
+      if val > 240 {
+        val = 240
+      } else if val < 60 {
+        val = 60
+      }
+      if rand() % 2 == 0 {
+        up = !up
+      }
+    }
+    return readings
+  }
   
   class func estimatedRawBG (managedObjectContext: NSManagedObjectContext, timeStamp: Double) -> Double {
     let ts = timeStamp + READINGS_BESTOFFSET

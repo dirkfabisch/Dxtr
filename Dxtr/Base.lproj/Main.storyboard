@@ -84,6 +84,15 @@
                                     <segue destination="SYT-sT-MrQ" kind="show" identifier="addBGReadingSegue" id="Wip-Jm-JLa"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="icC-aB-q4d">
+                                <rect key="frame" x="16" y="303" width="75" height="30"/>
+                                <state key="normal" title="View Chart">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="hnU-D2-rVt" kind="show" identifier="viewChartSegue" id="xTh-7n-1dV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -119,6 +128,7 @@
                         <outlet property="startSensorActivity" destination="ymq-oe-hbd" id="mko-qe-p7m"/>
                         <outlet property="startSensorButton" destination="o1J-bG-8bx" id="KOM-kp-Vbz"/>
                         <outlet property="stopSensorButton" destination="cJo-wX-HAJ" id="N6p-p6-Hyk"/>
+                        <outlet property="viewChartButton" destination="icC-aB-q4d" id="ViP-Os-o6s"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -401,6 +411,44 @@
             </objects>
             <point key="canvasLocation" x="2820" y="1298"/>
         </scene>
+        <!--Chart-->
+        <scene sceneID="J5M-s9-h9h">
+            <objects>
+                <viewController id="kI6-Qc-AfI" customClass="ChartViewController" customModule="Dxtr" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5kw-6M-8vO"/>
+                        <viewControllerLayoutGuide type="bottom" id="cBa-Gw-YwS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wXh-1y-VYk">
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q4J-Gy-Sq4">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <dataDetectorType key="dataDetectorTypes"/>
+                                <connections>
+                                    <outlet property="delegate" destination="kI6-Qc-AfI" id="oTt-hZ-qin"/>
+                                </connections>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Q4J-Gy-Sq4" firstAttribute="leading" secondItem="wXh-1y-VYk" secondAttribute="leadingMargin" constant="-16" id="0dx-hm-txe"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Q4J-Gy-Sq4" secondAttribute="trailing" constant="-16" id="JQF-og-S8b"/>
+                            <constraint firstItem="Q4J-Gy-Sq4" firstAttribute="top" secondItem="5kw-6M-8vO" secondAttribute="bottom" constant="-64" id="ghN-iL-nVj"/>
+                            <constraint firstItem="cBa-Gw-YwS" firstAttribute="top" secondItem="Q4J-Gy-Sq4" secondAttribute="bottom" id="jHD-CA-VWJ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Chart" id="hae-9z-Bv5"/>
+                    <connections>
+                        <outlet property="webView" destination="Q4J-Gy-Sq4" id="60U-yq-7pf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pjY-ku-EU6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2820" y="2024"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="Vpu-pc-2qb">
             <objects>
@@ -418,6 +466,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z3Y-mu-Ros" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1996" y="1290"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="EUg-Ep-4fD">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hnU-D2-rVt" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NF3-kn-4tL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="kI6-Qc-AfI" kind="relationship" relationship="rootViewController" id="bsw-YU-eOX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Eb8-3h-Zk4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1996" y="2024"/>
         </scene>
     </scenes>
 </document>

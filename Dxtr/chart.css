@@ -1,0 +1,59 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  fill: #fff;
+  background: #000;
+  color: #808080;
+}
+
+.container {
+  top: -30px;
+  bottom: 0;
+  display: block;
+  height: 100%;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  top: 45px;
+  width: 100%;
+  z-index: 2;
+}
+
+#chartContainer {
+  background: #111;
+  bottom: 0;
+  display: block;
+  height: auto;
+  left: 0;
+  position: absolute;
+  right: 0;
+}
+
+#chartContainer svg {
+  height: 100vh;
+  width: 100%;
+  top: 0px;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #ffffff;
+  shape-rendering: crispEdges;
+}
+
+.grid path, .axis line {
+  stroke: #808080;
+  stroke-opacity: 1;
+}
+
+.brush .extent {
+  stroke: #ffffff;
+  stroke-opacity: 0;
+  fill-opacity: 0;
+}

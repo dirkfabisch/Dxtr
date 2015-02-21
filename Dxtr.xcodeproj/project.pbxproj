@@ -11,6 +11,12 @@
 		1D3869F91A86F2BB008EF20E /* FailedUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3869F81A86F2BB008EF20E /* FailedUpload.swift */; };
 		1D4531201A84682C00BDFE7F /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1D45311F1A84682C00BDFE7F /* Settings.bundle */; };
 		1D4531271A8473FB00BDFE7F /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4531261A8473FB00BDFE7F /* SettingsManager.swift */; };
+		1D4A376C1A92788500F21868 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4A376B1A92788500F21868 /* ChartViewController.swift */; };
+		1D4A377C1A9528C300F21868 /* d3.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 1D4A37791A9528C300F21868 /* d3.min.js */; };
+		1D4A377D1A9528C300F21868 /* jquery.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 1D4A377A1A9528C300F21868 /* jquery.min.js */; };
+		1D4A377E1A9528C300F21868 /* chart.css in Resources */ = {isa = PBXBuildFile; fileRef = 1D4A377B1A9528C300F21868 /* chart.css */; };
+		1D4A37811A95295C00F21868 /* chart.html in Resources */ = {isa = PBXBuildFile; fileRef = 1D4A377F1A95295C00F21868 /* chart.html */; };
+		1D4A37821A95295C00F21868 /* client.js in Resources */ = {isa = PBXBuildFile; fileRef = 1D4A37801A95295C00F21868 /* client.js */; };
 		1DD153611A8193CA003E7CFD /* NightscoutUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD153601A8193CA003E7CFD /* NightscoutUploader.swift */; };
 		1DD1536B1A81A3CD003E7CFD /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DD153681A81A38B003E7CFD /* CryptoSwift.framework */; };
 		4300FCD11A82C3DB00CC8CE1 /* default_background.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4300FCD01A82C3DB00CC8CE1 /* default_background.jpeg */; };
@@ -106,6 +112,12 @@
 		1D3869F81A86F2BB008EF20E /* FailedUpload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FailedUpload.swift; sourceTree = "<group>"; };
 		1D45311F1A84682C00BDFE7F /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		1D4531261A8473FB00BDFE7F /* SettingsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
+		1D4A376B1A92788500F21868 /* ChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
+		1D4A37791A9528C300F21868 /* d3.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = d3.min.js; sourceTree = "<group>"; };
+		1D4A377A1A9528C300F21868 /* jquery.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jquery.min.js; sourceTree = "<group>"; };
+		1D4A377B1A9528C300F21868 /* chart.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = chart.css; sourceTree = "<group>"; };
+		1D4A377F1A95295C00F21868 /* chart.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = chart.html; sourceTree = "<group>"; };
+		1D4A37801A95295C00F21868 /* client.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = client.js; sourceTree = "<group>"; };
 		1DD153601A8193CA003E7CFD /* NightscoutUploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NightscoutUploader.swift; sourceTree = "<group>"; };
 		1DD153621A81A38B003E7CFD /* CryptoSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CryptoSwift.xcodeproj; path = CryptoSwift/CryptoSwift.xcodeproj; sourceTree = "<group>"; };
 		4300FCD01A82C3DB00CC8CE1 /* default_background.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = default_background.jpeg; sourceTree = "<group>"; };
@@ -164,6 +176,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D4A37781A95114400F21868 /* Chart Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1D4A377F1A95295C00F21868 /* chart.html */,
+				1D4A377B1A9528C300F21868 /* chart.css */,
+				1D4A37801A95295C00F21868 /* client.js */,
+				1D4A37791A9528C300F21868 /* d3.min.js */,
+				1D4A377A1A9528C300F21868 /* jquery.min.js */,
+			);
+			name = "Chart Resources";
+			sourceTree = "<group>";
+		};
 		1DD1534A1A8179D0003E7CFD /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,7 +210,6 @@
 		4300FCC61A82935000CC8CE1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				43E536291A62CE480037EED0 /* Main.storyboard */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -198,6 +221,7 @@
 				4300FCD31A82C75E00CC8CE1 /* StartSensorViewController.swift */,
 				43D890C21A8921A6009C9F40 /* AddBGReadingViewController.swift */,
 				432771B51A8A8BC900F42162 /* AddDoubleCalibrationViewController.swift */,
+				1D4A376B1A92788500F21868 /* ChartViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -283,6 +307,7 @@
 				4300FCD21A82C72A00CC8CE1 /* ViewController */,
 				435C92181A6F9B1B00807847 /* ModelObjects */,
 				43DF0D011A6D969600686779 /* Model */,
+				1D4A37781A95114400F21868 /* Chart Resources */,
 				43E5362C1A62CE480037EED0 /* Images.xcassets */,
 				43E536231A62CE480037EED0 /* Supporting Files */,
 				43583B421A664E3000940764 /* Libraries */,
@@ -474,7 +499,12 @@
 			files = (
 				1D4531201A84682C00BDFE7F /* Settings.bundle in Resources */,
 				43E5362B1A62CE480037EED0 /* Main.storyboard in Resources */,
+				1D4A377D1A9528C300F21868 /* jquery.min.js in Resources */,
+				1D4A37811A95295C00F21868 /* chart.html in Resources */,
 				43E536301A62CE480037EED0 /* LaunchScreen.xib in Resources */,
+				1D4A37821A95295C00F21868 /* client.js in Resources */,
+				1D4A377E1A9528C300F21868 /* chart.css in Resources */,
+				1D4A377C1A9528C300F21868 /* d3.min.js in Resources */,
 				43E5362D1A62CE480037EED0 /* Images.xcassets in Resources */,
 				4300FCD11A82C3DB00CC8CE1 /* default_background.jpeg in Resources */,
 			);
@@ -601,6 +631,7 @@
 				43BBDF9B1A642D850006B61F /* BTService.swift in Sources */,
 				432771B61A8A8BC900F42162 /* AddDoubleCalibrationViewController.swift in Sources */,
 				4324ED8A1A812DDA0002BEE6 /* _BGReading.swift in Sources */,
+				1D4A376C1A92788500F21868 /* ChartViewController.swift in Sources */,
 				43DF0D061A6D96B700686779 /* dxtrDBModel.xcdatamodeld in Sources */,
 				43DF0D081A6D9ADD00686779 /* DxtrModel.swift in Sources */,
 				43D890BC1A891EBA009C9F40 /* B68UIFloatLabelTextField.swift in Sources */,

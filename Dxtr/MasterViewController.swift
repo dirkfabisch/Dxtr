@@ -22,6 +22,7 @@ class MasterViewController: UIViewController, UIAlertViewDelegate {
   @IBOutlet weak var logWindow: UITextView!
   @IBOutlet weak var startSensorActivity: UIActivityIndicatorView!
   @IBOutlet weak var createReadingButton: UIButton!
+  @IBOutlet weak var viewChartButton: UIButton!
   
   // all possible states during start of dxtr
   enum proccessState {
@@ -193,6 +194,9 @@ class MasterViewController: UIViewController, UIAlertViewDelegate {
           self.currentState = .doubleCalibrated
           self.setProcessState()
         }
+      case "viewChartSegue":
+        let chartView = nav.topViewController as ChartViewController
+        chartView.managedObjectContext = managedObjectContext
       default:
         logger.error("wrong segue.identifier \(segue.identifier)")
       }
