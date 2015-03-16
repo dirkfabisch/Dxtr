@@ -1,8 +1,8 @@
 //
-//  DxtrTests.swift
-//  DxtrTests
+//  SensorTests.swift
+//  Dxtr
 //
-//  Created by Dirk on 11/01/15.
+//  Created by Dirk on 16/03/15.
 //  Copyright (c) 2015 Dirk. All rights reserved.
 //
 
@@ -12,8 +12,7 @@ import CoreData
 
 import Dxtr
 
-class DxtrTests: XCTestCase {
-  
+class SensorTests: XCTestCase {
   var moc:NSManagedObjectContext?
   var store:NSPersistentStore?
   
@@ -37,11 +36,17 @@ class DxtrTests: XCTestCase {
   }
   
   /**
-  Check that the setup code is working properly
+  Try to create a working sensor in the past
   */
-  func testThatEnvironmentWorks(){
-    XCTAssertNotNil(moc, "no managed object context")
-    XCTAssertNotNil(store, "no persistent store")
+  func testCreateSensorWithTimeStampInThePast() {
+    var ss = Sensor(managedObjectContext: moc!, timeStamp: NSDate().getTime() - 100000)
+    XCTAssertNotNil(ss, "no Sensor created")
   }
   
+  func testCreateSensorWithTimeStampInTheFuture() {
+    var ss = Sensor(managedObjectContext: moc!, timeStamp: NSDate().getTime() + 100000)
+    XCTAssertNil(ss, "Sensor created in the future")
+  }
+
+
 }

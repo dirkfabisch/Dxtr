@@ -1,0 +1,4 @@
+language: objective-c
+xcode_workspace: Dxtr.xcworkspace
+xcode_scheme: DxtrTests
+xcode_sdk: iphonesimulator
