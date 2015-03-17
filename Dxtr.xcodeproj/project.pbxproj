@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1DD153611A8193CA003E7CFD /* NightscoutUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD153601A8193CA003E7CFD /* NightscoutUploader.swift */; };
-		1DD1536B1A81A3CD003E7CFD /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DD153681A81A38B003E7CFD /* CryptoSwift.framework */; };
 		215C6EE6E3F65D14315957DD /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE74BA18BFC6C534602170C6 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		4300FCD11A82C3DB00CC8CE1 /* default_background.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4300FCD01A82C3DB00CC8CE1 /* default_background.jpeg */; };
 		4300FCD41A82C75E00CC8CE1 /* StartSensorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4300FCD31A82C75E00CC8CE1 /* StartSensorViewController.swift */; };
@@ -23,7 +22,6 @@
 		434534AB1A751E70000D591E /* Calibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434534A51A751E70000D591E /* Calibration.swift */; };
 		434534AC1A751E70000D591E /* Sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434534A61A751E70000D591E /* Sensor.swift */; };
 		435C921C1A6F9C9B00807847 /* TransmitterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435C921A1A6F9C9B00807847 /* TransmitterData.swift */; };
-		438FFC921A7EBD1D0025D655 /* SwiftOverlays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438FFC911A7EBD1D0025D655 /* SwiftOverlays.swift */; };
 		43BBDF9A1A642D850006B61F /* BTDiscovery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BBDF981A642D850006B61F /* BTDiscovery.swift */; };
 		43BBDF9B1A642D850006B61F /* BTService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BBDF991A642D850006B61F /* BTService.swift */; };
 		43BBDF9E1A642DC50006B61F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BBDF9D1A642DC40006B61F /* Constants.swift */; };
@@ -52,8 +50,10 @@
 		43CFB7E71AB73D9F00C70423 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43E5362E1A62CE480037EED0 /* LaunchScreen.xib */; };
 		43CFB7E81AB73DA300C70423 /* default_background.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4300FCD01A82C3DB00CC8CE1 /* default_background.jpeg */; };
 		43CFB7E91AB73DAB00C70423 /* B68UIFloatLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D890BB1A891EBA009C9F40 /* B68UIFloatLabelTextField.swift */; };
-		43CFB7EA1AB73DB400C70423 /* SwiftOverlays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438FFC911A7EBD1D0025D655 /* SwiftOverlays.swift */; };
 		43CFB7F21AB76E5D00C70423 /* SensorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CFB7F11AB76E5D00C70423 /* SensorTests.swift */; };
+		43CFB8131AB8C05300C70423 /* SwiftOverlays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CFB8121AB8C05300C70423 /* SwiftOverlays.swift */; };
+		43CFB8141AB8C05300C70423 /* SwiftOverlays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CFB8121AB8C05300C70423 /* SwiftOverlays.swift */; };
+		43CFB83B1AB8CEDB00C70423 /* XCGLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43CFB80C1AB89B4500C70423 /* XCGLogger.framework */; };
 		43D890BC1A891EBA009C9F40 /* B68UIFloatLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D890BB1A891EBA009C9F40 /* B68UIFloatLabelTextField.swift */; };
 		43D890C31A8921A6009C9F40 /* AddBGReadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D890C21A8921A6009C9F40 /* AddBGReadingViewController.swift */; };
 		43DF0D061A6D96B700686779 /* dxtrDBModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 43DF0D041A6D96B700686779 /* dxtrDBModel.xcdatamodeld */; };
@@ -68,41 +68,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		1DD1534F1A8179D0003E7CFD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 438FFC851A7EBC730025D655 /* XCGLogger.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 55E3EE4519D76F280068C3A7;
-			remoteInfo = "XCGLogger (iOS)";
-		};
-		1DD153511A8179D0003E7CFD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 438FFC851A7EBC730025D655 /* XCGLogger.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 554DF41719D76FE7005708BE;
-			remoteInfo = "XCGLogger (OS X)";
-		};
-		1DD153531A8179D0003E7CFD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 438FFC851A7EBC730025D655 /* XCGLogger.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 55E3EE5019D76F280068C3A7;
-			remoteInfo = XCGLoggerTests;
-		};
-		1DD153671A81A38B003E7CFD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1DD153621A81A38B003E7CFD /* CryptoSwift.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 754BE45519693E190098E6F3;
-			remoteInfo = CryptoSwift;
-		};
-		1DD153691A81A38B003E7CFD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1DD153621A81A38B003E7CFD /* CryptoSwift.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 754BE46019693E190098E6F3;
-			remoteInfo = CryptoSwiftTests;
-		};
 		43CFB8091AB89B4500C70423 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 43CFB8011AB89B4500C70423 /* XCGLogger.xcodeproj */;
@@ -133,23 +98,9 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		43027B151A7EC61500DE47F8 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		0AFAD76CD12C94905DFF9A02 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		1DD153601A8193CA003E7CFD /* NightscoutUploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NightscoutUploader.swift; sourceTree = "<group>"; };
-		1DD153621A81A38B003E7CFD /* CryptoSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CryptoSwift.xcodeproj; path = CryptoSwift/CryptoSwift.xcodeproj; sourceTree = "<group>"; };
 		4300FCD01A82C3DB00CC8CE1 /* default_background.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = default_background.jpeg; sourceTree = "<group>"; };
 		4300FCD31A82C75E00CC8CE1 /* StartSensorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartSensorViewController.swift; sourceTree = "<group>"; };
 		43027B161A7FBD1C00DE47F8 /* TestRawData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestRawData.swift; sourceTree = "<group>"; };
@@ -163,14 +114,13 @@
 		434534A51A751E70000D591E /* Calibration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calibration.swift; sourceTree = "<group>"; };
 		434534A61A751E70000D591E /* Sensor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sensor.swift; sourceTree = "<group>"; };
 		435C921A1A6F9C9B00807847 /* TransmitterData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransmitterData.swift; sourceTree = "<group>"; };
-		438FFC851A7EBC730025D655 /* XCGLogger.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = XCGLogger.xcodeproj; path = "XCGLogger-master/XCGLogger/Library/XCGLogger.xcodeproj"; sourceTree = SOURCE_ROOT; };
-		438FFC911A7EBD1D0025D655 /* SwiftOverlays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftOverlays.swift; path = "SwiftOverlays-master/SwiftOverlays/SwiftOverlays.swift"; sourceTree = SOURCE_ROOT; };
 		43BBDF981A642D850006B61F /* BTDiscovery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTDiscovery.swift; sourceTree = "<group>"; };
 		43BBDF991A642D850006B61F /* BTService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTService.swift; sourceTree = "<group>"; };
 		43BBDF9D1A642DC40006B61F /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		43CFB7F11AB76E5D00C70423 /* SensorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorTests.swift; sourceTree = "<group>"; };
 		43CFB7F81AB7724B00C70423 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
 		43CFB8011AB89B4500C70423 /* XCGLogger.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = XCGLogger.xcodeproj; path = XCGLogger/XCGLogger/Library/XCGLogger.xcodeproj; sourceTree = SOURCE_ROOT; };
+		43CFB8121AB8C05300C70423 /* SwiftOverlays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftOverlays.swift; path = SwiftOverlays/SwiftOverlays/SwiftOverlays.swift; sourceTree = SOURCE_ROOT; };
 		43D890BB1A891EBA009C9F40 /* B68UIFloatLabelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = B68UIFloatLabelTextField.swift; sourceTree = "<group>"; };
 		43D890C21A8921A6009C9F40 /* AddBGReadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBGReadingViewController.swift; sourceTree = "<group>"; };
 		43DF0D051A6D96B700686779 /* dxtrDBModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = dxtrDBModel.xcdatamodel; sourceTree = "<group>"; };
@@ -195,8 +145,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1DD1536B1A81A3CD003E7CFD /* CryptoSwift.framework in Frameworks */,
 				B44A2CAB3799B1C9D5A72105 /* Pods.framework in Frameworks */,
+				43CFB83B1AB8CEDB00C70423 /* XCGLogger.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,25 +161,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1DD1534A1A8179D0003E7CFD /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				1DD153501A8179D0003E7CFD /* XCGLogger.framework */,
-				1DD153521A8179D0003E7CFD /* XCGLogger.framework */,
-				1DD153541A8179D0003E7CFD /* XCGLoggerTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		1DD153631A81A38B003E7CFD /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				1DD153681A81A38B003E7CFD /* CryptoSwift.framework */,
-				1DD1536A1A81A38B003E7CFD /* CryptoSwiftTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		4300FCC61A82935000CC8CE1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -254,9 +185,8 @@
 			isa = PBXGroup;
 			children = (
 				43D890BB1A891EBA009C9F40 /* B68UIFloatLabelTextField.swift */,
-				438FFC911A7EBD1D0025D655 /* SwiftOverlays.swift */,
+				43CFB8121AB8C05300C70423 /* SwiftOverlays.swift */,
 				43CFB8011AB89B4500C70423 /* XCGLogger.xcodeproj */,
-				438FFC851A7EBC730025D655 /* XCGLogger.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -309,7 +239,6 @@
 			isa = PBXGroup;
 			children = (
 				43CFB7F81AB7724B00C70423 /* .travis.yml */,
-				1DD153621A81A38B003E7CFD /* CryptoSwift.xcodeproj */,
 				43E536221A62CE480037EED0 /* Dxtr */,
 				43E536381A62CE480037EED0 /* DxtrTests */,
 				43E536211A62CE480037EED0 /* Products */,
@@ -407,7 +336,6 @@
 				43E5361E1A62CE480037EED0 /* Resources */,
 				6AC7309B179A3963E7ABBDB6 /* Embed Pods Frameworks */,
 				007C32A469EF957452E5B03E /* Copy Pods Resources */,
-				43027B151A7EC61500DE47F8 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -472,14 +400,6 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 1DD153631A81A38B003E7CFD /* Products */;
-					ProjectRef = 1DD153621A81A38B003E7CFD /* CryptoSwift.xcodeproj */;
-				},
-				{
-					ProductGroup = 1DD1534A1A8179D0003E7CFD /* Products */;
-					ProjectRef = 438FFC851A7EBC730025D655 /* XCGLogger.xcodeproj */;
-				},
-				{
 					ProductGroup = 43CFB8021AB89B4500C70423 /* Products */;
 					ProjectRef = 43CFB8011AB89B4500C70423 /* XCGLogger.xcodeproj */;
 				},
@@ -493,41 +413,6 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		1DD153501A8179D0003E7CFD /* XCGLogger.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = XCGLogger.framework;
-			remoteRef = 1DD1534F1A8179D0003E7CFD /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1DD153521A8179D0003E7CFD /* XCGLogger.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = XCGLogger.framework;
-			remoteRef = 1DD153511A8179D0003E7CFD /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1DD153541A8179D0003E7CFD /* XCGLoggerTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = XCGLoggerTests.xctest;
-			remoteRef = 1DD153531A8179D0003E7CFD /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1DD153681A81A38B003E7CFD /* CryptoSwift.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = CryptoSwift.framework;
-			remoteRef = 1DD153671A81A38B003E7CFD /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1DD1536A1A81A38B003E7CFD /* CryptoSwiftTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = CryptoSwiftTests.xctest;
-			remoteRef = 1DD153691A81A38B003E7CFD /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		43CFB80A1AB89B4500C70423 /* XCGLogger.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -716,10 +601,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43CFB8131AB8C05300C70423 /* SwiftOverlays.swift in Sources */,
 				43D890C31A8921A6009C9F40 /* AddBGReadingViewController.swift in Sources */,
 				4324ED8B1A812DDA0002BEE6 /* _Calibration.swift in Sources */,
 				4324ED8C1A812DDA0002BEE6 /* _Sensor.swift in Sources */,
-				438FFC921A7EBD1D0025D655 /* SwiftOverlays.swift in Sources */,
 				43027B171A7FBD1C00DE47F8 /* TestRawData.swift in Sources */,
 				434534AC1A751E70000D591E /* Sensor.swift in Sources */,
 				432771BF1A8AA47D00F42162 /* EulaViewController.swift in Sources */,
@@ -756,6 +641,7 @@
 				43CFB7DA1AB73D7700C70423 /* AddDoubleCalibrationViewController.swift in Sources */,
 				43CFB7D51AB73D6E00C70423 /* BTService.swift in Sources */,
 				43CFB7E31AB73D7D00C70423 /* TransmitterData.swift in Sources */,
+				43CFB8141AB8C05300C70423 /* SwiftOverlays.swift in Sources */,
 				43CFB7DE1AB73D7D00C70423 /* _Sensor.swift in Sources */,
 				43CFB7DD1AB73D7D00C70423 /* _Calibration.swift in Sources */,
 				43CFB7D41AB73D6A00C70423 /* BTDiscovery.swift in Sources */,
@@ -768,7 +654,6 @@
 				43CFB7E91AB73DAB00C70423 /* B68UIFloatLabelTextField.swift in Sources */,
 				43CFB7DF1AB73D7D00C70423 /* _TransmitterData.swift in Sources */,
 				43CFB7D61AB73D7200C70423 /* NightscoutUploader.swift in Sources */,
-				43CFB7EA1AB73DB400C70423 /* SwiftOverlays.swift in Sources */,
 				43CFB7E51AB73D9300C70423 /* DxtrModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -888,7 +773,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Dxtr/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -904,7 +788,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Dxtr/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
