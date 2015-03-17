@@ -103,6 +103,27 @@
 			remoteGlobalIDString = 754BE46019693E190098E6F3;
 			remoteInfo = CryptoSwiftTests;
 		};
+		43CFB8091AB89B4500C70423 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 43CFB8011AB89B4500C70423 /* XCGLogger.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 55E3EE4519D76F280068C3A7;
+			remoteInfo = "XCGLogger (iOS)";
+		};
+		43CFB80B1AB89B4500C70423 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 43CFB8011AB89B4500C70423 /* XCGLogger.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 554DF41719D76FE7005708BE;
+			remoteInfo = "XCGLogger (OS X)";
+		};
+		43CFB80D1AB89B4500C70423 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 43CFB8011AB89B4500C70423 /* XCGLogger.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 55E3EE5019D76F280068C3A7;
+			remoteInfo = XCGLoggerTests;
+		};
 		43E536361A62CE480037EED0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 43E536181A62CE480037EED0 /* Project object */;
@@ -149,6 +170,7 @@
 		43BBDF9D1A642DC40006B61F /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		43CFB7F11AB76E5D00C70423 /* SensorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorTests.swift; sourceTree = "<group>"; };
 		43CFB7F81AB7724B00C70423 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
+		43CFB8011AB89B4500C70423 /* XCGLogger.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = XCGLogger.xcodeproj; path = XCGLogger/XCGLogger/Library/XCGLogger.xcodeproj; sourceTree = SOURCE_ROOT; };
 		43D890BB1A891EBA009C9F40 /* B68UIFloatLabelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = B68UIFloatLabelTextField.swift; sourceTree = "<group>"; };
 		43D890C21A8921A6009C9F40 /* AddBGReadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBGReadingViewController.swift; sourceTree = "<group>"; };
 		43DF0D051A6D96B700686779 /* dxtrDBModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = dxtrDBModel.xcdatamodel; sourceTree = "<group>"; };
@@ -233,6 +255,7 @@
 			children = (
 				43D890BB1A891EBA009C9F40 /* B68UIFloatLabelTextField.swift */,
 				438FFC911A7EBD1D0025D655 /* SwiftOverlays.swift */,
+				43CFB8011AB89B4500C70423 /* XCGLogger.xcodeproj */,
 				438FFC851A7EBC730025D655 /* XCGLogger.xcodeproj */,
 			);
 			name = Libraries;
@@ -260,6 +283,16 @@
 				43BBDF991A642D850006B61F /* BTService.swift */,
 			);
 			name = BluetoothStack;
+			sourceTree = "<group>";
+		};
+		43CFB8021AB89B4500C70423 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				43CFB80A1AB89B4500C70423 /* XCGLogger.framework */,
+				43CFB80C1AB89B4500C70423 /* XCGLogger.framework */,
+				43CFB80E1AB89B4500C70423 /* XCGLoggerTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		43DF0D011A6D969600686779 /* Model */ = {
@@ -446,6 +479,10 @@
 					ProductGroup = 1DD1534A1A8179D0003E7CFD /* Products */;
 					ProjectRef = 438FFC851A7EBC730025D655 /* XCGLogger.xcodeproj */;
 				},
+				{
+					ProductGroup = 43CFB8021AB89B4500C70423 /* Products */;
+					ProjectRef = 43CFB8011AB89B4500C70423 /* XCGLogger.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -489,6 +526,27 @@
 			fileType = wrapper.cfbundle;
 			path = CryptoSwiftTests.xctest;
 			remoteRef = 1DD153691A81A38B003E7CFD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		43CFB80A1AB89B4500C70423 /* XCGLogger.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = XCGLogger.framework;
+			remoteRef = 43CFB8091AB89B4500C70423 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		43CFB80C1AB89B4500C70423 /* XCGLogger.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = XCGLogger.framework;
+			remoteRef = 43CFB80B1AB89B4500C70423 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		43CFB80E1AB89B4500C70423 /* XCGLoggerTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = XCGLoggerTests.xctest;
+			remoteRef = 43CFB80D1AB89B4500C70423 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
