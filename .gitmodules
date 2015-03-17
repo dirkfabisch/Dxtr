@@ -4,3 +4,9 @@
 [submodule "B68FloatingLabelTextField"]
 	path = B68FloatingLabelTextField
 	url = https://github.com/dirkfabisch/B68FloatingLabelTextField.git
+[submodule "XCGLogger-master"]
+	path = XCGLogger-master
+	url = https://github.com/DaveWoodCom/XCGLogger.git
+[submodule "XCGLogger"]
+	path = XCGLogger
+	url = https://github.com/DaveWoodCom/XCGLogger.git
