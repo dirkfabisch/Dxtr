@@ -4,3 +4,5 @@ xcode_scheme: Dxtr
 xcode_sdk: iphonesimulator
 before_install:
   - gem install cocoapods -v '0.36.0'
+  - brew update
+  - brew install mogenerator
