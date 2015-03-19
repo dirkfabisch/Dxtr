@@ -12,6 +12,7 @@
 		4300FCD11A82C3DB00CC8CE1 /* default_background.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4300FCD01A82C3DB00CC8CE1 /* default_background.jpeg */; };
 		4300FCD41A82C75E00CC8CE1 /* StartSensorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4300FCD31A82C75E00CC8CE1 /* StartSensorViewController.swift */; };
 		43027B171A7FBD1C00DE47F8 /* TestRawData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43027B161A7FBD1C00DE47F8 /* TestRawData.swift */; };
+		4315982D1ABAF81A00EC13CD /* XCGLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43CFB80A1AB89B4500C70423 /* XCGLogger.framework */; };
 		4324ED8A1A812DDA0002BEE6 /* _BGReading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4324ED861A812DDA0002BEE6 /* _BGReading.swift */; };
 		4324ED8B1A812DDA0002BEE6 /* _Calibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4324ED871A812DDA0002BEE6 /* _Calibration.swift */; };
 		4324ED8C1A812DDA0002BEE6 /* _Sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4324ED881A812DDA0002BEE6 /* _Sensor.swift */; };
@@ -53,7 +54,6 @@
 		43CFB7F21AB76E5D00C70423 /* SensorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CFB7F11AB76E5D00C70423 /* SensorTests.swift */; };
 		43CFB8131AB8C05300C70423 /* SwiftOverlays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CFB8121AB8C05300C70423 /* SwiftOverlays.swift */; };
 		43CFB8141AB8C05300C70423 /* SwiftOverlays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CFB8121AB8C05300C70423 /* SwiftOverlays.swift */; };
-		43CFB83B1AB8CEDB00C70423 /* XCGLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43CFB80C1AB89B4500C70423 /* XCGLogger.framework */; };
 		43D890BC1A891EBA009C9F40 /* B68UIFloatLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D890BB1A891EBA009C9F40 /* B68UIFloatLabelTextField.swift */; };
 		43D890C31A8921A6009C9F40 /* AddBGReadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D890C21A8921A6009C9F40 /* AddBGReadingViewController.swift */; };
 		43DF0D061A6D96B700686779 /* dxtrDBModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 43DF0D041A6D96B700686779 /* dxtrDBModel.xcdatamodeld */; };
@@ -145,8 +145,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4315982D1ABAF81A00EC13CD /* XCGLogger.framework in Frameworks */,
 				B44A2CAB3799B1C9D5A72105 /* Pods.framework in Frameworks */,
-				43CFB83B1AB8CEDB00C70423 /* XCGLogger.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
