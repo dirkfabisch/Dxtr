@@ -6,3 +6,5 @@ before_install:
   - gem install cocoapods -v '0.36.0'
   - brew update
   - brew install mogenerator
+  - git clone https://github.com/QueryKit/mogenerator-template ~/.querykit-mogenerator-template
+  
