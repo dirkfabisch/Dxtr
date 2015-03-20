@@ -37,10 +37,12 @@ class NightscoutUploader: NSObject {
             println(JSON)
             reading.synced = NSNumber(bool: true)
             DxtrModel.sharedInstance.saveContext()
+            NSNotificationCenter.defaultCenter().postNotificationName(NightscoutUploadSuccessNotification, object: self, userInfo: ["entity": reading])
           } else {
             logger.error("Error uploading reading: \(error)")
             FailedUpload(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!, managedObject: reading, type: UploadType.Reading)
             DxtrModel.sharedInstance.saveContext()
+            NSNotificationCenter.defaultCenter().postNotificationName(NightscoutUploadErrorNotification, object: self, userInfo: ["error": error!])
           }
         }
     }
@@ -54,10 +56,12 @@ class NightscoutUploader: NSObject {
           if error == nil {
             println(response)
             println(JSON)
+            NSNotificationCenter.defaultCenter().postNotificationName(NightscoutUploadSuccessNotification, object: self, userInfo: ["entity": calibrationRecord])
           } else {
             logger.error("Error uploading calibration record: \(error)")
             FailedUpload(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!, managedObject: calibrationRecord, type: UploadType.CalibrationRecord)
             DxtrModel.sharedInstance.saveContext()
+            NSNotificationCenter.defaultCenter().postNotificationName(NightscoutUploadErrorNotification, object: self, userInfo: ["error": error!])
           }
         }
     }
@@ -71,10 +75,12 @@ class NightscoutUploader: NSObject {
           if error == nil {
             println(response)
             println(JSON)
+            NSNotificationCenter.defaultCenter().postNotificationName(NightscoutUploadSuccessNotification, object: self, userInfo: ["entity": meterRecord])
           } else {
             logger.error("Error uploading meter record: \(error)")
             FailedUpload(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!, managedObject: meterRecord, type: UploadType.MeterRecord)
             DxtrModel.sharedInstance.saveContext()
+            NSNotificationCenter.defaultCenter().postNotificationName(NightscoutUploadErrorNotification, object: self, userInfo: ["error": error!])
           }
         }
     }

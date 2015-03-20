@@ -63,9 +63,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       //      var testData = TestRawData()
       //  testData.createTestRawData(managedObjectContext!)
       
-//      NightscoutUploader.sharedInstance.uploadReading(bg1)
-//      NightscoutUploader.sharedInstance.uploadReading(bg2)
-
       #else
       logger.verbose("Running on Device")
     #endif

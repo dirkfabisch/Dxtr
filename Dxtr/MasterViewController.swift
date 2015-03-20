@@ -55,6 +55,10 @@ class MasterViewController: UIViewController, UIAlertViewDelegate, DxtrModelDele
     // Watch Scanning
     NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("btScanning:"), name: BLEDiscoveryScanningNotification, object: nil)
     
+    // Nightscout upload status
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("nightscoutStatus:"), name: NightscoutUploadSuccessNotification, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("nightscoutStatus:"), name: NightscoutUploadErrorNotification, object: nil)
+    
     setProcessState()
   
     logWindow.text = ""
@@ -341,6 +345,30 @@ class MasterViewController: UIViewController, UIAlertViewDelegate, DxtrModelDele
         }
       }
     })
+  }
+  
+  func nightscoutStatus(notification: NSNotification) {
+    if notification.name == NightscoutUploadSuccessNotification {
+      let userInfo = notification.userInfo as [String: AnyObject]
+      if let entity: AnyObject = userInfo["entity"] {
+        if let reading = entity as? BGReading {
+          dispatch_async(dispatch_get_main_queue(), {
+            self.writeDisplayLog("Uploaded reading to Nightscout")
+          })
+        } else if let calibration = entity as? Calibration {
+          dispatch_async(dispatch_get_main_queue(), {
+            self.writeDisplayLog("Uploaded calibration to Nightscout")
+          })
+        }
+      }
+    } else if notification.name == NightscoutUploadErrorNotification {
+      let userInfo = notification.userInfo as [String: NSError]
+      if let error: NSError = userInfo["error"] {
+        dispatch_async(dispatch_get_main_queue(), {
+          self.writeDisplayLog("Error uploading to Nightscout: \(error)")
+        })
+      }
+    }
   }
   
   private func writeDisplayLog(message: String) {

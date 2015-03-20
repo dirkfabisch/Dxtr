@@ -21,6 +21,8 @@ let BLEServiceChangedStatusNotification = "kBLEServiceChangedStatusNotification"
 let BLEDiscoveryScanningNotification = "kBLEDiscoveryScanningNotification"
 // Notification Send if new Value comes from the transmitter
 let TDNewValueNotification = "kTDNewValueNotification"
+let NightscoutUploadSuccessNotification = "kNightscoutUploadSuccessNotification"
+let NightscoutUploadErrorNotification = "kNightscoutUploadErrorNotification"
 
 // Define logging instance
 let logger = XCGLogger.defaultInstance()

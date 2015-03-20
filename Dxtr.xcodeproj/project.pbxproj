@@ -47,6 +47,7 @@
 		43E536301A62CE480037EED0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43E5362E1A62CE480037EED0 /* LaunchScreen.xib */; };
 		43E5363C1A62CE480037EED0 /* DxtrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E5363B1A62CE480037EED0 /* DxtrTests.swift */; };
 		B44A2CAB3799B1C9D5A72105 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE74BA18BFC6C534602170C6 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		F5FC0E61E86CAA2CDCA57253 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE74BA18BFC6C534602170C6 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -172,6 +173,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5FC0E61E86CAA2CDCA57253 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,9 +396,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 43E536421A62CE480037EED0 /* Build configuration list for PBXNativeTarget "DxtrTests" */;
 			buildPhases = (
+				E7E5F0BDDB2C17FBAE1D8B65 /* Check Pods Manifest.lock */,
 				43E536311A62CE480037EED0 /* Sources */,
 				43E536321A62CE480037EED0 /* Frameworks */,
 				43E536331A62CE480037EED0 /* Resources */,
+				C3D4796FD71CC941978579A7 /* Embed Pods Frameworks */,
+				038E945C3D2D2AA820A21AFC /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -419,11 +424,11 @@
 				TargetAttributes = {
 					43E5361F1A62CE480037EED0 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = YV6CG57Z4A;
+						DevelopmentTeam = L57T999M9X;
 					};
 					43E536341A62CE480037EED0 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = YV6CG57Z4A;
+						DevelopmentTeam = L57T999M9X;
 						TestTargetID = 43E5361F1A62CE480037EED0;
 					};
 				};
@@ -538,6 +543,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		038E945C3D2D2AA820A21AFC /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		2F57E84C083ED5172E7329EF /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -608,6 +628,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C3D4796FD71CC941978579A7 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E7E5F0BDDB2C17FBAE1D8B65 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -769,7 +819,7 @@
 			baseConfigurationReference = 57DC9078F7D8977543930054 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iOS Development: Rick Friele (27AN9EGDF9)";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Dxtr/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
@@ -785,7 +835,7 @@
 			baseConfigurationReference = 0AFAD76CD12C94905DFF9A02 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iOS Distribution: Rick Friele";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Dxtr/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
@@ -796,6 +846,7 @@
 		};
 		43E536431A62CE480037EED0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 57DC9078F7D8977543930054 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -815,6 +866,7 @@
 		};
 		43E536441A62CE480037EED0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0AFAD76CD12C94905DFF9A02 /* Pods.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (

@@ -65,7 +65,11 @@ class DxtrModel : NSObject 	 {
     // extract transmitter object
     let td = notification.object as TransmitterData
     // create new BG Reading
-    BGReading(managedObjectContext: managedObjectContext!, timeStamp: td.timeStamp!.doubleValue, rawData: td.rawData!.doubleValue)
+    let reading = BGReading(managedObjectContext: managedObjectContext!, timeStamp: td.timeStamp!.doubleValue, rawData: td.rawData!.doubleValue)
+    DxtrModel.sharedInstance.saveContext()
+    
+    // Upload to Nightscout
+    NightscoutUploader.sharedInstance.uploadReading(reading)
   }
   
 }
