@@ -37,7 +37,7 @@ class NightscoutUploader: NSObject {
             println(JSON)
             reading.synced = NSNumber(bool: true)
             DxtrModel.sharedInstance.saveContext()
-            NSNotificationCenter.defaultCenter().postNotificationName(NightscoutUploadSuccessNotification, object: self, userInfo: ["entity": reading])
+            NSNotificationCenter.defaultCenter().postNotificationName(NightscoutUploadSuccessNotification, object: self, userInfo: ["entity": reading, "payload": data])
           } else {
             logger.error("Error uploading reading: \(error)")
             FailedUpload(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!, managedObject: reading, type: UploadType.Reading)
@@ -56,7 +56,7 @@ class NightscoutUploader: NSObject {
           if error == nil {
             println(response)
             println(JSON)
-            NSNotificationCenter.defaultCenter().postNotificationName(NightscoutUploadSuccessNotification, object: self, userInfo: ["entity": calibrationRecord])
+            NSNotificationCenter.defaultCenter().postNotificationName(NightscoutUploadSuccessNotification, object: self, userInfo: ["entity": calibrationRecord, "payload": data])
           } else {
             logger.error("Error uploading calibration record: \(error)")
             FailedUpload(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!, managedObject: calibrationRecord, type: UploadType.CalibrationRecord)
@@ -75,7 +75,7 @@ class NightscoutUploader: NSObject {
           if error == nil {
             println(response)
             println(JSON)
-            NSNotificationCenter.defaultCenter().postNotificationName(NightscoutUploadSuccessNotification, object: self, userInfo: ["entity": meterRecord])
+            NSNotificationCenter.defaultCenter().postNotificationName(NightscoutUploadSuccessNotification, object: self, userInfo: ["entity": meterRecord, "payload": data])
           } else {
             logger.error("Error uploading meter record: \(error)")
             FailedUpload(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!, managedObject: meterRecord, type: UploadType.MeterRecord)
@@ -89,7 +89,6 @@ class NightscoutUploader: NSObject {
   // TODO: Pass device status
   func uploadDeviceStatus() {
     if NightscoutUploader.canUpload() {
-      let data = 
       Alamofire.request(Router.DeviceStatus(deviceStatusAsDictionary()))
         .responseJSON { (request, response, JSON, error) in
           if error == nil {
@@ -194,8 +193,8 @@ class NightscoutUploader: NSObject {
     dictionary["device"] = "dexcom"
     if let timeStamp = reading.timeStamp {
       dictionary["date"] = timeStamp
-      let timeStampDate = NSDate(timeIntervalSince1970: (timeStamp.doubleValue * 1000))
-      dictionary["dateString"] = dateFormatter().stringFromDate(timeStampDate)
+      //let timeStampDate = NSDate(timeIntervalSince1970: (timeStamp.doubleValue * 1000))
+      //dictionary["dateString"] = dateFormatter().stringFromDate(timeStampDate)
     }
     if let calculatedValue = reading.calculatedValue {
       dictionary["sgv"] = calculatedValue
@@ -216,8 +215,8 @@ class NightscoutUploader: NSObject {
     dictionary["type"] = "cal"
     if let timeStamp = calibrationRecord.timeStamp {
       dictionary["date"] = timeStamp
-      let timeStampDate = NSDate(timeIntervalSince1970: (timeStamp.doubleValue * 1000))
-      dictionary["dateString"] = dateFormatter().stringFromDate(timeStampDate)
+//      let timeStampDate = NSDate(timeIntervalSince1970: (timeStamp.doubleValue * 1000))
+//      dictionary["dateString"] = dateFormatter().stringFromDate(timeStampDate)
     }
     if let slope = calibrationRecord.slope {
       dictionary["slope"] = slope
@@ -235,8 +234,8 @@ class NightscoutUploader: NSObject {
     dictionary["type"] = "mbg"
     if let timeStamp = meterRecord.timeStamp {
       dictionary["date"] = timeStamp
-      let timeStampDate = NSDate(timeIntervalSince1970: (timeStamp.doubleValue * 1000))
-      dictionary["dateString"] = dateFormatter().stringFromDate(timeStampDate)
+//      let timeStampDate = NSDate(timeIntervalSince1970: (timeStamp.doubleValue * 1000))
+//      dictionary["dateString"] = dateFormatter().stringFromDate(timeStampDate)
     }
     if let bg = meterRecord.bg {
       dictionary["mbg"] = bg

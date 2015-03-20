@@ -353,11 +353,19 @@ class MasterViewController: UIViewController, UIAlertViewDelegate, DxtrModelDele
       if let entity: AnyObject = userInfo["entity"] {
         if let reading = entity as? BGReading {
           dispatch_async(dispatch_get_main_queue(), {
-            self.writeDisplayLog("Uploaded reading to Nightscout")
+            var message = NSDate().description + ": Uploaded reading to Nightscout"
+            if let payload: AnyObject = userInfo["payload"] {
+              message += ": \(payload)"
+            }
+            self.writeDisplayLog(message)
           })
         } else if let calibration = entity as? Calibration {
           dispatch_async(dispatch_get_main_queue(), {
-            self.writeDisplayLog("Uploaded calibration to Nightscout")
+            var message = NSDate().description + ": Uploaded calibration to Nightscout"
+            if let payload: AnyObject = userInfo["payload"] {
+              message += ": \(payload)"
+            }
+            self.writeDisplayLog(message)
           })
         }
       }
