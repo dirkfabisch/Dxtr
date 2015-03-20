@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class MasterViewController: UIViewController, UIAlertViewDelegate {
+class MasterViewController: UIViewController, UIAlertViewDelegate, DxtrModelDelegate {
   
   // set by AppDelegate on application startup
   var managedObjectContext: NSManagedObjectContext?
@@ -56,17 +56,38 @@ class MasterViewController: UIViewController, UIAlertViewDelegate {
     NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("btScanning:"), name: BLEDiscoveryScanningNotification, object: nil)
     
     setProcessState()
-    
+  
     logWindow.text = ""
     startSensorActivity.stopAnimating()
+  
+    // assign delegate
+    var dxtrModel = DxtrModel.sharedInstance
+    dxtrModel.delegate = self
     
     // Start the Bluetooth discovery process
     btDiscoverySharedInstance
+  
+  }
+  
+  override func viewDidAppear(animated: Bool) {
+    super.viewDidAppear(animated)
+
+    // check if EULA is accepted
+    let defaults = NSUserDefaults.standardUserDefaults()
+    if !defaults.boolForKey(USER_SETTING_EULA_CHECKED) {
+      // present EULA
+      performSegueWithIdentifier("eulaSegue", sender: self)
+    }
   }
   
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
+  }
+  
+  //MARK: - DxtrModelDelegate implementation
+  func modelChanged() {
+    logger.verbose("Model Changed")
   }
   
   /**
@@ -197,11 +218,21 @@ class MasterViewController: UIViewController, UIAlertViewDelegate {
       case "viewChartSegue":
         let chartView = nav.topViewController as ChartViewController
         chartView.managedObjectContext = managedObjectContext
+      case "eulaSegue":
+        let eulaView = nav.topViewController as EulaViewController
+        eulaView.managedObjectContext = managedObjectContext
+        eulaView.didFinish = { cont in
+          let loc_nav = self.navigationController!
+          loc_nav.popViewControllerAnimated(true)
+          self.writeDisplayLog("EULA Accepted")
+        }
       default:
         logger.error("wrong segue.identifier \(segue.identifier)")
       }
   }
 
+  
+  //MARK: Sensor handling
   
   func sensorWarmup() {
     var sensor = Sensor.currentSensor(managedObjectContext!)

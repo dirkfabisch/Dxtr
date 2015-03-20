@@ -80,9 +80,10 @@ class AddDoubleCalibrationViewController : UIViewController, UITextFieldDelegate
   
   // "Done" action notifies "Finish" delegate
   @IBAction func done(sender: AnyObject) {
-    // Create a new Sensor object and start the sensor
-    var sensDate = datePicker.date
-    Sensor(managedObjectContext: managedObjectContext!, timeStamp: sensDate.getTime())
+    // Create two calibrations
+    var cDate = datePicker.date
+    Calibration(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!, newBG: (firstBGReadingTextField.text as NSString).doubleValue, timeStamp: cDate.getTime())
+    Calibration(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!, newBG: (secondBGReadingTextField.text as NSString).doubleValue, timeStamp: cDate.getTime())
     DxtrModel.sharedInstance.saveContext()
     // notify delegate (master list scene view controller)
     self.didFinish!(self)

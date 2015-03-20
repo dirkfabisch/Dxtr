@@ -20,7 +20,7 @@ let BLEServiceUUID = CBUUID(string: "0000ffe0-0000-1000-8000-00805f9b34fb")
 let BLEServiceChangedStatusNotification = "kBLEServiceChangedStatusNotification"
 let BLEDiscoveryScanningNotification = "kBLEDiscoveryScanningNotification"
 // Notification Send if new Value comes from the transmitter
-let TDNewValueNotificcation = "kTDNewValueNotificcation"
+let TDNewValueNotification = "kTDNewValueNotification"
 
 // Define logging instance
 let logger = XCGLogger.defaultInstance()
@@ -45,6 +45,13 @@ let NIGHTSCOUT_UPLOAD_ENABLED_PREFERENCE = "nightscout_upload_enabled"
 let NIGHTSCOUT_URL_PREFERENCE = "nightscout_url"
 let NIGHTSCOUT_API_SECRET_PREFERENCE = "nightscout_api_secret"
 let NIGHTSCOUT_API_SECRET_MIN_LENGTH = 12
+
+
+//User Settings Constants
+let USER_SETTING_EULA_CHECKED = "USER_SETTING_EULA_CHECKED"
+
+
+
 
 // extension  for handling time in the same way than android 
 // avoids confusion in calculation with time and values

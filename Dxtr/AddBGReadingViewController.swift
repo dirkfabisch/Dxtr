@@ -77,8 +77,10 @@ class AddBGReadingViewController : UIViewController, UITextFieldDelegate {
   // "Done" action notifies "Finish" delegate
   @IBAction func done(sender: AnyObject) {
     // Create a new Sensor object and start the sensor
-    var sensDate = datePicker.date
-    Sensor(managedObjectContext: managedObjectContext!, timeStamp: sensDate.getTime())
+    let date = datePicker.date
+    var td = TransmitterData(managedObjectContext: managedObjectContext!, timeStamp: date.getTime())
+    td.rawData = (bgReadingTextField.text as NSString).doubleValue
+    td.sendTDNewValueNotificcation()
     DxtrModel.sharedInstance.saveContext()
     // notify delegate (master list scene view controller)
     self.didFinish!(self)
