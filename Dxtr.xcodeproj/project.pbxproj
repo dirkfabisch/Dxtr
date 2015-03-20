@@ -17,8 +17,11 @@
 		1D4A377E1A9528C300F21868 /* chart.css in Resources */ = {isa = PBXBuildFile; fileRef = 1D4A377B1A9528C300F21868 /* chart.css */; };
 		1D4A37811A95295C00F21868 /* chart.html in Resources */ = {isa = PBXBuildFile; fileRef = 1D4A377F1A95295C00F21868 /* chart.html */; };
 		1D4A37821A95295C00F21868 /* client.js in Resources */ = {isa = PBXBuildFile; fileRef = 1D4A37801A95295C00F21868 /* client.js */; };
+		1D88340F1AAD4F1E00DA685B /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DD153681A81A38B003E7CFD /* CryptoSwift.framework */; };
+		1D8834101AAD4F1E00DA685B /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1DD153681A81A38B003E7CFD /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1D8834141AAD4F5B00DA685B /* XCGLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DD153501A8179D0003E7CFD /* XCGLogger.framework */; };
+		1D8834151AAD4F5B00DA685B /* XCGLogger.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1DD153501A8179D0003E7CFD /* XCGLogger.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1DD153611A8193CA003E7CFD /* NightscoutUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD153601A8193CA003E7CFD /* NightscoutUploader.swift */; };
-		1DD1536B1A81A3CD003E7CFD /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DD153681A81A38B003E7CFD /* CryptoSwift.framework */; };
 		4300FCD11A82C3DB00CC8CE1 /* default_background.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4300FCD01A82C3DB00CC8CE1 /* default_background.jpeg */; };
 		4300FCD41A82C75E00CC8CE1 /* StartSensorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4300FCD31A82C75E00CC8CE1 /* StartSensorViewController.swift */; };
 		43027B171A7FBD1C00DE47F8 /* TestRawData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43027B161A7FBD1C00DE47F8 /* TestRawData.swift */; };
@@ -50,6 +53,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		1D8834111AAD4F1E00DA685B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1DD153621A81A38B003E7CFD /* CryptoSwift.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 754BE45419693E190098E6F3;
+			remoteInfo = CryptoSwift;
+		};
+		1D8834161AAD4F5B00DA685B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 438FFC851A7EBC730025D655 /* XCGLogger.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 55E3EE4419D76F280068C3A7;
+			remoteInfo = "XCGLogger (iOS)";
+		};
 		1DD1534F1A8179D0003E7CFD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 438FFC851A7EBC730025D655 /* XCGLogger.xcodeproj */;
@@ -95,12 +112,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		43027B151A7EC61500DE47F8 /* Embed Frameworks */ = {
+		1D8834131AAD4F1E00DA685B /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				1D8834101AAD4F1E00DA685B /* CryptoSwift.framework in Embed Frameworks */,
+				1D8834151AAD4F5B00DA685B /* XCGLogger.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -163,8 +182,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1DD1536B1A81A3CD003E7CFD /* CryptoSwift.framework in Frameworks */,
 				B44A2CAB3799B1C9D5A72105 /* Pods.framework in Frameworks */,
+				1D88340F1AAD4F1E00DA685B /* CryptoSwift.framework in Frameworks */,
+				1D8834141AAD4F5B00DA685B /* XCGLogger.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,11 +399,13 @@
 				43E5361E1A62CE480037EED0 /* Resources */,
 				6AC7309B179A3963E7ABBDB6 /* Embed Pods Frameworks */,
 				007C32A469EF957452E5B03E /* Copy Pods Resources */,
-				43027B151A7EC61500DE47F8 /* Embed Frameworks */,
+				1D8834131AAD4F1E00DA685B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				1D8834121AAD4F1E00DA685B /* PBXTargetDependency */,
+				1D8834171AAD4F5B00DA685B /* PBXTargetDependency */,
 			);
 			name = Dxtr;
 			productName = Dxtr;
@@ -419,11 +441,11 @@
 				TargetAttributes = {
 					43E5361F1A62CE480037EED0 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = YV6CG57Z4A;
+						DevelopmentTeam = L57T999M9X;
 					};
 					43E536341A62CE480037EED0 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = YV6CG57Z4A;
+						DevelopmentTeam = L57T999M9X;
 						TestTargetID = 43E5361F1A62CE480037EED0;
 					};
 				};
@@ -658,6 +680,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		1D8834121AAD4F1E00DA685B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CryptoSwift;
+			targetProxy = 1D8834111AAD4F1E00DA685B /* PBXContainerItemProxy */;
+		};
+		1D8834171AAD4F5B00DA685B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "XCGLogger (iOS)";
+			targetProxy = 1D8834161AAD4F5B00DA685B /* PBXContainerItemProxy */;
+		};
 		43E536371A62CE480037EED0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 43E5361F1A62CE480037EED0 /* Dxtr */;
@@ -769,7 +801,7 @@
 			baseConfigurationReference = 57DC9078F7D8977543930054 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iOS Development: Rick Friele (27AN9EGDF9)";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Dxtr/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
@@ -785,7 +817,7 @@
 			baseConfigurationReference = 0AFAD76CD12C94905DFF9A02 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iOS Distribution: Rick Friele";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Dxtr/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
