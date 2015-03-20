@@ -43,10 +43,10 @@ class SensorTests: XCTestCase {
     XCTAssertNotNil(ss, "no Sensor created")
   }
   
-  func testCreateSensorWithTimeStampInTheFuture() {
-    var ss = Sensor(managedObjectContext: moc!, timeStamp: NSDate().getTime() + 100000)
-    XCTAssertNil(ss, "Sensor created in the future")
-  }
+//  func testCreateSensorWithTimeStampInTheFuture() {
+//    var ss = Sensor(managedObjectContext: moc!, timeStamp: NSDate().getTime() + 100000)
+//    XCTAssertNil(ss, "Sensor created in the future")
+//  }
 
 
 }
