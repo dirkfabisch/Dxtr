@@ -193,13 +193,11 @@ class NightscoutUploader: NSObject {
     dictionary["device"] = "dexcom"
     if let timeStamp = reading.timeStamp {
       dictionary["date"] = timeStamp
-      //let timeStampDate = NSDate(timeIntervalSince1970: (timeStamp.doubleValue * 1000))
-      //dictionary["dateString"] = dateFormatter().stringFromDate(timeStampDate)
     }
     if let calculatedValue = reading.calculatedValue {
       dictionary["sgv"] = calculatedValue
     }
-    // TODO: dictionary["direction"] = reading.slopeName when it's added
+    dictionary["direction"] = reading.slopeName()
     if let ageAdjustedRawValue = reading.ageAdjustedRawValue {
       dictionary["filtered"] = ageAdjustedRawValue // change to filtered when we start storing it
       dictionary["unfiltered"] = ageAdjustedRawValue
@@ -215,8 +213,6 @@ class NightscoutUploader: NSObject {
     dictionary["type"] = "cal"
     if let timeStamp = calibrationRecord.timeStamp {
       dictionary["date"] = timeStamp
-//      let timeStampDate = NSDate(timeIntervalSince1970: (timeStamp.doubleValue * 1000))
-//      dictionary["dateString"] = dateFormatter().stringFromDate(timeStampDate)
     }
     if let slope = calibrationRecord.slope {
       dictionary["slope"] = slope

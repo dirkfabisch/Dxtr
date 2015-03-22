@@ -34,12 +34,12 @@ class MasterViewController: UIViewController, UIAlertViewDelegate, DxtrModelDele
     case waitingCalibration
     case doubleCalibrated
     case readingLoop
-    case disconected
+    case disconnected
   }
   
   // initial state of the views
   var currentState : proccessState = .sensorStopped
-  // saved state if wixel is disconected
+  // saved state if wixel is disconnected
   var savedState : proccessState = .sensorStopped
   
   // Counter for Sensor Warmup (2h == 7200 seconds
@@ -147,7 +147,7 @@ class MasterViewController: UIViewController, UIAlertViewDelegate, DxtrModelDele
       addDoubleCalibrationButton.enabled = false
       addCalibration.enabled = false
       createReadingButton.enabled = true
-    case .disconected:
+    case .disconnected:
       startSensorButton.enabled = false
       stopSensorButton.enabled = false
       addDoubleCalibrationButton.enabled = false
@@ -313,11 +313,11 @@ class MasterViewController: UIViewController, UIAlertViewDelegate, DxtrModelDele
           notification.alertBody = "Wixel Connected"
           self.currentState = self.savedState
         } else {
-          self.btConnectionState.text = "disconected"
+          self.btConnectionState.text = "Disconnected"
           self.showWaitOverlayWithText("Connecting")
           notification.alertBody = "Wixel Disconnected"
           self.savedState = self.currentState
-          self.currentState = .disconected
+          self.currentState = .disconnected
         }
         UIApplication.sharedApplication().presentLocalNotificationNow(notification)
         self.setProcessState()
