@@ -17,11 +17,6 @@ DerivedData
 *.ipa
 *.xcuserstate
 
-# Dependencies
-SwiftOverlays-master/
-XCGLogger-master/
-SwiftOverlays/
-XCGLogger/
 # CocoaPods
 #
 # We recommend against adding the Pods directory to your .gitignore. However
