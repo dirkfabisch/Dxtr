@@ -282,7 +282,7 @@ class MasterViewController: UIViewController, UIAlertViewDelegate, DxtrModelDele
   func alertView(alertView: UIAlertView, didDismissWithButtonIndex buttonIndex: Int) {
     if buttonIndex == 1 {
       if let currentSensor = Sensor.currentSensor(self.managedObjectContext!) {
-        Sensor.stopSensor(currentSensor)
+        currentSensor.stopSensor()
         DxtrModel.sharedInstance.saveContext()
         startSensorActivity.stopAnimating()
         startSensorActivity.stopAnimating()

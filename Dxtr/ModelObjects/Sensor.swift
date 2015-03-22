@@ -17,7 +17,7 @@ class Sensor: _Sensor {
     
     // check if an sensor is active an stop sensor.
     if let cSensor = Sensor.currentSensor(managedObjectContext) {
-      Sensor.stopSensor(cSensor)
+      cSensor.stopSensor()
     }
     sensorStarted = round(timeStamp) // make sure we get only defined timestamps
     uuid = NSUUID().UUIDString
@@ -34,18 +34,25 @@ class Sensor: _Sensor {
     return nil
   }
   
+  /// Stops the sensor
+  func stopSensor() {
+    self.sensorStopped = round(NSDate().getTime())
+  }
+
+  override var description: String {
+    return "\nUUID: \(uuid)\nsensor started: \(sensorStarted)\nsensor Stopped: \(sensorStopped)\nBattery Sensor: \(lastBatteryLevel)\n"
+  }
+  
+  // MARK: Class methods
+  
+  /// Returns whether or not there is currently an active sensor
+  ///
+  /// :param: managedObjectContext the managed object context
+  /// :returns: true if there is currently an active sensor, otherwise false
   class func isSensorActive(managedObjectContext: NSManagedObjectContext) -> Bool {
     if let currentSensor = Sensor.currentSensor(managedObjectContext) {
       return true
     }
     return false
-  }
-  
-  class func stopSensor(sensor : Sensor) {
-    sensor.sensorStopped = round(NSDate().getTime())
-  }
-
-  override var description: String {
-    return "\nUUID: \(uuid)\nsensor started: \(sensorStarted)\nsensor Stopped: \(sensorStopped)\nBattery Sensor: \(lastBatteryLevel)\n"
   }
 }
