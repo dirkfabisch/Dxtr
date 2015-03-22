@@ -82,9 +82,15 @@ class AddDoubleCalibrationViewController : UIViewController, UITextFieldDelegate
   @IBAction func done(sender: AnyObject) {
     // Create two calibrations
     var cDate = datePicker.date
-    Calibration(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!, newBG: (firstBGReadingTextField.text as NSString).doubleValue, timeStamp: cDate.getTime())
-    Calibration(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!, newBG: (secondBGReadingTextField.text as NSString).doubleValue, timeStamp: cDate.getTime())
+    let calibration1 = Calibration(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!, newBG: (firstBGReadingTextField.text as NSString).doubleValue, timeStamp: cDate.getTime())
+    // add 1 second to second calibration
+    let calibration2 = Calibration(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!, newBG: (secondBGReadingTextField.text as NSString).doubleValue, timeStamp: cDate.dateByAddingTimeInterval(1).getTime())
     DxtrModel.sharedInstance.saveContext()
+    
+    // Upload to Nightscout
+    NightscoutUploader.sharedInstance.uploadCalibrationRecord(calibration1)
+    NightscoutUploader.sharedInstance.uploadCalibrationRecord(calibration2)
+    
     // notify delegate (master list scene view controller)
     self.didFinish!(self)
   }

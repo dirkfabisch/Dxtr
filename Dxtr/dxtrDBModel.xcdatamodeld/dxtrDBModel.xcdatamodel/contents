@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="14C109" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6751" systemVersion="14C109" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="BGReading" representedClassName="BGReading" syncable="YES">
         <attribute name="a" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="ageAdjustedRawValue" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
@@ -38,6 +38,12 @@
         <relationship name="bgReadings" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BGReading" inverseName="calibration" inverseEntity="BGReading" syncable="YES"/>
         <relationship name="sensor" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Sensor" inverseName="calibrations" inverseEntity="Sensor" syncable="YES"/>
     </entity>
+    <entity name="FailedUpload" representedClassName="FailedUpload" syncable="YES">
+        <attribute name="failedAttempts" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="managedObjectID" attributeType="Transformable" syncable="YES"/>
+        <attribute name="nextAttempt" attributeType="Date" syncable="YES"/>
+        <attribute name="type" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Sensor" representedClassName="Sensor" syncable="YES">
         <attribute name="lastBatteryLevel" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="sensorStarted" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
@@ -57,5 +63,6 @@
         <element name="Calibration" positionX="673" positionY="134" width="209" height="298"/>
         <element name="Sensor" positionX="432" positionY="488" width="128" height="133"/>
         <element name="TransmitterData" positionX="108" positionY="-4" width="128" height="103"/>
+        <element name="FailedUpload" positionX="315" positionY="144" width="128" height="103"/>
     </elements>
 </model>

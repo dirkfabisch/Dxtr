@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="KQ3-cb-hmx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6750" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="KQ3-cb-hmx">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6735"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -44,6 +44,9 @@
                                 <state key="normal" title="Stop Sensor">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="stopSensor:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="CnZ-s9-1mH"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ky7-w8-nk0">
                                 <rect key="frame" x="16" y="189" width="160" height="30"/>
@@ -82,6 +85,15 @@
                                     <segue destination="SYT-sT-MrQ" kind="show" identifier="addBGReadingSegue" id="Wip-Jm-JLa"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="icC-aB-q4d">
+                                <rect key="frame" x="16" y="303" width="75" height="30"/>
+                                <state key="normal" title="View Chart">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="hnU-D2-rVt" kind="show" identifier="viewChartSegue" id="xTh-7n-1dV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -117,6 +129,7 @@
                         <outlet property="startSensorActivity" destination="ymq-oe-hbd" id="mko-qe-p7m"/>
                         <outlet property="startSensorButton" destination="o1J-bG-8bx" id="KOM-kp-Vbz"/>
                         <outlet property="stopSensorButton" destination="cJo-wX-HAJ" id="N6p-p6-Hyk"/>
+                        <outlet property="viewChartButton" destination="icC-aB-q4d" id="ViP-Os-o6s"/>
                         <segue destination="4TI-Ev-M1P" kind="show" identifier="eulaSegue" id="TYp-B6-ldu"/>
                     </connections>
                 </viewController>
@@ -141,6 +154,9 @@
                                 <date key="date" timeIntervalSinceReferenceDate="444764428.04518002">
                                     <!--2015-02-04 17:40:28 +0000-->
                                 </date>
+                                <connections>
+                                    <action selector="dateChanged:" destination="2gu-8T-ids" eventType="valueChanged" id="Dh8-yI-9U5"/>
+                                </connections>
                             </datePicker>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* you can find the start time in your Dexcom reciever (Settings -&gt; Device Info -&gt; Insertion Time)" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mww-qq-KcB">
                                 <rect key="frame" x="16" y="533" width="568" height="15"/>
@@ -184,6 +200,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="datePicker" destination="H86-EZ-kZB" id="fyq-TC-eJc"/>
+                        <outlet property="saveButton" destination="7ZK-9N-S2J" id="Qcw-gb-ebT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DP0-uW-aEK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -420,7 +437,7 @@
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bSA-RR-EaD">
                                             <rect key="frame" x="20" y="20" width="528" height="421"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <mutableString key="text">Dxtr must not be used to make medical decisions. There is no warranty for the program, to the extent permitted by applicable law. Except when otherwise stated in writing the copyright holders and/or other parties provide the program “as is” without warranty of any kind, either expressed or implied, including, but not limited to, the implied warranties of merchantability and fitness for a particular purpose. The entire risk as to the quality and performance of the program is with you. Should the program prove defective, you assume the cost of all necessary servicing, repair or correction. </mutableString>
+                                            <string key="text">Dxtr must not be used to make medical decisions. There is no warranty for the program, to the extent permitted by applicable law. Except when otherwise stated in writing the copyright holders and/or other parties provide the program “as is” without warranty of any kind, either expressed or implied, including, but not limited to, the implied warranties of merchantability and fitness for a particular purpose. The entire risk as to the quality and performance of the program is with you. Should the program prove defective, you assume the cost of all necessary servicing, repair or correction. </string>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
@@ -494,6 +511,44 @@
             </objects>
             <point key="canvasLocation" x="1359" y="757"/>
         </scene>
+        <!--Chart-->
+        <scene sceneID="J5M-s9-h9h">
+            <objects>
+                <viewController id="kI6-Qc-AfI" customClass="ChartViewController" customModule="Dxtr" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5kw-6M-8vO"/>
+                        <viewControllerLayoutGuide type="bottom" id="cBa-Gw-YwS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wXh-1y-VYk">
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q4J-Gy-Sq4">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <dataDetectorType key="dataDetectorTypes"/>
+                                <connections>
+                                    <outlet property="delegate" destination="kI6-Qc-AfI" id="oTt-hZ-qin"/>
+                                </connections>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Q4J-Gy-Sq4" firstAttribute="leading" secondItem="wXh-1y-VYk" secondAttribute="leadingMargin" constant="-16" id="0dx-hm-txe"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Q4J-Gy-Sq4" secondAttribute="trailing" constant="-16" id="JQF-og-S8b"/>
+                            <constraint firstItem="Q4J-Gy-Sq4" firstAttribute="top" secondItem="5kw-6M-8vO" secondAttribute="bottom" constant="-64" id="ghN-iL-nVj"/>
+                            <constraint firstItem="cBa-Gw-YwS" firstAttribute="top" secondItem="Q4J-Gy-Sq4" secondAttribute="bottom" id="jHD-CA-VWJ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Chart" id="hae-9z-Bv5"/>
+                    <connections>
+                        <outlet property="webView" destination="Q4J-Gy-Sq4" id="60U-yq-7pf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pjY-ku-EU6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2820" y="2024"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="Vpu-pc-2qb">
             <objects>
@@ -529,6 +584,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LTe-xD-Uvd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="601" y="694"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="EUg-Ep-4fD">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hnU-D2-rVt" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NF3-kn-4tL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="kI6-Qc-AfI" kind="relationship" relationship="rootViewController" id="bsw-YU-eOX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Eb8-3h-Zk4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1996" y="2024"/>
         </scene>
     </scenes>
     <resources>

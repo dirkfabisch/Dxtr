@@ -14,291 +14,269 @@ class BGReading: _BGReading {
     self.init(entity: entity, insertIntoManagedObjectContext: managedObjectContext)
 
     if let currentSensor = Sensor.currentSensor(managedObjectContext) {
+      self.sensor = currentSensor
+      self.rawData = newRawData / 1000
+      self.timeStamp = newTimeStamp
+      self.uuid = NSUUID().UUIDString
+      self.timeSinceSensorStarted = newTimeStamp - currentSensor.sensorStarted!.doubleValue
+      self.synced = false
+      self.calibrationFlag = false
+      
       if let lastCalibration = Calibration.lastCalibration(managedObjectContext) {
-        sensor = currentSensor
-        calibration = lastCalibration
-        rawData = newRawData / 1000
-        timeStamp = newTimeStamp
-        uuid = NSUUID().UUIDString
-        timeSinceSensorStarted = timeStamp!.doubleValue - currentSensor.sensorStarted!.doubleValue
-        synced = false
-
-        //TODO: THIS IS A BIG SILLY IDEA, THIS WILL HAVE TO CHANGE ONCE WE GET SOME REAL DATA FROM THE START OF SENSOR LIFE
-        var adjustFor = (86400000 * 1.9) -  timeSinceSensorStarted!.doubleValue
-        if (adjustFor > 0) {
-          ageAdjustedRawValue = (((0.45) * (adjustFor / (86400000 * 1.9))) * (newRawData/1000)) + (newRawData/1000);
-          logger.verbose("RAW VALUE ADJUSTMENT: FROM: \(newRawData/1000) TO: \(ageAdjustedRawValue)")
-        } else {
-          ageAdjustedRawValue = newRawData / 1000
-        }
+        self.calibration = lastCalibration
         
-        if let lastBGReading = BGReading.lastBGReading(managedObjectContext) {
-          if lastBGReading.calibration != nil {
-            if (lastBGReading.calibrationFlag?.boolValue == true && ((lastBGReading.timeStamp!.doubleValue + (60000 * 20)) > timeStamp!.doubleValue) && (lastBGReading.calibration!.timeStamp!.doubleValue + (60000 * 20) > timeStamp!.doubleValue)) {
-              var weightedAverageRawValue = weightedAverageRaw(lastBGReading.timeStamp!.doubleValue, timeB: timeStamp!.doubleValue, calibrationTime: lastBGReading.calibration!.timeStamp!.doubleValue, rawA: lastBGReading.ageAdjustedRawValue!.doubleValue, rawB: ageAdjustedRawValue!.doubleValue)
-              lastBGReading.calibration!.rawValueOverride(managedObjectContext, rawValue: weightedAverageRawValue)
+        calculateAgeAdjustedRawValue(newRawData / 1000)
+        
+        if false { // TODO: should be if calibration.checkIn -- need to add this property
+          
+        } else {
+          
+          if let lastBGReading = BGReading.lastBGReading(managedObjectContext) {
+            if let lastBGReadingCalibration = lastBGReading.calibration {
+              if (lastBGReading.calibrationFlag?.boolValue == true && ((lastBGReading.timeStamp!.doubleValue + (60000 * 20)) > self.timeStamp!.doubleValue) && (lastBGReading.calibration!.timeStamp!.doubleValue + (60000 * 20) > self.timeStamp!.doubleValue)) {
+                lastBGReadingCalibration.rawValueOverride(managedObjectContext, rawValue:weightedAverageRaw(lastBGReading.timeStamp!.doubleValue, timeB:self.timeStamp!.doubleValue, calibrationTime:lastBGReading.calibration!.timeStamp!.doubleValue, rawA:lastBGReading.ageAdjustedRawValue!.doubleValue, rawB:self.ageAdjustedRawValue!.doubleValue))
+              }
             }
+            logger.verbose("Calculated value before: \(self.calculatedValue)")
+            logger.verbose("\(lastCalibration.slope!) * \(self.ageAdjustedRawValue) + \(lastCalibration.intercept)")
+            self.calculatedValue = (lastCalibration.slope!.doubleValue * self.ageAdjustedRawValue!.doubleValue) + lastCalibration.intercept!.doubleValue
+            logger.verbose("Calculated value after: \(self.calculatedValue)")
           }
         }
-        //TODO: Support for Dexcom 505 calibration readings missing
-//        if(calibration.check_in) {
-//          double firstAdjSlope = calibration.first_slope + (calibration.first_decay * (Math.ceil(new Date().getTime() - calibration.timestamp)/(1000 * 60 * 10)));
-//          //                    double secondAdjSlope = calibration.first_slope + (calibration.first_decay * ((new Date().getTime() - calibration.timestamp)/(1000 * 60 * 10)));
-//          double calSlope = (calibration.first_scale / firstAdjSlope)*1000;
-//          double calIntercept = ((calibration.first_scale * calibration.first_intercept) / firstAdjSlope)*-1;
-//          //                    double calSlope = ((calibration.second_scale / secondAdjSlope) + (3 * calibration.first_scale / firstAdjSlope)) * 250;
-//          //                    double calIntercept = (((calibration.second_scale * calibration.second_intercept) / secondAdjSlope) + ((3 * calibration.first_scale * calibration.first_intercept) / firstAdjSlope)) / -4;
-//          
-//          bgReading.calculated_value = (((calSlope * bgReading.raw_data) + calIntercept) - 5);
-//        } else {
-//          bgReading.calculated_value = ((calibration.slope * bgReading.age_adjusted_raw_value) + calibration.intercept);
-//        }
-        calculatedValue = ((calibration!.slope!.doubleValue * ageAdjustedRawValue!.doubleValue) + calibration!.intercept!.doubleValue)
-        if (calculatedValue!.doubleValue <= 40) {
-          calculatedValue = 40
-        } else  {
-          if (calculatedValue!.doubleValue >= 400) {
-            calculatedValue = 400
-          }
+        
+        if self.calculatedValue!.integerValue < MIN_BG_MGDL {
+          self.calculatedValue = MIN_BG_MGDL
+        } else if self.calculatedValue!.integerValue > MAX_BG_MGDL {
+          self.calculatedValue = MAX_BG_MGDL
         }
-        logger.verbose("NEW VALUE CALCULATED AT: \(calculatedValue)")
-
+        
+        logger.verbose("New calculated value: \(self.calculatedValue)")
+        
         DxtrModel.sharedInstance.saveContext()
-        performCalculations(managedObjectContext)
-
-        //TODO: Send notification we have a new BGReading
-
+        
+        performCalculations()
       } else {
+
+        calculateAgeAdjustedRawValue(newRawData / 1000)
         
-        sensor = currentSensor
-        rawData = newRawData / 1000
-        timeStamp = newTimeStamp
-        uuid = NSUUID().UUIDString
-        timeSinceSensorStarted = timeStamp!.doubleValue - currentSensor.sensorStarted!.doubleValue
-        synced = false
-        calibrationFlag = false
-        
-        //TODO: THIS IS A BIG SILLY IDEA, THIS WILL HAVE TO CHANGE ONCE WE GET SOME REAL DATA FROM THE START OF SENSOR LIFE
-        var adjustFor = (86400000 * 1.8) -  timeSinceSensorStarted!.doubleValue
-        if (adjustFor > 0) {
-          ageAdjustedRawValue = ((50 / 20) * (adjustFor / (86400000 * 1.8))) * (newRawData / 1000)
-          logger.verbose("RAW VALUE ADJUSTMENT: FROM: \(self.rawData) TO: \(ageAdjustedRawValue)")
-        } else {
-          ageAdjustedRawValue = newRawData / 1000
-        }        
-        performCalculations(managedObjectContext)
+        performCalculations()
       }
     }
   }
 
-
-  // Calculations !!!!
-  //*******************
-
-  func weightedAverageRaw (timeA : Double,
-                           timeB : Double,
-                 calibrationTime : Double,
-                            rawA : Double,
-                            rawB : Double)
-  -> Double
-  {
-    var relativeSlope = (rawB -  rawA)/(timeB - timeA)
-    var relativeIntercept = rawA - (relativeSlope * timeA)
-    return ((relativeSlope * calibrationTime) + relativeIntercept)
-  }
-  
-  private func performCalculations(managedObjectContext: NSManagedObjectContext) {
-    findRawCurve(managedObjectContext)
-    findNewRawCurve(managedObjectContext)
-    findSlope(managedObjectContext)
-  }
-
-  func findSlope(managedObjectContext: NSManagedObjectContext) {
-    if let last2 = BGReading.lastBGReadings(managedObjectContext, numberOfBGReadings: 2) {
-      if (last2.count == 2) {
-        let secondLatest = last2[1]
-        var y1 = calculatedValue!.doubleValue
-        var x1 = timeStamp!.doubleValue
-        var y2 = secondLatest.calculatedValue!.doubleValue
-        var x2 = secondLatest.timeStamp!.doubleValue
-        if (y1 == y2) {
-          calculatedValueSlope = 0
-        } else {
-          calculatedValueSlope = (y2 - y1)/(x2 - x1);
-        }
-      } else {
-        calculatedValueSlope = 0
-      }
+  // MARK: Calculations
+    
+  func slopeName() -> String {
+    let slopeByMinute = self.calculatedValueSlope!.doubleValue * 60000
+    if slopeByMinute <= -3.5 {
+      return "DoubleDown"
+    } else if slopeByMinute <= -2 {
+      return "SingleDown"
+    } else if slopeByMinute <= -1 {
+      return "FortyFiveDown"
+    } else if slopeByMinute <= 1 {
+      return "Flat"
+    } else if slopeByMinute <= 2 {
+      return "FortyFiveUp"
+    } else if slopeByMinute <= 3.5 {
+      return "SingleUp"
     } else {
-      logger.error("NO BG? COULDNT FIND SLOPE!")
+      return "DoubleUp"
     }
   }
   
-  func findNewRawCurve(managedObjectContext: NSManagedObjectContext) {
-    if let last3 = BGReading.lastBGReadings(managedObjectContext, numberOfBGReadings: 3) {
+  private func calculateAgeAdjustedRawValue(rawData: Double) {
+    let adjustFor = (ONE_DAY_MILLISECONDS * 1.9) - self.timeSinceSensorStarted!.doubleValue
+    if (adjustFor > 0) {
+      self.ageAdjustedRawValue = (0.45 * (adjustFor / (ONE_DAY_MILLISECONDS * 1.9)) * rawData) + rawData
+      logger.verbose("raw value adjusted from \(rawData) to \(self.ageAdjustedRawValue)")
+    } else {
+      self.ageAdjustedRawValue = rawData
+    }
+  }
+
+  private func weightedAverageRaw(timeA: Double, timeB: Double, calibrationTime: Double, rawA: Double, rawB: Double) -> Double {
+    let relativeSlope = (rawB -  rawA) / (timeB - timeA)
+    let relativeIntercept = rawA - (relativeSlope * timeA)
+    return (relativeSlope * calibrationTime) + relativeIntercept
+  }
+  
+  private func performCalculations() {
+    findNewCurve()
+    findNewRawCurve()
+    findSlope()
+  }
+  
+  func findNewCurve() {
+    if let last3 = BGReading.lastBGReadings(DxtrModel.sharedInstance.managedObjectContext!, numberOfBGReadings:3) {
       if last3.count == 3 {
         let secondLatest = last3[1]
         let thirdLatest = last3[2]
-
-        var y3 = calculatedValue!.doubleValue
-        var x3 = timeStamp!.doubleValue
-        var y2 = secondLatest.calculatedValue!.doubleValue
-        var x2 = secondLatest.timeStamp!.doubleValue
-        var y1 = thirdLatest.calculatedValue!.doubleValue
-        var x1 = thirdLatest.timeStamp!.doubleValue
-
-        // Split because of complexity could not be hadeld by SWIFT compiler: :-( 
-        // a = y1 / ((x1 -   x2) * (x1 - x3)) + y2 / ((x2 - x1) * (x2 - x3)) + y3 / ((x3 - x1) * (x3 - x2))
         
+        let y3 = self.calculatedValue!.doubleValue
+        let x3 = self.timeStamp!.doubleValue
+        let y2 = secondLatest.calculatedValue!.doubleValue
+        let x2 = secondLatest.timeStamp!.doubleValue
+        let y1 = thirdLatest.calculatedValue!.doubleValue
+        let x1 = thirdLatest.timeStamp!.doubleValue
+
+        // Split because of complexity could not be hadeld by SWIFT compiler: :-(
+        // a = y1 / ((x1 - x2) * (x1 - x3)) + y2 / ((x2 - x1) * (x2 - x3)) + y3 / ((x3 - x1) * (x3 - x2))
         let a1 = y1 / ((x1 - x2) * (x1 - x3))
         let a2 = y2 / ((x2 - x1) * (x2 - x3))
         let a3 = y3 / ((x3 - x1) * (x3 - x2))
-        a = a1 + a2 + a3
+        
+        self.a = a1 + a2 + a3
         
         // Split because of complexity could not be hadeld by SWIFT compiler: :-(
-        // b = (-y1 * (x2 + x3) / ((x1 - x2) * (x1 - x3)) - y2 * (x1 + x3)/((x2 - x1) * (x2 - x3)) - y3 * (x1 + x2)/((x3 - x1) * (x3 - x2)))
+        // b = (-y1 * (x2 + x3) / ((x1 - x2) * (x1 - x3)) - y2 * (x1 + x3) / ((x2 - x1) * (x2 - x3)) - y3 * (x1 + x2) / ((x3 - x1)*(x3 -x2)))
+
         let b1 = -y1 * (x2 + x3) / ((x1 - x2) * (x1 - x3))
         let b2 = y2 * (x1 + x3) / ((x2 - x1) * (x2 - x3))
         let b3 = y3 * (x1 + x2) / ((x3 - x1) * (x3 - x2))
         
-        b = b1 - b2 - b3
+        self.b = b1 - b2 - b3
         
         // Split because of complexity could not be hadeld by SWIFT compiler: :-(
         // c = (y1 * x2 * x3 / ((x1 - x2) * (x1 - x3)) + y2 * x1 * x3 / ((x2 - x1) * (x2 - x3)) + y3 * x1 * x2/((x3 - x1) * (x3 - x2)))
-
+        
         let c1 = y1 * x2 * x3 / ((x1 - x2) * (x1 - x3))
         let c2 = y2 * x1 * x3 / ((x2 - x1) * (x2 - x3))
         let c3 = y3 * x1 * x2 / ((x3 - x1) * (x3 - x2))
         
-        c = c1 + c2 + c3
+        self.c = c1 + c2 + c3
+
+      } else if last3.count == 2 {
+        logger.verbose("Not enough data to calculate parabolic rates - assume linear")
+        let latest = last3[0]
+        let secondLatest = last3[1]
         
-        logger.verbose("BG PARABOLIC RATES: \(a) x^2 + \(b) x + \(c)")
+        var y2 = latest.calculatedValue!.doubleValue
+        var x2 = timeStamp!.doubleValue
+        var y1 = calculatedValue!.doubleValue
+        var x1 = secondLatest.timeStamp!.doubleValue
         
-        DxtrModel.sharedInstance.saveContext()
+        if (y1 == y2) {
+          self.b = 0
+        } else {
+          self.b = (y2 - y1) / (x2 - x1)
+        }
+        self.a = 0
+        self.c = -1 * ((latest.b!.doubleValue * x1) - y1)
 
       } else {
-        if last3.count == 2 {
-          logger.verbose("Not enough data to calculate parabolic rates - assume Linear")
-          let latest = last3[0]
-          let secondLatest = last3[1]
+        logger.verbose("Not enough data to calculate parabolic rates - assume static data")
+        
+        self.a = 0
+        self.b = 0
+        self.c = self.calculatedValue
 
-          var y2 = latest.calculatedValue!.doubleValue
-          var x2 = timeStamp!.doubleValue
-          var y1 = secondLatest.calculatedValue!.doubleValue
-          var x1 = secondLatest.timeStamp!.doubleValue
-          
-          if (y1 == y2) {
-            b = 0
-          } else {
-            b = (y2 - y1) / (x2 - x1)
-          }
-          a = 0
-          c = -1 * ((latest.b!.doubleValue * x1) - y1)
-          
-          logger.verbose("\(latest.a) x^2 + \(latest.b) x + \(latest.c)")
-
-          DxtrModel.sharedInstance.saveContext()
-          
-        } else {
-          logger.verbose("Not enough data to calculate parabolic rates - assume static data")
-          
-          a = 0
-          b = 0
-          c = calculatedValue
-          logger.verbose("\(a) x^2 + \(b) x + \(c)")
-          
-          DxtrModel.sharedInstance.saveContext()
-        }
       }
+      
+      logger.verbose("BG parabolic rates: \(self.a) x^2 + \(self.b) x + \(self.c)")
+      
+      DxtrModel.sharedInstance.saveContext()
     }
   }
   
-  
-  func findRawCurve(managedObjectContext: NSManagedObjectContext) {
-    if let last3 = BGReading.lastBGReadings(managedObjectContext, numberOfBGReadings: 3) {
+  func findNewRawCurve() {
+    if let last3 = BGReading.lastBGReadings(DxtrModel.sharedInstance.managedObjectContext!, numberOfBGReadings:3) {
       if last3.count == 3 {
         let secondLatest = last3[1]
         let thirdLatest = last3[2]
-        
-        var y3 = ageAdjustedRawValue!.doubleValue
-        var x3 = timeStamp!.doubleValue
+
+        var y3 = self.ageAdjustedRawValue!.doubleValue
+        var x3 = self.timeStamp!.doubleValue
         var y2 = secondLatest.ageAdjustedRawValue!.doubleValue
         var x2 = secondLatest.timeStamp!.doubleValue
         var y1 = thirdLatest.ageAdjustedRawValue!.doubleValue
         var x1 = thirdLatest.timeStamp!.doubleValue
 
-        // Split because of complexity could not be hadeld by SWIFT compiler: :-(
-        // ra = y1 / ((x1 - x2) * (x1 - x3)) + y2 / ((x2 - x1) * (x2 - x3)) + y3 / ((x3 - x1) * (x3 - x2))
+        // Split because of complexity could not be hadeld by SWIFT compiler: :-( 
+        // ra = y1 / ((x1 -   x2) * (x1 - x3)) + y2 / ((x2 - x1) * (x2 - x3)) + y3 / ((x3 - x1) * (x3 - x2))
+        
         let ra1 = y1 / ((x1 - x2) * (x1 - x3))
         let ra2 = y2 / ((x2 - x1) * (x2 - x3))
         let ra3 = y3 / ((x3 - x1) * (x3 - x2))
-        ra = ra1 + ra2 + ra3
+        
+        self.ra = ra1 + ra2 + ra3
         
         // Split because of complexity could not be hadeld by SWIFT compiler: :-(
-        // rb = (-y1 * (x2 + x3) / ((x1 - x2) * (x1 - x3)) - y2 * (x1 + x3) / ((x2 - x1) * (x2 - x3)) - y3 * (x1 + x2) / ((x3 - x1)*(x3 -x2)))
-
+        // rb = (-y1 * (x2 + x3) / ((x1 - x2) * (x1 - x3)) - y2 * (x1 + x3)/((x2 - x1) * (x2 - x3)) - y3 * (x1 + x2)/((x3 - x1) * (x3 - x2)))
         let rb1 = -y1 * (x2 + x3) / ((x1 - x2) * (x1 - x3))
         let rb2 = y2 * (x1 + x3) / ((x2 - x1) * (x2 - x3))
         let rb3 = y3 * (x1 + x2) / ((x3 - x1) * (x3 - x2))
         
-        rb = rb1 - rb2 - rb3
+        self.rb = rb1 - rb2 - rb3
         
         // Split because of complexity could not be hadeld by SWIFT compiler: :-(
         // rc = (y1 * x2 * x3 / ((x1 - x2) * (x1 - x3)) + y2 * x1 * x3 / ((x2 - x1) * (x2 - x3)) + y3 * x1 * x2/((x3 - x1) * (x3 - x2)))
-        
+
         let rc1 = y1 * x2 * x3 / ((x1 - x2) * (x1 - x3))
         let rc2 = y2 * x1 * x3 / ((x2 - x1) * (x2 - x3))
         let rc3 = y3 * x1 * x2 / ((x3 - x1) * (x3 - x2))
         
-        rc = rc1 + rc2 + rc3
-
-        logger.verbose("BG PARABOLIC RATES: \(ra) x^2 + \(rb) x + \(rc)")
+        self.rc = rc1 + rc2 + rc3
         
-        DxtrModel.sharedInstance.saveContext()
+      } else if last3.count == 2 {
+        logger.verbose("Not enough data to calculate parabolic rates - assume linear")
 
-      } else {
-        if last3.count == 2 {
-          logger.verbose("Not enough data to calculate parabolic rates - assume Linear")
-          let latest = last3[0]
-          let secondLatest = last3[1]
-          
-          var y2 = latest.ageAdjustedRawValue!.doubleValue
-          var x2 = timeStamp!.doubleValue
-          var y1 = secondLatest.ageAdjustedRawValue!.doubleValue
-          var x1 = secondLatest.timeStamp!.doubleValue
-          
-          if (y1 == y2) {
-            rb = 0
-          } else {
-            rb = (y2 - y1) / (x2 - x1)
-          }
-          ra = 0
-          rc = -1 * ((latest.rb!.doubleValue * x1) - y1)
-          
-          logger.verbose("LINEAR RAW RATES: \(ra) x^2 + \(rb) x + \(rc)")
-          
-          DxtrModel.sharedInstance.saveContext()
-          
+        let latest = last3[0]
+        let secondLatest = last3[1]
+
+        var y2 = latest.ageAdjustedRawValue!.doubleValue
+        var x2 = timeStamp!.doubleValue
+        var y1 = secondLatest.ageAdjustedRawValue!.doubleValue
+        var x1 = secondLatest.timeStamp!.doubleValue
+        
+        if (y1 == y2) {
+          self.rb = 0
         } else {
-          logger.verbose("Not enough data to calculate parabolic rates - assume static data")
-          if let latestEntry = BGReading.lastNoSensor(managedObjectContext) {
-            ra = 0
-            rb = 0
-            rc = latestEntry.ageAdjustedRawValue
-
-            logger.verbose("STATIC RAW RATES: \(ra) x^2 + \(rb) x + \(rc)")
-
-            DxtrModel.sharedInstance.saveContext()
-          }
+          self.rb = (y2 - y1) / (x2 - x1)
+        }
+        self.ra = 0
+        self.rc = -1 * ((latest.b!.doubleValue * x1) - y1)
+        
+      } else {
+        logger.verbose("Not enough data to calculate parabolic rates - assume static data")
+        
+        if let reading = BGReading.lastNoSensor(DxtrModel.sharedInstance.managedObjectContext!) {
+          self.ra = 0
+          self.rb = 0
+          self.rc = reading.ageAdjustedRawValue
         }
       }
+      
+      DxtrModel.sharedInstance.saveContext()
+      
+      logger.verbose("BG parabolic rates: \(self.ra) x^2 + \(self.rb) x + \(self.rc)")
     }
-    
   }
-
   
-  // retriving BGReading data
-  // **************************
+  private func findSlope() {
+    if let last2 = BGReading.lastBGReadings(DxtrModel.sharedInstance.managedObjectContext!, numberOfBGReadings:2) {
+      if last2.count == 2 {
+        let secondLatest = last2[1]
+        var y1 = self.calculatedValue!.doubleValue
+        var x1 = self.timeStamp!.doubleValue
+        var y2 = secondLatest.calculatedValue!.doubleValue
+        var x2 = secondLatest.timeStamp!.doubleValue
+        if (y1 == y2) {
+          self.calculatedValueSlope = 0
+        } else {
+          self.calculatedValueSlope = (y2 - y1) / (x2 - x1);
+        }
+      } else if last2.count == 1 {
+        self.calculatedValueSlope = 0
+      } else {
+        logger.error("No BG? Couldn't find slope!")
+      }
+      
+      DxtrModel.sharedInstance.saveContext()
+    }
+  }
+  
+  // MARK: Retrieval
 
   class func lastNoSensor(managedObjectContext: NSManagedObjectContext) -> BGReading? {
     var qs = BGReading.queryset(managedObjectContext).orderBy(BGReading.attributes.timeStamp.descending())
@@ -363,7 +341,12 @@ class BGReading: _BGReading {
     return nil
   }
 
-  
+  class func bgReadingsSinceDate(managedObjectContext: NSManagedObjectContext, date: NSDate) -> [BGReading]? {
+    var qs = BGReading.queryset(managedObjectContext)
+      .filter(BGReading.attributes.timeStamp >= NSNumber(double: date.getTime()))
+      .orderBy(BGReading.attributes.timeStamp.ascending())
+    return qs.array()
+  }
   
   class func estimatedRawBG (managedObjectContext: NSManagedObjectContext, timeStamp: Double) -> Double {
     let ts = timeStamp + READINGS_BESTOFFSET

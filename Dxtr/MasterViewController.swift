@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class MasterViewController: UIViewController, DxtrModelDelegate {
+class MasterViewController: UIViewController, UIAlertViewDelegate, DxtrModelDelegate {
   
   // set by AppDelegate on application startup
   var managedObjectContext: NSManagedObjectContext?
@@ -22,6 +22,7 @@ class MasterViewController: UIViewController, DxtrModelDelegate {
   @IBOutlet weak var logWindow: UITextView!
   @IBOutlet weak var startSensorActivity: UIActivityIndicatorView!
   @IBOutlet weak var createReadingButton: UIButton!
+  @IBOutlet weak var viewChartButton: UIButton!
   
   // all possible states during start of dxtr
   enum proccessState {
@@ -33,12 +34,12 @@ class MasterViewController: UIViewController, DxtrModelDelegate {
     case waitingCalibration
     case doubleCalibrated
     case readingLoop
-    case disconected
+    case disconnected
   }
   
   // initial state of the views
   var currentState : proccessState = .sensorStopped
-  // saved state if wixel is disconected
+  // saved state if wixel is disconnected
   var savedState : proccessState = .sensorStopped
   
   // Counter for Sensor Warmup (2h == 7200 seconds
@@ -53,6 +54,10 @@ class MasterViewController: UIViewController, DxtrModelDelegate {
     NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("connectionChanged:"), name: BLEServiceChangedStatusNotification, object: nil)
     // Watch Scanning
     NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("btScanning:"), name: BLEDiscoveryScanningNotification, object: nil)
+    
+    // Nightscout upload status
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("nightscoutStatus:"), name: NightscoutUploadSuccessNotification, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("nightscoutStatus:"), name: NightscoutUploadErrorNotification, object: nil)
     
     setProcessState()
   
@@ -142,7 +147,7 @@ class MasterViewController: UIViewController, DxtrModelDelegate {
       addDoubleCalibrationButton.enabled = false
       addCalibration.enabled = false
       createReadingButton.enabled = true
-    case .disconected:
+    case .disconnected:
       startSensorButton.enabled = false
       stopSensorButton.enabled = false
       addDoubleCalibrationButton.enabled = false
@@ -214,6 +219,9 @@ class MasterViewController: UIViewController, DxtrModelDelegate {
           self.currentState = .doubleCalibrated
           self.setProcessState()
         }
+      case "viewChartSegue":
+        let chartView = nav.topViewController as ChartViewController
+        chartView.managedObjectContext = managedObjectContext
       case "eulaSegue":
         let eulaView = nav.topViewController as EulaViewController
         eulaView.managedObjectContext = managedObjectContext
@@ -262,7 +270,28 @@ class MasterViewController: UIViewController, DxtrModelDelegate {
     }
   }
   
+  //MARK: IBActions
   
+  @IBAction func stopSensor(sender: AnyObject) {
+    let confirmAlert = UIAlertView(title: "Stop Sensor", message: "Are you sure you want to stop the sensor?", delegate: self, cancelButtonTitle: "No", otherButtonTitles: "Yes")
+    confirmAlert.show()
+  }
+  
+  //MARK: UIAlertViewDelegate
+  
+  func alertView(alertView: UIAlertView, didDismissWithButtonIndex buttonIndex: Int) {
+    if buttonIndex == 1 {
+      if let currentSensor = Sensor.currentSensor(self.managedObjectContext!) {
+        currentSensor.stopSensor()
+        DxtrModel.sharedInstance.saveContext()
+        startSensorActivity.stopAnimating()
+        startSensorActivity.stopAnimating()
+        writeDisplayLog("Sensor Stopped: \(currentSensor.sensorStopped!.doubleValue.getDate().description)")
+        self.currentState = .sensorStopped
+        setProcessState()
+      }
+    }
+  }
   
   //MARK: Notifications
   
@@ -284,11 +313,11 @@ class MasterViewController: UIViewController, DxtrModelDelegate {
           notification.alertBody = "Wixel Connected"
           self.currentState = self.savedState
         } else {
-          self.btConnectionState.text = "disconected"
+          self.btConnectionState.text = "Disconnected"
           self.showWaitOverlayWithText("Connecting")
           notification.alertBody = "Wixel Disconnected"
           self.savedState = self.currentState
-          self.currentState = .disconected
+          self.currentState = .disconnected
         }
         UIApplication.sharedApplication().presentLocalNotificationNow(notification)
         self.setProcessState()
@@ -316,6 +345,38 @@ class MasterViewController: UIViewController, DxtrModelDelegate {
         }
       }
     })
+  }
+  
+  func nightscoutStatus(notification: NSNotification) {
+    if notification.name == NightscoutUploadSuccessNotification {
+      let userInfo = notification.userInfo as [String: AnyObject]
+      if let entity: AnyObject = userInfo["entity"] {
+        if let reading = entity as? BGReading {
+          dispatch_async(dispatch_get_main_queue(), {
+            var message = NSDate().description + ": Uploaded reading to Nightscout"
+            if let payload: AnyObject = userInfo["payload"] {
+              message += ": \(payload)"
+            }
+            self.writeDisplayLog(message)
+          })
+        } else if let calibration = entity as? Calibration {
+          dispatch_async(dispatch_get_main_queue(), {
+            var message = NSDate().description + ": Uploaded calibration to Nightscout"
+            if let payload: AnyObject = userInfo["payload"] {
+              message += ": \(payload)"
+            }
+            self.writeDisplayLog(message)
+          })
+        }
+      }
+    } else if notification.name == NightscoutUploadErrorNotification {
+      let userInfo = notification.userInfo as [String: NSError]
+      if let error: NSError = userInfo["error"] {
+        dispatch_async(dispatch_get_main_queue(), {
+          self.writeDisplayLog("Error uploading to Nightscout: \(error)")
+        })
+      }
+    }
   }
   
   private func writeDisplayLog(message: String) {

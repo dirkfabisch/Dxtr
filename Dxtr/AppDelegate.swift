@@ -43,6 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       // We are running in the simmulator. 
 
       // create fake sensor
+
 //      var ss = Sensor(managedObjectContext: DxtrModel.sharedInstance.managedObjectContext!, timeStamp: START_TIME_OF_SENSOR)
 //      DxtrModel.sharedInstance.saveContext()
 //      
@@ -61,7 +62,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       // Generate transmitter data
       //      var testData = TestRawData()
       //  testData.createTestRawData(managedObjectContext!)
-
       
       #else
       logger.verbose("Running on Device")

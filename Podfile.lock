@@ -10,7 +10,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 1.1)
-  - CryptoSwift
+  - CryptoSwift (~> 0.0)
   - QueryKit/Swift (from `https://github.com/QueryKit/QueryKit`)
 
 EXTERNAL SOURCES:
