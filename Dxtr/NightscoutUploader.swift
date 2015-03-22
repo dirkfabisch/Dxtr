@@ -195,7 +195,7 @@ class NightscoutUploader: NSObject {
       dictionary["date"] = timeStamp
     }
     if let calculatedValue = reading.calculatedValue {
-      dictionary["sgv"] = calculatedValue
+      dictionary["sgv"] = calculatedValue.integerValue
     }
     dictionary["direction"] = reading.slopeName()
     if let ageAdjustedRawValue = reading.ageAdjustedRawValue {

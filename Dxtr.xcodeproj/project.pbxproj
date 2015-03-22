@@ -18,6 +18,8 @@
 		1D7B188D1ABD30E100DD1632 /* _FailedUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7B186C1ABCCBD500DD1632 /* _FailedUpload.swift */; };
 		1D7B188E1ABD30E800DD1632 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7B18751ABCF4C700DD1632 /* SettingsManager.swift */; };
 		1D7B188F1ABD30F500DD1632 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7B18731ABCF45100DD1632 /* ChartViewController.swift */; };
+		1D7B18911ABE88A000DD1632 /* StateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7B18901ABE88A000DD1632 /* StateManager.swift */; };
+		1D7B18921ABE88A000DD1632 /* StateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7B18901ABE88A000DD1632 /* StateManager.swift */; };
 		1DD153611A8193CA003E7CFD /* NightscoutUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD153601A8193CA003E7CFD /* NightscoutUploader.swift */; };
 		215C6EE6E3F65D14315957DD /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE74BA18BFC6C534602170C6 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		4300FCD11A82C3DB00CC8CE1 /* default_background.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4300FCD01A82C3DB00CC8CE1 /* default_background.jpeg */; };
@@ -135,6 +137,7 @@
 		1D7B18731ABCF45100DD1632 /* ChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		1D7B18751ABCF4C700DD1632 /* SettingsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 		1D7B18771ABCF4DA00DD1632 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		1D7B18901ABE88A000DD1632 /* StateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateManager.swift; sourceTree = "<group>"; };
 		1DD153601A8193CA003E7CFD /* NightscoutUploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NightscoutUploader.swift; sourceTree = "<group>"; };
 		4300FCD01A82C3DB00CC8CE1 /* default_background.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = default_background.jpeg; sourceTree = "<group>"; };
 		4300FCD31A82C75E00CC8CE1 /* StartSensorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartSensorViewController.swift; sourceTree = "<group>"; };
@@ -300,6 +303,7 @@
 				43BBDF9C1A642D910006B61F /* BluetoothStack */,
 				1DD153601A8193CA003E7CFD /* NightscoutUploader.swift */,
 				1D7B18751ABCF4C700DD1632 /* SettingsManager.swift */,
+				1D7B18901ABE88A000DD1632 /* StateManager.swift */,
 				1D7B18771ABCF4DA00DD1632 /* Settings.bundle */,
 				4300FCD21A82C72A00CC8CE1 /* ViewController */,
 				435C92181A6F9B1B00807847 /* ModelObjects */,
@@ -657,6 +661,7 @@
 				432771B61A8A8BC900F42162 /* AddDoubleCalibrationViewController.swift in Sources */,
 				4324ED8A1A812DDA0002BEE6 /* _BGReading.swift in Sources */,
 				43DF0D061A6D96B700686779 /* dxtrDBModel.xcdatamodeld in Sources */,
+				1D7B18911ABE88A000DD1632 /* StateManager.swift in Sources */,
 				1D7B18761ABCF4C700DD1632 /* SettingsManager.swift in Sources */,
 				1D7B18741ABCF45100DD1632 /* ChartViewController.swift in Sources */,
 				43DF0D081A6D9ADD00686779 /* DxtrModel.swift in Sources */,
@@ -691,6 +696,7 @@
 				1D7B188D1ABD30E100DD1632 /* _FailedUpload.swift in Sources */,
 				1D7B188E1ABD30E800DD1632 /* SettingsManager.swift in Sources */,
 				43CFB7CC1AB73D4900C70423 /* Constants.swift in Sources */,
+				1D7B18921ABE88A000DD1632 /* StateManager.swift in Sources */,
 				43CFB7DC1AB73D7D00C70423 /* _BGReading.swift in Sources */,
 				1D7B188C1ABD30DD00DD1632 /* FailedUpload.swift in Sources */,
 				43CFB7E21AB73D7D00C70423 /* Sensor.swift in Sources */,
