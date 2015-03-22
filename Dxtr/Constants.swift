@@ -39,6 +39,11 @@ let START_TIME_OF_SENSOR : NSTimeInterval = round(NSDate().dateByAddingTimeInter
 let MMOLL_TO_MGDL = 18.0182
 let MGDL_TO_MMOLL = 1 / MMOLL_TO_MGDL
 
+let ONE_DAY_SECONDS: Double = 86400
+let ONE_DAY_MILLISECONDS: Double = ONE_DAY_SECONDS * 1000
+let MIN_BG_MGDL = 40
+let MAX_BG_MGDL = 400
+
 //TODO: Have these as adjustable settings!!
 
 let READINGS_BESTOFFSET = Double(60000 * 0) // Assume readings are about x minutes off from actual!

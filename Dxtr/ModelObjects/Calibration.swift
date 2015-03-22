@@ -50,9 +50,11 @@ class Calibration: _Calibration {
         self.uuid = NSUUID().UUIDString
         lastBGReading.calibration = self
         lastBGReading.calibrationFlag = true
+        
+        DxtrModel.sharedInstance.saveContext()
        
         //TODO:  BgSendQueue.addToQueue(bgReading, "update", context);
-        calculate_w_l_s(managedObjectContext)
+        calculateWLS(managedObjectContext)
         adjustRecentBgReadings(managedObjectContext)
         
         //TODO:        CalibrationSendQueue.addToQueue(calibration, context);
@@ -75,10 +77,9 @@ class Calibration: _Calibration {
   
   func rawValueOverride (managedObjectContext: NSManagedObjectContext, rawValue: Double) {
     self.estimateRawAtTimeOfCalibration = rawValue
-    calculate_w_l_s(managedObjectContext)
+    calculateWLS(managedObjectContext)
     DxtrModel.sharedInstance.saveContext()
   }
-
   
   /**
   This just adjust the last 30 bg readings transition from one calibration point to the next
@@ -114,7 +115,7 @@ class Calibration: _Calibration {
     }
   }
 
-  private func calculate_w_l_s(managedObjectContext : NSManagedObjectContext) {
+  private func calculateWLS(managedObjectContext : NSManagedObjectContext) {
     if (Sensor.isSensorActive(managedObjectContext)) {
       var l : Double = 0
       var m : Double = 0
@@ -123,7 +124,7 @@ class Calibration: _Calibration {
       var q : Double = 0
       var w : Double = 0
       
-      if let calibrations = getCalibrationsForActiveSensor(managedObjectContext, numberOfDays: 4) {
+      if let calibrations = getCalibrationsForCurrentSensor(managedObjectContext, numberOfDays: 4) {
         if calibrations.count == 1 {
           var calibration = calibrations[0]
           calibration.intercept = calibration.bg
@@ -207,10 +208,10 @@ class Calibration: _Calibration {
   private func calculateWeight(managedObjectContext : NSManagedObjectContext) -> Double {
     if let firstTimeStarted : Double = Calibration.firstCalibration(managedObjectContext)?.sensorAgeAtTimeOfEstimation?.doubleValue {
       if let lastTimeStarted : Double = Calibration.lastCalibration(managedObjectContext)?.sensorAgeAtTimeOfEstimation?.doubleValue {
-        var timePercentage = min(((Double(sensorAgeAtTimeOfEstimation!) - firstTimeStarted) / (Double(lastTimeStarted) - Double(firstTimeStarted))) / Double(0.85),1)
+        var timePercentage = min(((Double(sensorAgeAtTimeOfEstimation!) - firstTimeStarted) / (Double(lastTimeStarted) - Double(firstTimeStarted))) / Double(0.85), 1)
         timePercentage = timePercentage + 0.01
         logger.info("CALIBRATIONS TIME PERCENTAGE WEIGHT: \(timePercentage)")
-        return max((((((Double(slopeConfidence!) + Double(sensorConfidence!)) * (timePercentage))) / 2) * 100),1)
+        return max(((((Double(slopeConfidence!) + Double(sensorConfidence!)) * timePercentage) / 2) * 100), 1)
       }
     }
     
@@ -218,18 +219,11 @@ class Calibration: _Calibration {
     return 0.0
   }
   
-  // retriving calibration data
-  // **************************
-
-  /**
-  get the first calibration for the active sensor
-  Only calibrations where the sensorConfidence and the slopeConfidence != 0
-  
-  :param: managedObjectContext current managed object context
-  
-  :returns: optional calibration 
-            if no active sensor <nil>
-  */
+  /// Gets the first calibration for the active sensor
+  /// Only considers calibrations where sensorConfidence != 0 and slopeConfidence != 0
+  ///
+  /// :param: managedObjectContext the managed object context
+  /// :returns: optional calibration
   class func firstCalibration(managedObjectContext : NSManagedObjectContext) -> Calibration? {
     let sensor = Sensor.currentSensor(managedObjectContext)
     
@@ -252,15 +246,11 @@ class Calibration: _Calibration {
     return nil
   }
   
-  /**
-  get the last calibration for the active sensor
-  Only calibrations where the sensorConfidence and the slopeConfidence != 0
-  
-  :param: managedObjectContext current managed object context
-  
-  :returns: optional calibration
-  if no active sensor <nil>
-  */
+  /// Gets the last calibration for the active sensor
+  /// Only considers calibrations where sensorConfidence != 0 and slopeConfidence != 0
+  ///
+  /// :param: managedObjectContext the managed object context
+  /// :returns: optional calibration
   class func lastCalibration(managedObjectContext : NSManagedObjectContext) -> Calibration? {
     let sensor = Sensor.currentSensor(managedObjectContext)
     
@@ -283,19 +273,15 @@ class Calibration: _Calibration {
     return nil
   }
 
-  /**
-  get the last <X> calibrations for the active sensor
-  Only calibrations where the sensorConfidence and the slopeConfidence != 0
-  
-  :param: managedObjectContext current managed object context
-  :param: numberOfCalibrations number of requested calibrations
-  
-  :returns: optional calibration
-  if no active sensor <nil>
-  */
+  /// Gets the last number calibration for the active sensor
+  /// Only considers calibrations where sensorConfidence != 0 and slopeConfidence != 0
+  ///
+  /// :param: managedObjectContext the managed object context
+  /// :param: numberOfCalibrations the number of calibrations to limit
+  /// :returns: optional calibration
   class func lastCalibrations(managedObjectContext: NSManagedObjectContext, numberOfCalibrations: Int) -> [Calibration]? {
     let sensor = Sensor.currentSensor(managedObjectContext)
-    
+
     if (sensor == nil) {
       logger.error("No active Sensor")
       return nil
@@ -318,18 +304,13 @@ class Calibration: _Calibration {
     return nil
   }
   
-  
-  /**
-  Get all calibrations for a number of days of the active sensor. 
-  Only calibrations where the sensorConfidence and the slopeConfidence != 0
-  
-  
-  :param: managedObjectContext curren managed object context
-  :param: numberOfDays         requested number of days (must be > 0)
-  
-  :returns: optional array of calibrations
-  */
-  func getCalibrationsForActiveSensor(managedObjectContext: NSManagedObjectContext, numberOfDays: Int) -> [Calibration]? {
+  /// Gets the calibrations for the last number of days for the current sensor
+  /// Only considers calibrations where sensorConfidence != 0 and slopeConfidence != 0
+  ///
+  /// :param: managedObjectContext the managed object context
+  /// :param: numberOfDays the number of days back (> 0)
+  /// :returns: optional calibration
+  func getCalibrationsForCurrentSensor(managedObjectContext: NSManagedObjectContext, numberOfDays: Int) -> [Calibration]? {
     if let sensor = Sensor.currentSensor(managedObjectContext) {
       return getCalibrations(managedObjectContext, sensor: sensor, numberOfDays: numberOfDays)
     }
@@ -337,6 +318,13 @@ class Calibration: _Calibration {
     return nil
   }
   
+  /// Gets the calibrations for the last number of days for the given sensor
+  /// Only considers calibrations where sensorConfidence != 0 and slopeConfidence != 0
+  ///
+  /// :param: managedObjectContext the managed object context
+  /// :param: sensor the sensor to get the calibrations for
+  /// :param: numberOfDays the number of days back (> 0)
+  /// :returns: optional calibration
   func getCalibrations(managedObjectContext: NSManagedObjectContext, sensor: Sensor, numberOfDays: Int) -> [Calibration]? {
     if numberOfDays <= 0 {
       logger.error("number of days equal or less than 0")

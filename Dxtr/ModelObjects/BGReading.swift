@@ -44,10 +44,10 @@ class BGReading: _BGReading {
           }
         }
         
-        if self.calculatedValue!.intValue < 40 {
-          self.calculatedValue = 40
-        } else if self.calculatedValue!.intValue > 400 {
-          self.calculatedValue = 400
+        if self.calculatedValue!.integerValue < MIN_BG_MGDL {
+          self.calculatedValue = MIN_BG_MGDL
+        } else if self.calculatedValue!.integerValue > MAX_BG_MGDL {
+          self.calculatedValue = MAX_BG_MGDL
         }
         
         logger.verbose("New calculated value: \(self.calculatedValue)")
@@ -86,9 +86,9 @@ class BGReading: _BGReading {
   }
   
   private func calculateAgeAdjustedRawValue(rawData: Double) {
-    let adjustFor = (86400000 * 1.9) - self.timeSinceSensorStarted!.doubleValue
+    let adjustFor = (ONE_DAY_MILLISECONDS * 1.9) - self.timeSinceSensorStarted!.doubleValue
     if (adjustFor > 0) {
-      self.ageAdjustedRawValue = (0.45 * (adjustFor / (86400000 * 1.9)) * rawData) + rawData
+      self.ageAdjustedRawValue = (0.45 * (adjustFor / (ONE_DAY_MILLISECONDS * 1.9)) * rawData) + rawData
       logger.verbose("raw value adjusted from \(rawData) to \(self.ageAdjustedRawValue)")
     } else {
       self.ageAdjustedRawValue = rawData
