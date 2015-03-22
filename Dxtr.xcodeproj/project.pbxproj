@@ -20,6 +20,14 @@
 		1D7B188F1ABD30F500DD1632 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7B18731ABCF45100DD1632 /* ChartViewController.swift */; };
 		1D7B18911ABE88A000DD1632 /* StateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7B18901ABE88A000DD1632 /* StateManager.swift */; };
 		1D7B18921ABE88A000DD1632 /* StateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7B18901ABE88A000DD1632 /* StateManager.swift */; };
+		1D7B18981ABF443700DD1632 /* chart.css in Resources */ = {isa = PBXBuildFile; fileRef = 1D7B18941ABF443700DD1632 /* chart.css */; };
+		1D7B18991ABF443700DD1632 /* chart.css in Resources */ = {isa = PBXBuildFile; fileRef = 1D7B18941ABF443700DD1632 /* chart.css */; };
+		1D7B189A1ABF443700DD1632 /* chart.html in Resources */ = {isa = PBXBuildFile; fileRef = 1D7B18951ABF443700DD1632 /* chart.html */; };
+		1D7B189B1ABF443700DD1632 /* chart.html in Resources */ = {isa = PBXBuildFile; fileRef = 1D7B18951ABF443700DD1632 /* chart.html */; };
+		1D7B189C1ABF443700DD1632 /* client.js in Resources */ = {isa = PBXBuildFile; fileRef = 1D7B18961ABF443700DD1632 /* client.js */; };
+		1D7B189D1ABF443700DD1632 /* client.js in Resources */ = {isa = PBXBuildFile; fileRef = 1D7B18961ABF443700DD1632 /* client.js */; };
+		1D7B189E1ABF443700DD1632 /* d3.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 1D7B18971ABF443700DD1632 /* d3.min.js */; };
+		1D7B189F1ABF443700DD1632 /* d3.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 1D7B18971ABF443700DD1632 /* d3.min.js */; };
 		1DD153611A8193CA003E7CFD /* NightscoutUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD153601A8193CA003E7CFD /* NightscoutUploader.swift */; };
 		215C6EE6E3F65D14315957DD /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE74BA18BFC6C534602170C6 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		4300FCD11A82C3DB00CC8CE1 /* default_background.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4300FCD01A82C3DB00CC8CE1 /* default_background.jpeg */; };
@@ -138,6 +146,10 @@
 		1D7B18751ABCF4C700DD1632 /* SettingsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 		1D7B18771ABCF4DA00DD1632 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		1D7B18901ABE88A000DD1632 /* StateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateManager.swift; sourceTree = "<group>"; };
+		1D7B18941ABF443700DD1632 /* chart.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = chart.css; sourceTree = "<group>"; };
+		1D7B18951ABF443700DD1632 /* chart.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = chart.html; sourceTree = "<group>"; };
+		1D7B18961ABF443700DD1632 /* client.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = client.js; sourceTree = "<group>"; };
+		1D7B18971ABF443700DD1632 /* d3.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = d3.min.js; sourceTree = "<group>"; };
 		1DD153601A8193CA003E7CFD /* NightscoutUploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NightscoutUploader.swift; sourceTree = "<group>"; };
 		4300FCD01A82C3DB00CC8CE1 /* default_background.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = default_background.jpeg; sourceTree = "<group>"; };
 		4300FCD31A82C75E00CC8CE1 /* StartSensorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartSensorViewController.swift; sourceTree = "<group>"; };
@@ -197,6 +209,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D7B18931ABF440D00DD1632 /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				1D7B18941ABF443700DD1632 /* chart.css */,
+				1D7B18951ABF443700DD1632 /* chart.html */,
+				1D7B18961ABF443700DD1632 /* client.js */,
+				1D7B18971ABF443700DD1632 /* d3.min.js */,
+			);
+			name = Chart;
+			sourceTree = "<group>";
+		};
 		1DD1534A1A8179D0003E7CFD /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -301,6 +324,7 @@
 				43E536251A62CE480037EED0 /* AppDelegate.swift */,
 				4300FCC61A82935000CC8CE1 /* Views */,
 				43BBDF9C1A642D910006B61F /* BluetoothStack */,
+				1D7B18931ABF440D00DD1632 /* Chart */,
 				1DD153601A8193CA003E7CFD /* NightscoutUploader.swift */,
 				1D7B18751ABCF4C700DD1632 /* SettingsManager.swift */,
 				1D7B18901ABE88A000DD1632 /* StateManager.swift */,
@@ -483,9 +507,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D7B18981ABF443700DD1632 /* chart.css in Resources */,
 				43E5362B1A62CE480037EED0 /* Main.storyboard in Resources */,
 				43E536301A62CE480037EED0 /* LaunchScreen.xib in Resources */,
+				1D7B189E1ABF443700DD1632 /* d3.min.js in Resources */,
+				1D7B189C1ABF443700DD1632 /* client.js in Resources */,
 				1D7B18781ABCF4DA00DD1632 /* Settings.bundle in Resources */,
+				1D7B189A1ABF443700DD1632 /* chart.html in Resources */,
 				43E5362D1A62CE480037EED0 /* Images.xcassets in Resources */,
 				4300FCD11A82C3DB00CC8CE1 /* default_background.jpeg in Resources */,
 			);
@@ -498,6 +526,10 @@
 				43CFB7D31AB73D5E00C70423 /* Main.storyboard in Resources */,
 				43CFB7E71AB73D9F00C70423 /* LaunchScreen.xib in Resources */,
 				43CFB7E61AB73D9700C70423 /* Images.xcassets in Resources */,
+				1D7B189B1ABF443700DD1632 /* chart.html in Resources */,
+				1D7B18991ABF443700DD1632 /* chart.css in Resources */,
+				1D7B189F1ABF443700DD1632 /* d3.min.js in Resources */,
+				1D7B189D1ABF443700DD1632 /* client.js in Resources */,
 				43CFB7E81AB73DA300C70423 /* default_background.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
