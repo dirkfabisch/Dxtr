@@ -31,10 +31,14 @@ class ChartViewController: UIViewController, UIWebViewDelegate {
     if let readings = BGReading.bgReadingsSinceDate(self.managedObjectContext!, date: NSDate().dateByAddingTimeInterval(2 * 24 * 60 * 60 * -1)) {
       var data: [NSDictionary] = []
       for reading in readings {
-        var readingDictionary = [String: AnyObject]()
-        readingDictionary["date"] = reading.timeStamp!
-        readingDictionary["sgv"] = reading.calculatedValue!
-        data.append(readingDictionary)
+        if let calculatedValue = reading.calculatedValue {
+          if let timeStamp = reading.timeStamp {
+            var readingDictionary = [String: AnyObject]()
+            readingDictionary["date"] = timeStamp
+            readingDictionary["sgv"] = calculatedValue
+            data.append(readingDictionary)
+          }
+        }
       }
       let jsonData = NSJSONSerialization.dataWithJSONObject(data, options: NSJSONWritingOptions.allZeros, error: nil)!
       var jsonString = NSString(data: jsonData, encoding: NSUTF8StringEncoding)
