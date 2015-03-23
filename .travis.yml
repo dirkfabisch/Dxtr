@@ -7,5 +7,5 @@ before_install:
   - brew update
   - brew install mogenerator
   - git clone https://github.com/QueryKit/mogenerator-template ~/.querykit-mogenerator-template
-  notifications:
-  	slack: dxtr:0ytWKvDKvpTxBN4dt2hEukFa
+notifications:
+  slack: dxtr:0ytWKvDKvpTxBN4dt2hEukFa
