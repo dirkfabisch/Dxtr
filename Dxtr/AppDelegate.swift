@@ -23,6 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let settings = UIUserNotificationSettings(forTypes: .Alert, categories: nil)
     application.registerUserNotificationSettings(settings)
     
+    // Start BLE discovery
+    BTDiscovery.sharedInstance
+    
     logger.setup(logLevel: .Verbose, showLogLevel: false, showFileNames: true, showLineNumbers: true, writeToFile: nil)
     
     // Setup XCGLogger
