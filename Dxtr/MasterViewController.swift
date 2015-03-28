@@ -269,10 +269,6 @@ class MasterViewController: UIViewController, UIAlertViewDelegate, DxtrModelDele
   
   //MARK: IBActions
   
-  @IBAction func triggerAppSuspension() {
-    kill(getpid(), SIGKILL);
-  }
-  
   @IBAction func stopSensor(sender: AnyObject) {
     let confirmAlert = UIAlertView(title: "Stop Sensor", message: "Are you sure you want to stop the sensor?", delegate: self, cancelButtonTitle: "No", otherButtonTitles: "Yes")
     confirmAlert.show()

@@ -94,15 +94,6 @@
                                     <segue destination="hnU-D2-rVt" kind="show" identifier="viewChartSegue" id="xTh-7n-1dV"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wb6-DW-N9s">
-                                <rect key="frame" x="16" y="341" width="164" height="30"/>
-                                <state key="normal" title="Trigger App Suspension">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="triggerAppSuspension" destination="vXZ-lx-hvc" eventType="touchUpInside" id="qmN-I3-ZN1"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
