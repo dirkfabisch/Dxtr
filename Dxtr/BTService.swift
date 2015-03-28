@@ -33,9 +33,6 @@ class BTService: NSObject, CBPeripheralDelegate {
     if peripheral != nil {
       peripheral = nil
     }
-    
-    // Deallocating therefore send notification
-    notifyConnected(false)
   }
   
   // Mark: - CBPeripheralDelegate
@@ -88,9 +85,6 @@ class BTService: NSObject, CBPeripheralDelegate {
         peripheral.setNotifyValue(true, forCharacteristic: characteristic as CBCharacteristic)
 
         logger.verbose("matching characteristics")
-        
-        // Send notification that Bluetooth is connected and all required characteristics are discovered
-        notifyConnected(true)
       }
     }
   }
@@ -158,11 +152,6 @@ class BTService: NSObject, CBPeripheralDelegate {
     }
     
     
-  }
-  
-  func notifyConnected(isBluetoothConnected: Bool) {
-    let connectionDetails = ["isConnected": isBluetoothConnected]
-    NSNotificationCenter.defaultCenter().postNotificationName(BLEServiceChangedStatusNotification, object: self, userInfo: connectionDetails)
   }
   
 }

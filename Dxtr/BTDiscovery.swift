@@ -14,6 +14,14 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate {
   private let centralManager: CBCentralManager?
   private var peripheralBLE: CBPeripheral?
   
+  private var connected: Bool = false {
+    didSet {
+      if (!oldValue && connected) || (oldValue && !connected) {
+        notifyConnectionChanged(connected)
+      }
+    }
+  }
+
   private var bleService: BTService? {
     didSet {
       if let service = self.bleService {
@@ -95,6 +103,8 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate {
       return;
     }
     
+    self.connected = true
+    
     // Create new service class
     if (peripheral == self.peripheralBLE) {
       logger.verbose("// Create new service class")
@@ -113,6 +123,8 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate {
       logger.error("No Peripheral included")
       return;
     }
+    
+    self.connected = false
     
     // See if it was our peripheral that disconnected
     if (peripheral == self.peripheralBLE) {
@@ -157,6 +169,10 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate {
       break
     }
 
+  }
+  
+  func notifyConnectionChanged(connected: Bool) {
+    NSNotificationCenter.defaultCenter().postNotificationName(BLEConnectionChangedNotification, object: self, userInfo: ["isConnected": connected])
   }
 
 }

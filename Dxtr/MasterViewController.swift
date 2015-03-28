@@ -51,7 +51,7 @@ class MasterViewController: UIViewController, UIAlertViewDelegate, DxtrModelDele
   override func viewDidLoad() {
     super.viewDidLoad()
     // Watch Bluetooth connection
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("connectionChanged:"), name: BLEServiceChangedStatusNotification, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("connectionChanged:"), name: BLEConnectionChangedNotification, object: nil)
     // Watch Scanning
     NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("btScanning:"), name: BLEDiscoveryScanningNotification, object: nil)
     
@@ -311,7 +311,7 @@ class MasterViewController: UIViewController, UIAlertViewDelegate, DxtrModelDele
           self.currentState = self.savedState
         } else {
           self.btConnectionState.text = "Disconnected"
-          self.showWaitOverlayWithText("Connecting")
+          self.showWaitOverlayWithText("Connecting...")
           notification.alertBody = "Wixel Disconnected"
           self.savedState = self.currentState
           self.currentState = .disconnected
