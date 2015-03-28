@@ -9,32 +9,59 @@
 import Foundation
 import CoreBluetooth
 
-let btDiscoverySharedInstance = BTDiscovery();
-
 class BTDiscovery: NSObject, CBCentralManagerDelegate {
   
   private let centralManager: CBCentralManager?
   private var peripheralBLE: CBPeripheral?
   
-  override init() {
-    super.init()
-    let centralQueue = dispatch_queue_create("com.base68", DISPATCH_QUEUE_SERIAL)
-    centralManager = CBCentralManager(delegate: self, queue: centralQueue)
-  }
-  
-  func startScanning() {
-    if let central = centralManager {
-       central.scanForPeripheralsWithServices([BLEServiceUUID], options: nil)
-  ()  }
-  }
-  
-  var bleService: BTService? {
+  private var bleService: BTService? {
     didSet {
       if let service = self.bleService {
-        logger.verbose("starDiscoveringService")
+        logger.verbose("startDiscoveringServices")
         service.startDiscoveringServices()
       }
     }
+  }
+  
+  class var sharedInstance: BTDiscovery {
+    struct Singleton {
+      static let instance: BTDiscovery = BTDiscovery()
+    }
+    return Singleton.instance
+  }
+  
+  override init() {
+    super.init()
+    let centralQueue = dispatch_queue_create("com.base68", DISPATCH_QUEUE_SERIAL)
+    self.centralManager = CBCentralManager(delegate: self, queue: centralQueue, options:[CBCentralManagerOptionRestoreIdentifierKey: "bleCentralManager"])
+  }
+  
+  // MARK: - Private
+  
+  func startScanning() {
+    if let central = centralManager {
+      let connectedPeripherals = central.retrieveConnectedPeripheralsWithServices([BLEServiceUUID])
+      if connectedPeripherals.count > 0 {
+        clearDevices()
+        let existingPeripheral = connectedPeripherals[0] as? CBPeripheral
+        self.centralManager?.cancelPeripheralConnection(existingPeripheral)
+        startScanning()
+      } else {
+        notifyScanning(true)
+        central.scanForPeripheralsWithServices([BLEServiceUUID], options: nil)
+      }
+    }
+  }
+  
+  func clearDevices() {
+    self.bleService = nil
+    self.peripheralBLE = nil
+  }
+  
+  func notifyScanning(isScanning: Bool) {
+    let connectionDetails = ["isScanning": isScanning]
+    NSNotificationCenter.defaultCenter().postNotificationName(BLEDiscoveryScanningNotification,
+      object: self, userInfo: connectionDetails)
   }
   
   // MARK: - CBCentralManagerDelegate
@@ -47,7 +74,6 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate {
       logger.error("No Peripheral included")
       return
     }
-    
     // If not already connected to a peripheral, then connect to this one
     if ((self.peripheralBLE == nil) || (self.peripheralBLE?.state == CBPeripheralState.Disconnected)) {
       // Retain the peripheral before trying to connect
@@ -76,7 +102,7 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate {
     }
     
     // Stop scanning for new devices
-    sendBTDiscoveryNotificationWithIsScanning(false)
+    notifyScanning(false)
     central.stopScan()
   }
   
@@ -95,53 +121,42 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate {
     }
     
     // Start scanning for new devices
-    self.startScanning()
+    startScanning()
   }
   
-  // MARK: - Private
-  
-  func clearDevices() {
-    self.bleService = nil
-    self.peripheralBLE = nil
+  func centralManager(central: CBCentralManager!, willRestoreState dict: [NSObject : AnyObject]!) {
+    
   }
   
   func centralManagerDidUpdateState(central: CBCentralManager!) {
+
     switch (central.state) {
     case CBCentralManagerState.PoweredOff:
-      self.clearDevices()
-      
+      logger.verbose("Bluetooth is powered off")
+      clearDevices()
+      break;
     case CBCentralManagerState.Unauthorized:
       // Indicate to user that the iOS device does not support BLE.
-      logger.error("Device did not support BLE")
+      logger.error("App not authorized to use BLE")
       break
-      
     case CBCentralManagerState.Unknown:
-      logger.error("Device state unknown")
+      logger.error("State of central manager is unknown")
       // Wait for another event
       break
-      
     case CBCentralManagerState.PoweredOn:
-      logger.verbose("start scanning")
-      sendBTDiscoveryNotificationWithIsScanning(true)
-      self.startScanning()
-      
+      logger.verbose("Bluetooth is powered on")
+      startScanning()
     case CBCentralManagerState.Resetting:
-      self.clearDevices()
-      
+      logger.verbose("Bluetooth connection was reset")
+      clearDevices()
+      break;
     case CBCentralManagerState.Unsupported:
-      logger.error("Device did not support BLE")
+      logger.error("Device does not support BLE")
       break
-      
     default:
       break
     }
-  }
-  
-  func sendBTDiscoveryNotificationWithIsScanning(isScaning: Bool) {
-    let connectionDetails = ["isScanning": isScaning]
-    NSNotificationCenter.defaultCenter().postNotificationName(BLEDiscoveryScanningNotification,
-      object: self, userInfo: connectionDetails)
-  }
 
+  }
 
 }
