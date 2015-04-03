@@ -45,6 +45,7 @@
 		434534AC1A751E70000D591E /* Sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434534A61A751E70000D591E /* Sensor.swift */; };
 		435C921C1A6F9C9B00807847 /* TransmitterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435C921A1A6F9C9B00807847 /* TransmitterData.swift */; };
 		4388DE711ABC207200DB2F30 /* XCGLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43CFB80A1AB89B4500C70423 /* XCGLogger.framework */; };
+		43B0C4B61AC8422400033BF3 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 43B0C4B51AC8422400033BF3 /* Settings.bundle */; };
 		43BBDF9A1A642D850006B61F /* BTDiscovery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BBDF981A642D850006B61F /* BTDiscovery.swift */; };
 		43BBDF9B1A642D850006B61F /* BTService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BBDF991A642D850006B61F /* BTService.swift */; };
 		43BBDF9E1A642DC50006B61F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BBDF9D1A642DC40006B61F /* Constants.swift */; };
@@ -178,6 +179,7 @@
 		434534A51A751E70000D591E /* Calibration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calibration.swift; sourceTree = "<group>"; };
 		434534A61A751E70000D591E /* Sensor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sensor.swift; sourceTree = "<group>"; };
 		435C921A1A6F9C9B00807847 /* TransmitterData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransmitterData.swift; sourceTree = "<group>"; };
+		43B0C4B51AC8422400033BF3 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		43BBDF981A642D850006B61F /* BTDiscovery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTDiscovery.swift; sourceTree = "<group>"; };
 		43BBDF991A642D850006B61F /* BTService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTService.swift; sourceTree = "<group>"; };
 		43BBDF9D1A642DC40006B61F /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -338,6 +340,7 @@
 		43E536221A62CE480037EED0 /* Dxtr */ = {
 			isa = PBXGroup;
 			children = (
+				43B0C4B51AC8422400033BF3 /* Settings.bundle */,
 				43E536251A62CE480037EED0 /* AppDelegate.swift */,
 				43BBDF9D1A642DC40006B61F /* Constants.swift */,
 				1DD153601A8193CA003E7CFD /* NightscoutUploader.swift */,
@@ -463,11 +466,11 @@
 				TargetAttributes = {
 					43E5361F1A62CE480037EED0 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = L57T999M9X;
+						DevelopmentTeam = YV6CG57Z4A;
 					};
 					43E536341A62CE480037EED0 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = L57T999M9X;
+						DevelopmentTeam = YV6CG57Z4A;
 						TestTargetID = 43E5361F1A62CE480037EED0;
 					};
 				};
@@ -528,6 +531,7 @@
 			files = (
 				43E5362B1A62CE480037EED0 /* Main.storyboard in Resources */,
 				1DCAA65B1ABF4EA000A3F2CC /* jquery.min.js in Resources */,
+				43B0C4B61AC8422400033BF3 /* Settings.bundle in Resources */,
 				43E536301A62CE480037EED0 /* LaunchScreen.xib in Resources */,
 				43E5362D1A62CE480037EED0 /* Images.xcassets in Resources */,
 				1DCAA6551ABF4EA000A3F2CC /* chart.html in Resources */,
@@ -882,7 +886,8 @@
 			baseConfigurationReference = 57DC9078F7D8977543930054 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iOS Development: Rick Friele (27AN9EGDF9)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Dxtr/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
@@ -890,6 +895,7 @@
 				OTHER_SWIFT_FLAGS = "";
 				"OTHER_SWIFT_FLAGS[sdk=iphonesimulator*]" = "-D SIMULATOR $(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -898,12 +904,14 @@
 			baseConfigurationReference = 0AFAD76CD12C94905DFF9A02 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iOS Distribution: Rick Friele";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Dxtr/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -912,6 +920,7 @@
 			baseConfigurationReference = 57DC9078F7D8977543930054 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -932,6 +941,7 @@
 			baseConfigurationReference = 0AFAD76CD12C94905DFF9A02 /* Pods.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
