@@ -413,7 +413,6 @@
 			buildConfigurationList = 43E5363F1A62CE480037EED0 /* Build configuration list for PBXNativeTarget "Dxtr" */;
 			buildPhases = (
 				2F57E84C083ED5172E7329EF /* Check Pods Manifest.lock */,
-				435C92151A6F9A0400807847 /* Object Model Generator */,
 				435854B11A6687AB00940764 /* Increase Build Number */,
 				43CB86CA1A66D19200CA6D84 /* Insert Sketch Ressources */,
 				43E5361C1A62CE480037EED0 /* Sources */,
@@ -604,20 +603,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=`echo $buildNumber +1|bc`\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"";
-		};
-		435C92151A6F9A0400807847 /* Object Model Generator */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Object Model Generator";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "source ~/.bash_profile\ncd \"$PROJECT_DIR/Dxtr\" && /usr/local/bin/mogenerator --swift -m dxtrDBModel.xcdatamodeld/dxtrDBModel.xcdatamodel  --output-dir ./ModelObjects --template-path ~/.querykit-mogenerator-template";
 		};
 		43CB86CA1A66D19200CA6D84 /* Insert Sketch Ressources */ = {
 			isa = PBXShellScriptBuildPhase;
