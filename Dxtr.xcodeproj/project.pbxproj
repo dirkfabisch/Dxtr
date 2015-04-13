@@ -46,6 +46,30 @@
 		435C921C1A6F9C9B00807847 /* TransmitterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435C921A1A6F9C9B00807847 /* TransmitterData.swift */; };
 		4388DE711ABC207200DB2F30 /* XCGLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43CFB80A1AB89B4500C70423 /* XCGLogger.framework */; };
 		43B0C4B61AC8422400033BF3 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 43B0C4B51AC8422400033BF3 /* Settings.bundle */; };
+		43B223641AD2C854002F1FFF /* settingsCog.png in Resources */ = {isa = PBXBuildFile; fileRef = 43B223611AD2C854002F1FFF /* settingsCog.png */; };
+		43B223651AD2C854002F1FFF /* settingsCog.png in Resources */ = {isa = PBXBuildFile; fileRef = 43B223611AD2C854002F1FFF /* settingsCog.png */; };
+		43B223661AD2C854002F1FFF /* settingsCog@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43B223621AD2C854002F1FFF /* settingsCog@2x.png */; };
+		43B223671AD2C854002F1FFF /* settingsCog@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43B223621AD2C854002F1FFF /* settingsCog@2x.png */; };
+		43B223701AD2CECA002F1FFF /* rightArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 43B2236C1AD2CECA002F1FFF /* rightArrow.png */; };
+		43B223711AD2CECA002F1FFF /* rightArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 43B2236C1AD2CECA002F1FFF /* rightArrow.png */; };
+		43B223721AD2CECA002F1FFF /* rightArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43B2236D1AD2CECA002F1FFF /* rightArrow@2x.png */; };
+		43B223731AD2CECA002F1FFF /* rightArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43B2236D1AD2CECA002F1FFF /* rightArrow@2x.png */; };
+		43B223741AD2CECA002F1FFF /* rightArrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43B2236E1AD2CECA002F1FFF /* rightArrow@3x.png */; };
+		43B223751AD2CECA002F1FFF /* rightArrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43B2236E1AD2CECA002F1FFF /* rightArrow@3x.png */; };
+		43B223761AD2CECA002F1FFF /* settingsCog@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43B2236F1AD2CECA002F1FFF /* settingsCog@3x.png */; };
+		43B223771AD2CECA002F1FFF /* settingsCog@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43B2236F1AD2CECA002F1FFF /* settingsCog@3x.png */; };
+		43B2239A1AD2D70E002F1FFF /* short term.png in Resources */ = {isa = PBXBuildFile; fileRef = 43B223971AD2D70E002F1FFF /* short term.png */; };
+		43B2239B1AD2D70E002F1FFF /* short term.png in Resources */ = {isa = PBXBuildFile; fileRef = 43B223971AD2D70E002F1FFF /* short term.png */; };
+		43B2239C1AD2D70E002F1FFF /* short term@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43B223981AD2D70E002F1FFF /* short term@2x.png */; };
+		43B2239D1AD2D70E002F1FFF /* short term@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43B223981AD2D70E002F1FFF /* short term@2x.png */; };
+		43B2239E1AD2D70E002F1FFF /* short term@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43B223991AD2D70E002F1FFF /* short term@3x.png */; };
+		43B2239F1AD2D70E002F1FFF /* short term@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43B223991AD2D70E002F1FFF /* short term@3x.png */; };
+		43B223A11AD2DB69002F1FFF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B223A01AD2DB69002F1FFF /* MainViewController.swift */; };
+		43B223A21AD2DB69002F1FFF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B223A01AD2DB69002F1FFF /* MainViewController.swift */; };
+		43B223A91AD2ED12002F1FFF /* SideBarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B223A71AD2ED12002F1FFF /* SideBarTableViewController.swift */; };
+		43B223AA1AD2ED12002F1FFF /* SideBarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B223A71AD2ED12002F1FFF /* SideBarTableViewController.swift */; };
+		43B223AB1AD2ED12002F1FFF /* SideBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B223A81AD2ED12002F1FFF /* SideBar.swift */; };
+		43B223AC1AD2ED12002F1FFF /* SideBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B223A81AD2ED12002F1FFF /* SideBar.swift */; };
 		43BBDF9A1A642D850006B61F /* BTDiscovery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BBDF981A642D850006B61F /* BTDiscovery.swift */; };
 		43BBDF9B1A642D850006B61F /* BTService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BBDF991A642D850006B61F /* BTService.swift */; };
 		43BBDF9E1A642DC50006B61F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BBDF9D1A642DC40006B61F /* Constants.swift */; };
@@ -87,6 +111,9 @@
 		43E5362D1A62CE480037EED0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43E5362C1A62CE480037EED0 /* Images.xcassets */; };
 		43E536301A62CE480037EED0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43E5362E1A62CE480037EED0 /* LaunchScreen.xib */; };
 		43E5363C1A62CE480037EED0 /* DxtrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E5363B1A62CE480037EED0 /* DxtrTests.swift */; };
+		43E834CB1AD4F40700F0F23E /* Dexcom.png in Resources */ = {isa = PBXBuildFile; fileRef = 43E834C81AD4F40700F0F23E /* Dexcom.png */; };
+		43E834CC1AD4F40700F0F23E /* Dexcom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43E834C91AD4F40700F0F23E /* Dexcom@2x.png */; };
+		43E834CD1AD4F40700F0F23E /* Dexcom@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43E834CA1AD4F40700F0F23E /* Dexcom@3x.png */; };
 		B44A2CAB3799B1C9D5A72105 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE74BA18BFC6C534602170C6 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -180,6 +207,18 @@
 		434534A61A751E70000D591E /* Sensor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sensor.swift; sourceTree = "<group>"; };
 		435C921A1A6F9C9B00807847 /* TransmitterData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransmitterData.swift; sourceTree = "<group>"; };
 		43B0C4B51AC8422400033BF3 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		43B223611AD2C854002F1FFF /* settingsCog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingsCog.png; sourceTree = "<group>"; };
+		43B223621AD2C854002F1FFF /* settingsCog@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingsCog@2x.png"; sourceTree = "<group>"; };
+		43B2236C1AD2CECA002F1FFF /* rightArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rightArrow.png; sourceTree = "<group>"; };
+		43B2236D1AD2CECA002F1FFF /* rightArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rightArrow@2x.png"; sourceTree = "<group>"; };
+		43B2236E1AD2CECA002F1FFF /* rightArrow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rightArrow@3x.png"; sourceTree = "<group>"; };
+		43B2236F1AD2CECA002F1FFF /* settingsCog@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingsCog@3x.png"; sourceTree = "<group>"; };
+		43B223971AD2D70E002F1FFF /* short term.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "short term.png"; sourceTree = "<group>"; };
+		43B223981AD2D70E002F1FFF /* short term@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "short term@2x.png"; sourceTree = "<group>"; };
+		43B223991AD2D70E002F1FFF /* short term@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "short term@3x.png"; sourceTree = "<group>"; };
+		43B223A01AD2DB69002F1FFF /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		43B223A71AD2ED12002F1FFF /* SideBarTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBarTableViewController.swift; sourceTree = "<group>"; };
+		43B223A81AD2ED12002F1FFF /* SideBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBar.swift; sourceTree = "<group>"; };
 		43BBDF981A642D850006B61F /* BTDiscovery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTDiscovery.swift; sourceTree = "<group>"; };
 		43BBDF991A642D850006B61F /* BTService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTService.swift; sourceTree = "<group>"; };
 		43BBDF9D1A642DC40006B61F /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -202,6 +241,9 @@
 		43E536351A62CE480037EED0 /* DxtrTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DxtrTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		43E5363A1A62CE480037EED0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43E5363B1A62CE480037EED0 /* DxtrTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DxtrTests.swift; sourceTree = "<group>"; };
+		43E834C81AD4F40700F0F23E /* Dexcom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Dexcom.png; sourceTree = "<group>"; };
+		43E834C91AD4F40700F0F23E /* Dexcom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Dexcom@2x.png"; sourceTree = "<group>"; };
+		43E834CA1AD4F40700F0F23E /* Dexcom@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Dexcom@3x.png"; sourceTree = "<group>"; };
 		57DC9078F7D8977543930054 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EE74BA18BFC6C534602170C6 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -250,6 +292,7 @@
 		4300FCD21A82C72A00CC8CE1 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				43B223A01AD2DB69002F1FFF /* MainViewController.swift */,
 				43E536271A62CE480037EED0 /* MasterViewController.swift */,
 				4300FCD31A82C75E00CC8CE1 /* StartSensorViewController.swift */,
 				43D890C21A8921A6009C9F40 /* AddBGReadingViewController.swift */,
@@ -263,6 +306,7 @@
 		43583B421A664E3000940764 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				43B223A61AD2ECF1002F1FFF /* SideBar */,
 				43D890BB1A891EBA009C9F40 /* B68UIFloatLabelTextField.swift */,
 				43CFB8121AB8C05300C70423 /* SwiftOverlays.swift */,
 				43CFB8011AB89B4500C70423 /* XCGLogger.xcodeproj */,
@@ -285,6 +329,35 @@
 				435C921A1A6F9C9B00807847 /* TransmitterData.swift */,
 			);
 			path = ModelObjects;
+			sourceTree = "<group>";
+		};
+		43B223601AD2C854002F1FFF /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				43E834C81AD4F40700F0F23E /* Dexcom.png */,
+				43E834C91AD4F40700F0F23E /* Dexcom@2x.png */,
+				43E834CA1AD4F40700F0F23E /* Dexcom@3x.png */,
+				43B223971AD2D70E002F1FFF /* short term.png */,
+				43B223981AD2D70E002F1FFF /* short term@2x.png */,
+				43B223991AD2D70E002F1FFF /* short term@3x.png */,
+				43B2236C1AD2CECA002F1FFF /* rightArrow.png */,
+				43B2236D1AD2CECA002F1FFF /* rightArrow@2x.png */,
+				43B2236E1AD2CECA002F1FFF /* rightArrow@3x.png */,
+				43B2236F1AD2CECA002F1FFF /* settingsCog@3x.png */,
+				43B223611AD2C854002F1FFF /* settingsCog.png */,
+				43B223621AD2C854002F1FFF /* settingsCog@2x.png */,
+			);
+			name = assets;
+			path = "Graphics Resources/assets";
+			sourceTree = SOURCE_ROOT;
+		};
+		43B223A61AD2ECF1002F1FFF /* SideBar */ = {
+			isa = PBXGroup;
+			children = (
+				43B223A71AD2ED12002F1FFF /* SideBarTableViewController.swift */,
+				43B223A81AD2ED12002F1FFF /* SideBar.swift */,
+			);
+			name = SideBar;
 			sourceTree = "<group>";
 		};
 		43BBDF9C1A642D910006B61F /* BluetoothStack */ = {
@@ -362,6 +435,7 @@
 		43E536231A62CE480037EED0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				43B223601AD2C854002F1FFF /* assets */,
 				43E5362E1A62CE480037EED0 /* LaunchScreen.xib */,
 				4300FCD01A82C3DB00CC8CE1 /* default_background.jpeg */,
 				43E536241A62CE480037EED0 /* Info.plist */,
@@ -413,7 +487,6 @@
 			buildConfigurationList = 43E5363F1A62CE480037EED0 /* Build configuration list for PBXNativeTarget "Dxtr" */;
 			buildPhases = (
 				2F57E84C083ED5172E7329EF /* Check Pods Manifest.lock */,
-				435C92151A6F9A0400807847 /* Object Model Generator */,
 				435854B11A6687AB00940764 /* Increase Build Number */,
 				43CB86CA1A66D19200CA6D84 /* Insert Sketch Ressources */,
 				43E5361C1A62CE480037EED0 /* Sources */,
@@ -530,13 +603,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				43E5362B1A62CE480037EED0 /* Main.storyboard in Resources */,
+				43E834CB1AD4F40700F0F23E /* Dexcom.png in Resources */,
+				43B2239E1AD2D70E002F1FFF /* short term@3x.png in Resources */,
+				43B223721AD2CECA002F1FFF /* rightArrow@2x.png in Resources */,
+				43E834CC1AD4F40700F0F23E /* Dexcom@2x.png in Resources */,
+				43B223741AD2CECA002F1FFF /* rightArrow@3x.png in Resources */,
+				43B223661AD2C854002F1FFF /* settingsCog@2x.png in Resources */,
 				1DCAA65B1ABF4EA000A3F2CC /* jquery.min.js in Resources */,
 				43B0C4B61AC8422400033BF3 /* Settings.bundle in Resources */,
+				43E834CD1AD4F40700F0F23E /* Dexcom@3x.png in Resources */,
+				43B2239A1AD2D70E002F1FFF /* short term.png in Resources */,
 				43E536301A62CE480037EED0 /* LaunchScreen.xib in Resources */,
 				43E5362D1A62CE480037EED0 /* Images.xcassets in Resources */,
 				1DCAA6551ABF4EA000A3F2CC /* chart.html in Resources */,
+				43B223641AD2C854002F1FFF /* settingsCog.png in Resources */,
+				43B223761AD2CECA002F1FFF /* settingsCog@3x.png in Resources */,
 				1DCAA6531ABF4EA000A3F2CC /* chart.css in Resources */,
 				1DCAA6591ABF4EA000A3F2CC /* d3.min.js in Resources */,
+				43B2239C1AD2D70E002F1FFF /* short term@2x.png in Resources */,
+				43B223701AD2CECA002F1FFF /* rightArrow.png in Resources */,
 				1DCAA6571ABF4EA000A3F2CC /* client.js in Resources */,
 				4300FCD11A82C3DB00CC8CE1 /* default_background.jpeg in Resources */,
 			);
@@ -546,14 +631,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43B223751AD2CECA002F1FFF /* rightArrow@3x.png in Resources */,
 				43CFB7D31AB73D5E00C70423 /* Main.storyboard in Resources */,
 				1DCAA65C1ABF4EA000A3F2CC /* jquery.min.js in Resources */,
+				43B2239D1AD2D70E002F1FFF /* short term@2x.png in Resources */,
+				43B223651AD2C854002F1FFF /* settingsCog.png in Resources */,
+				43B2239F1AD2D70E002F1FFF /* short term@3x.png in Resources */,
 				43CFB7E71AB73D9F00C70423 /* LaunchScreen.xib in Resources */,
+				43B223771AD2CECA002F1FFF /* settingsCog@3x.png in Resources */,
 				43CFB7E61AB73D9700C70423 /* Images.xcassets in Resources */,
+				43B223671AD2C854002F1FFF /* settingsCog@2x.png in Resources */,
 				1DCAA6561ABF4EA000A3F2CC /* chart.html in Resources */,
+				43B2239B1AD2D70E002F1FFF /* short term.png in Resources */,
+				43B223731AD2CECA002F1FFF /* rightArrow@2x.png in Resources */,
 				1DCAA6541ABF4EA000A3F2CC /* chart.css in Resources */,
 				1DCAA65A1ABF4EA000A3F2CC /* d3.min.js in Resources */,
 				1DCAA6581ABF4EA000A3F2CC /* client.js in Resources */,
+				43B223711AD2CECA002F1FFF /* rightArrow.png in Resources */,
 				43CFB7E81AB73DA300C70423 /* default_background.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -604,20 +698,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=`echo $buildNumber +1|bc`\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"";
-		};
-		435C92151A6F9A0400807847 /* Object Model Generator */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Object Model Generator";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "source ~/.bash_profile\ncd \"$PROJECT_DIR/Dxtr\" && /usr/local/bin/mogenerator --swift -m dxtrDBModel.xcdatamodeld/dxtrDBModel.xcdatamodel  --output-dir ./ModelObjects --template-path ~/.querykit-mogenerator-template";
 		};
 		43CB86CA1A66D19200CA6D84 /* Insert Sketch Ressources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -704,6 +784,7 @@
 				43D890C31A8921A6009C9F40 /* AddBGReadingViewController.swift in Sources */,
 				4324ED8B1A812DDA0002BEE6 /* _Calibration.swift in Sources */,
 				4324ED8C1A812DDA0002BEE6 /* _Sensor.swift in Sources */,
+				43B223A91AD2ED12002F1FFF /* SideBarTableViewController.swift in Sources */,
 				43027B171A7FBD1C00DE47F8 /* TestRawData.swift in Sources */,
 				1DCAA65E1ABF4EB000A3F2CC /* ChartViewController.swift in Sources */,
 				434534AC1A751E70000D591E /* Sensor.swift in Sources */,
@@ -713,6 +794,7 @@
 				43E536281A62CE480037EED0 /* MasterViewController.swift in Sources */,
 				4324ED8D1A812DDA0002BEE6 /* _TransmitterData.swift in Sources */,
 				434534AB1A751E70000D591E /* Calibration.swift in Sources */,
+				43B223A11AD2DB69002F1FFF /* MainViewController.swift in Sources */,
 				1DCAA6621ABF4ECA00A3F2CC /* _FailedUpload.swift in Sources */,
 				43BBDF9B1A642D850006B61F /* BTService.swift in Sources */,
 				432771B61A8A8BC900F42162 /* AddDoubleCalibrationViewController.swift in Sources */,
@@ -721,6 +803,7 @@
 				1DCAA6681ABF4EEF00A3F2CC /* SettingsManager.swift in Sources */,
 				43DF0D061A6D96B700686779 /* dxtrDBModel.xcdatamodeld in Sources */,
 				43DF0D081A6D9ADD00686779 /* DxtrModel.swift in Sources */,
+				43B223AB1AD2ED12002F1FFF /* SideBar.swift in Sources */,
 				43D890BC1A891EBA009C9F40 /* B68UIFloatLabelTextField.swift in Sources */,
 				43BBDF9A1A642D850006B61F /* BTDiscovery.swift in Sources */,
 				43E536261A62CE480037EED0 /* AppDelegate.swift in Sources */,
@@ -737,6 +820,7 @@
 			files = (
 				43CFB7E41AB73D8700C70423 /* TestRawData.swift in Sources */,
 				43CFB7F21AB76E5D00C70423 /* SensorTests.swift in Sources */,
+				43B223AC1AD2ED12002F1FFF /* SideBar.swift in Sources */,
 				43CFB7DB1AB73D7700C70423 /* EulaViewController.swift in Sources */,
 				43CFB7D91AB73D7700C70423 /* AddBGReadingViewController.swift in Sources */,
 				43CFB7D21AB73D4E00C70423 /* AppDelegate.swift in Sources */,
@@ -744,6 +828,7 @@
 				43E5363C1A62CE480037EED0 /* DxtrTests.swift in Sources */,
 				43CFB7DA1AB73D7700C70423 /* AddDoubleCalibrationViewController.swift in Sources */,
 				43CFB7D51AB73D6E00C70423 /* BTService.swift in Sources */,
+				43B223A21AD2DB69002F1FFF /* MainViewController.swift in Sources */,
 				1DCAA66B1ABF4EEF00A3F2CC /* StateManager.swift in Sources */,
 				43CFB7E31AB73D7D00C70423 /* TransmitterData.swift in Sources */,
 				43CFB8141AB8C05300C70423 /* SwiftOverlays.swift in Sources */,
@@ -763,6 +848,7 @@
 				1DCAA6691ABF4EEF00A3F2CC /* SettingsManager.swift in Sources */,
 				43CFB7DF1AB73D7D00C70423 /* _TransmitterData.swift in Sources */,
 				43CFB7D61AB73D7200C70423 /* NightscoutUploader.swift in Sources */,
+				43B223AA1AD2ED12002F1FFF /* SideBarTableViewController.swift in Sources */,
 				43CFB7E51AB73D9300C70423 /* DxtrModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

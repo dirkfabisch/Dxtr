@@ -24,6 +24,13 @@ class StartSensorViewController : UIViewController, UIPickerViewDelegate {
   @IBOutlet weak var saveButton: UIBarButtonItem!
   @IBOutlet weak var datePicker: UIDatePicker!
   
+  override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
+    navigationController?.navigationBarHidden = false
+    
+    datePicker.backgroundColor = UIColor.whiteColor()
+  }
+  
   //MARK: - Exit functions
   // "Cancel" action notifies "Cancel" delegate
 

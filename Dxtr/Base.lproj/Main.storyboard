@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="KQ3-cb-hmx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="L2r-EM-HO4">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Master View Controller-->
@@ -94,6 +95,15 @@
                                     <segue destination="hnU-D2-rVt" kind="show" identifier="viewChartSegue" id="xTh-7n-1dV"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jtg-ce-UGU">
+                                <rect key="frame" x="16" y="341" width="70" height="30"/>
+                                <state key="normal" title="Main View">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="L2r-EM-HO4" kind="show" identifier="mainViewSegue" id="tdE-9t-Spq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -137,7 +147,7 @@
             </objects>
             <point key="canvasLocation" x="1214" y="-156"/>
         </scene>
-        <!--Sensor-->
+        <!--Start Sensor -->
         <scene sceneID="XL7-d9-tGq">
             <objects>
                 <viewController id="2gu-8T-ids" customClass="StartSensorViewController" customModule="Dxtr" customModuleProvider="target" sceneMemberID="viewController">
@@ -149,8 +159,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* you can find the start time in your Dexcom reciever (Settings -&gt; Device Info -&gt; Insertion Time)" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mww-qq-KcB">
+                                <rect key="frame" x="16" y="533" width="568" height="15"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Set the time and date when the current sensor was started" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dtx-eR-zA6">
+                                <rect key="frame" x="36" y="176" width="528" height="24"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jN8-ql-NP2">
+                                <rect key="frame" x="231" y="108" width="138" height="55"/>
+                                <state key="normal" image="Dexcom.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                             <datePicker contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="H86-EZ-kZB">
-                                <rect key="frame" x="16" y="204" width="568" height="162"/>
+                                <rect key="frame" x="0.0" y="258" width="600" height="162"/>
+                                <color key="backgroundColor" red="0.29072558879852295" green="0.56947612762451172" blue="0.30406126379966736" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <date key="date" timeIntervalSinceReferenceDate="444764428.04518002">
                                     <!--2015-02-04 17:40:28 +0000-->
                                 </date>
@@ -158,34 +188,24 @@
                                     <action selector="dateChanged:" destination="2gu-8T-ids" eventType="valueChanged" id="Dh8-yI-9U5"/>
                                 </connections>
                             </datePicker>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* you can find the start time in your Dexcom reciever (Settings -&gt; Device Info -&gt; Insertion Time)" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mww-qq-KcB">
-                                <rect key="frame" x="16" y="533" width="568" height="15"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Set the time and date when the current sensor was started *" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dtx-eR-zA6">
-                                <rect key="frame" x="78" y="84" width="445" height="20"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.090196078430000007" green="0.090196078430000007" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="mww-qq-KcB" secondAttribute="trailing" id="64I-lg-Hfd"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="H86-EZ-kZB" secondAttribute="trailing" id="9Ko-Oc-5Vy"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Dtx-eR-zA6" secondAttribute="trailing" constant="61" id="DSe-On-HTY"/>
-                            <constraint firstItem="Dtx-eR-zA6" firstAttribute="top" secondItem="tKM-IC-oIC" secondAttribute="bottom" constant="20" id="EkP-oJ-En6"/>
-                            <constraint firstItem="Dtx-eR-zA6" firstAttribute="leading" secondItem="WVh-a5-C26" secondAttribute="leadingMargin" constant="62" id="Fyh-uS-1O4"/>
+                            <constraint firstAttribute="trailing" secondItem="H86-EZ-kZB" secondAttribute="trailing" id="9Ko-Oc-5Vy"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Dtx-eR-zA6" secondAttribute="trailing" constant="20" id="DSe-On-HTY"/>
+                            <constraint firstItem="Dtx-eR-zA6" firstAttribute="leading" secondItem="WVh-a5-C26" secondAttribute="leadingMargin" constant="20" id="Fyh-uS-1O4"/>
+                            <constraint firstItem="jN8-ql-NP2" firstAttribute="top" secondItem="tKM-IC-oIC" secondAttribute="bottom" constant="44" id="Nwv-TM-G1n"/>
                             <constraint firstItem="z0Q-pr-3pl" firstAttribute="top" secondItem="mww-qq-KcB" secondAttribute="bottom" constant="8" symbolic="YES" id="Rnh-cb-a4f"/>
-                            <constraint firstItem="H86-EZ-kZB" firstAttribute="leading" secondItem="WVh-a5-C26" secondAttribute="leadingMargin" id="kKN-zD-mUR"/>
-                            <constraint firstItem="H86-EZ-kZB" firstAttribute="top" secondItem="Dtx-eR-zA6" secondAttribute="bottom" constant="100" id="mcB-vT-hdP"/>
+                            <constraint firstAttribute="centerX" secondItem="jN8-ql-NP2" secondAttribute="centerX" id="Sfd-uZ-mWc"/>
+                            <constraint firstItem="H86-EZ-kZB" firstAttribute="leading" secondItem="WVh-a5-C26" secondAttribute="leading" id="kKN-zD-mUR"/>
+                            <constraint firstItem="H86-EZ-kZB" firstAttribute="top" secondItem="Dtx-eR-zA6" secondAttribute="bottom" constant="58" id="mcB-vT-hdP"/>
                             <constraint firstItem="mww-qq-KcB" firstAttribute="leading" secondItem="WVh-a5-C26" secondAttribute="leadingMargin" id="sJL-q9-ywz"/>
+                            <constraint firstItem="Dtx-eR-zA6" firstAttribute="top" secondItem="jN8-ql-NP2" secondAttribute="bottom" constant="13" id="wga-6E-SjQ"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Sensor" id="YVP-8x-jAa">
+                    <navigationItem key="navigationItem" title="Start Sensor " id="YVP-8x-jAa">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="GRb-gh-vzg">
                             <connections>
                                 <action selector="cancel:" destination="2gu-8T-ids" id="b4f-nn-CjQ"/>
@@ -197,6 +217,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="datePicker" destination="H86-EZ-kZB" id="fyq-TC-eJc"/>
@@ -282,6 +303,133 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZD7-Ld-8Wq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4444" y="572"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="0vU-Nk-9Zf">
+            <objects>
+                <navigationController id="L2r-EM-HO4" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="4HL-4n-oJC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.090196078430000007" green="0.090196078430000007" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="20"/>
+                            <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Jgm-yY-Xt0" kind="relationship" relationship="rootViewController" id="QqV-cg-IE7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VRm-cB-GvO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="487" y="-870"/>
+        </scene>
+        <!--Main View Controller-->
+        <scene sceneID="ZCF-Yg-D92">
+            <objects>
+                <viewController id="Jgm-yY-Xt0" customClass="MainViewController" customModule="Dxtr" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="alI-Uk-rjA"/>
+                        <viewControllerLayoutGuide type="bottom" id="QZ0-KN-DEo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xGt-8F-Vh5">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kcg-jP-Smv">
+                                <rect key="frame" x="20" y="28" width="22" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="22" id="OVE-FF-aZA"/>
+                                    <constraint firstAttribute="height" constant="22" id="o8g-9a-VQH"/>
+                                </constraints>
+                                <state key="normal" image="settingsCog.png"/>
+                                <connections>
+                                    <action selector="configMenuButton:" destination="Jgm-yY-Xt0" eventType="touchUpInside" id="sy3-ab-txv"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="999" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tPZ-gy-rvP">
+                                <rect key="frame" x="16" y="45" width="121" height="83"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="72"/>
+                                <color key="textColor" red="0.0" green="0.44551348686218262" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightArrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="dFZ-Uw-UMU">
+                                <rect key="frame" x="517" y="75" width="51" height="36"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="short term.png" translatesAutoresizingMaskIntoConstraints="NO" id="cnk-AN-nsz">
+                                <rect key="frame" x="0.0" y="154" width="647" height="349"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="349" id="ZaO-ck-tAa"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12 mins ago" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Vb-TP-ifu">
+                                <rect key="frame" x="16" y="125" width="94" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.44551348686218262" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HaF-Z0-Dzc">
+                                <rect key="frame" x="20" y="392" width="568" height="200"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="03c-dZ-pUG"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sgy-6a-Qu3">
+                                <rect key="frame" x="20" y="28" width="560" height="24"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" red="0.0" green="0.44551348686218262" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.090196078431372548" green="0.090196078431372548" blue="0.12549019607843137" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="tPZ-gy-rvP" firstAttribute="leading" secondItem="7Vb-TP-ifu" secondAttribute="leading" id="2hR-z3-HdR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="dFZ-Uw-UMU" secondAttribute="trailing" constant="16" id="3op-5t-U3o"/>
+                            <constraint firstAttribute="trailing" secondItem="sgy-6a-Qu3" secondAttribute="trailing" constant="20" symbolic="YES" id="5k9-wR-Z7v"/>
+                            <constraint firstItem="dFZ-Uw-UMU" firstAttribute="top" secondItem="alI-Uk-rjA" secondAttribute="bottom" constant="55" id="B6r-Pr-xIj"/>
+                            <constraint firstItem="kcg-jP-Smv" firstAttribute="top" secondItem="alI-Uk-rjA" secondAttribute="bottom" constant="8" symbolic="YES" id="Hb6-r6-EnK"/>
+                            <constraint firstItem="tPZ-gy-rvP" firstAttribute="leading" secondItem="xGt-8F-Vh5" secondAttribute="leadingMargin" id="HuN-Bw-Dz3"/>
+                            <constraint firstItem="sgy-6a-Qu3" firstAttribute="leading" secondItem="xGt-8F-Vh5" secondAttribute="leading" constant="20" symbolic="YES" id="QVA-T1-cz7"/>
+                            <constraint firstItem="sgy-6a-Qu3" firstAttribute="top" secondItem="alI-Uk-rjA" secondAttribute="bottom" constant="8" symbolic="YES" id="XZd-77-IB9"/>
+                            <constraint firstItem="cnk-AN-nsz" firstAttribute="leading" secondItem="xGt-8F-Vh5" secondAttribute="leading" id="ZP1-RA-Fux"/>
+                            <constraint firstItem="QZ0-KN-DEo" firstAttribute="top" secondItem="cnk-AN-nsz" secondAttribute="bottom" constant="97" id="bsH-ga-FpG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cnk-AN-nsz" secondAttribute="trailing" constant="-63" id="c1G-Nu-TqE"/>
+                            <constraint firstItem="HaF-Z0-Dzc" firstAttribute="leading" secondItem="xGt-8F-Vh5" secondAttribute="leadingMargin" constant="4" id="e3n-1G-hEb"/>
+                            <constraint firstItem="cnk-AN-nsz" firstAttribute="top" secondItem="7Vb-TP-ifu" secondAttribute="bottom" constant="8" symbolic="YES" id="eqf-M0-Lcn"/>
+                            <constraint firstItem="QZ0-KN-DEo" firstAttribute="top" secondItem="HaF-Z0-Dzc" secondAttribute="bottom" constant="8" id="gYG-Om-IWb"/>
+                            <constraint firstItem="kcg-jP-Smv" firstAttribute="left" secondItem="xGt-8F-Vh5" secondAttribute="left" multiplier="1.5" constant="20" symbolic="YES" id="jwq-zw-TG8"/>
+                            <constraint firstItem="tPZ-gy-rvP" firstAttribute="top" secondItem="alI-Uk-rjA" secondAttribute="bottom" constant="25" id="kLo-to-eIW"/>
+                            <constraint firstItem="kcg-jP-Smv" firstAttribute="leading" secondItem="xGt-8F-Vh5" secondAttribute="leadingMargin" constant="4" id="nBg-Fb-kvf"/>
+                            <constraint firstItem="7Vb-TP-ifu" firstAttribute="top" secondItem="tPZ-gy-rvP" secondAttribute="bottom" constant="-3" id="pfw-Jq-Fnd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="HaF-Z0-Dzc" secondAttribute="trailing" constant="-4" id="qXt-hq-FDV"/>
+                            <constraint firstItem="cnk-AN-nsz" firstAttribute="top" secondItem="7Vb-TP-ifu" secondAttribute="bottom" constant="8" id="sB0-e3-jGx"/>
+                            <constraint firstItem="cnk-AN-nsz" firstAttribute="top" secondItem="7Vb-TP-ifu" secondAttribute="bottom" constant="8" id="sye-Cm-Ut6"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="nBg-Fb-kvf"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="fek-8B-HCw"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="bgReadingLabel" destination="tPZ-gy-rvP" id="4EP-Iy-mvp"/>
+                        <outlet property="lastReadingLabel" destination="7Vb-TP-ifu" id="mkB-12-bCx"/>
+                        <outlet property="logWindow" destination="HaF-Z0-Dzc" id="GLf-lu-cf5"/>
+                        <outlet property="statusLabel" destination="sgy-6a-Qu3" id="jEP-nc-x4d"/>
+                        <segue destination="QnB-cJ-8SA" kind="show" identifier="startSensorSegue" id="BOx-PI-NFY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hBd-1y-I8Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1214" y="-870"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="oKb-GV-HJR">
@@ -605,6 +753,14 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Dexcom.png" width="138" height="55"/>
         <image name="default_background.jpeg" width="2208" height="1472"/>
+        <image name="rightArrow.png" width="51" height="36"/>
+        <image name="settingsCog.png" width="22" height="22"/>
+        <image name="short term.png" width="375" height="225"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="BOx-PI-NFY"/>
+    </inferredMetricsTieBreakers>
+    <color key="tintColor" red="0.0" green="0.44551348686218262" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
