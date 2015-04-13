@@ -121,7 +121,7 @@ class NightscoutUploader: NSObject {
   
   private func processFailedUpload(failedUpload: FailedUpload) {
     if NightscoutUploader.canUpload() {
-      if let managedObjectID = DxtrModel.sharedInstance.managedObjectContext!.persistentStoreCoordinator?.managedObjectIDForURIRepresentation(failedUpload.managedObjectID as NSURL) {
+      if let managedObjectID = DxtrModel.sharedInstance.managedObjectContext!.persistentStoreCoordinator?.managedObjectIDForURIRepresentation(failedUpload.managedObjectID as! NSURL) {
         logger.debug("Processing failed upload with ID: \(managedObjectID)")
         var error: NSError?
         var managedObject = DxtrModel.sharedInstance.managedObjectContext!.existingObjectWithID(managedObjectID, error: &error)
@@ -133,11 +133,11 @@ class NightscoutUploader: NSObject {
             if let uploadType = UploadType(rawValue: failedUpload.type) {
               switch uploadType {
               case .Reading:
-                router = Router.Readings(readingAsDictionary(actualManagedObject as BGReading))
+                router = Router.Readings(readingAsDictionary(actualManagedObject as! BGReading))
               case .CalibrationRecord:
-                router = Router.CalibrationRecords(calibrationRecordAsDictionary(actualManagedObject as Calibration))
+                router = Router.CalibrationRecords(calibrationRecordAsDictionary(actualManagedObject as! Calibration))
               case .MeterRecord:
-                router = Router.MeterRecords(meterRecordAsDictionary(actualManagedObject as Calibration))
+                router = Router.MeterRecords(meterRecordAsDictionary(actualManagedObject as! Calibration))
               }
             }
             if let actualRouter = router {
@@ -183,7 +183,7 @@ class NightscoutUploader: NSObject {
   
   private class func isNightscoutAPISecretValid() -> Bool {
     if let apiSecret = SettingsManager.sharedInstance.getNightscoutAPISecret() {
-      return countElements(apiSecret) >= NIGHTSCOUT_API_SECRET_MIN_LENGTH
+      return count(apiSecret) >= NIGHTSCOUT_API_SECRET_MIN_LENGTH
     }
     return false
   }
