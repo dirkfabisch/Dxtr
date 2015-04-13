@@ -11,7 +11,7 @@ import CoreBluetooth
 
 class BTDiscovery: NSObject, CBCentralManagerDelegate {
   
-  private let centralManager: CBCentralManager?
+  private var centralManager: CBCentralManager?
   private var peripheralBLE: CBPeripheral?
   
   private var connected: Bool = false {
@@ -42,6 +42,7 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate {
     super.init()
     let centralQueue = dispatch_queue_create("com.base68", DISPATCH_QUEUE_SERIAL)
     self.centralManager = CBCentralManager(delegate: self, queue: centralQueue, options:[CBCentralManagerOptionRestoreIdentifierKey: "bleCentralManager"])
+    //    self.centralManager = CBCentralManager(delegate: self, queue: centralQueue, options:[CBCentralManagerOptionRestoreIdentifierKey: "bleCentralManager"])
   }
   
   // MARK: - Private

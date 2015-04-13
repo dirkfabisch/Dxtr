@@ -14,7 +14,7 @@ import XCGLogger
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
   
-  var window: UIWindow!
+  var window: UIWindow?
   lazy var dxtrModel = DxtrModel.sharedInstance
   
   
@@ -22,7 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Override point for customization after application launch.
     let settings = UIUserNotificationSettings(forTypes: .Alert, categories: nil)
     application.registerUserNotificationSettings(settings)
-    
+    application.setStatusBarStyle(.LightContent, animated: true)
+
     // Start BLE discovery
     BTDiscovery.sharedInstance
     
@@ -36,8 +37,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     fileLog.info("File log of all raw data")
 
-    let nav = window.rootViewController as UINavigationController
-    let vc = nav.viewControllers[0] as MasterViewController
+    let nav = window?.rootViewController as! UINavigationController
+    let vc = nav.viewControllers[0] as! MainViewController
     
     vc.managedObjectContext = managedObjectContext!
     DxtrModel.sharedInstance.managedObjectContext = managedObjectContext
@@ -107,7 +108,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   lazy var applicationDocumentsDirectory: NSURL = {
     // The directory the application uses to store the Core Data store file. This code uses a directory named "com.base68.dummyDB" in the application's documents Application Support directory.
     let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
-    return urls[urls.count-1] as NSURL
+    return urls[urls.count-1] as! NSURL
     }()
   
   lazy var managedObjectModel: NSManagedObjectModel = {
@@ -131,7 +132,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
       dict[NSLocalizedFailureReasonErrorKey] = failureReason
       dict[NSUnderlyingErrorKey] = error
-      error = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict)
+      error = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict as [NSObject : AnyObject])
       // Replace this with code to handle the error appropriately.
       // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
       NSLog("Unresolved error \(error), \(error!.userInfo)")
@@ -146,7 +147,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
       dict[NSLocalizedFailureReasonErrorKey] = failureReason
       dict[NSUnderlyingErrorKey] = error
-      error = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict)
+      error = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict as [NSObject : AnyObject])
       // Replace this with code to handle the error appropriately.
       // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
       NSLog("Unresolved error \(error), \(error!.userInfo)")

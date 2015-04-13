@@ -63,7 +63,7 @@ class DxtrModel : NSObject 	 {
   func addNewBGReading(notification: NSNotification) {
     logger.verbose("New transitter reading")
     // extract transmitter object
-    let td = notification.object as TransmitterData
+    let td = notification.object as! TransmitterData
     // create new BG Reading
     let reading = BGReading(managedObjectContext: managedObjectContext!, timeStamp: td.timeStamp!.doubleValue, rawData: td.rawData!.doubleValue)
     DxtrModel.sharedInstance.saveContext()

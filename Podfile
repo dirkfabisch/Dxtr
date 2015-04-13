@@ -4,7 +4,7 @@ link_with 'Dxtr', 'DxtrTests'
 
 use_frameworks!
 
-pod 'QueryKit/Swift', '~> 0.9.2', :git => 'https://github.com/QueryKit/QueryKit'
+pod 'QueryKit/Swift', '>= 0.9.2'
 pod 'Alamofire', '~> 1.1'
 pod 'CryptoSwift', '~> 0.0'
 
