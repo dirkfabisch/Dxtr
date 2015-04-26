@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import SwiftOverlays
 
 class MasterViewController: UIViewController, UIAlertViewDelegate, DxtrModelDelegate {
   

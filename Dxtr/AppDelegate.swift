@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     fileLog.info("File log of all raw data")
 
     let nav = window?.rootViewController as! UINavigationController
-    let vc = nav.viewControllers[0] as! MasterViewController
+    let vc = nav.viewControllers[0] as! MainViewController
     
     vc.managedObjectContext = managedObjectContext!
     DxtrModel.sharedInstance.managedObjectContext = managedObjectContext

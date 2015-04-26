@@ -8,8 +8,10 @@
 
 import UIKit
 import CoreData
+import ENSwiftSideMenu
 
-class MainViewController: UIViewController, DxtrModelDelegate, SideBarDelegate {
+
+class MainViewController: UIViewController, ENSideMenuDelegate, DxtrModelDelegate {
   
   @IBOutlet weak var bgReadingLabel: UILabel!
   @IBOutlet weak var lastReadingLabel: UILabel!
@@ -19,7 +21,6 @@ class MainViewController: UIViewController, DxtrModelDelegate, SideBarDelegate {
   // set by AppDelegate on application startup
   var managedObjectContext: NSManagedObjectContext?
 
-  var sideBar:SideBar = SideBar()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -33,9 +34,7 @@ class MainViewController: UIViewController, DxtrModelDelegate, SideBarDelegate {
     writeDisplayLog("Current state: \(state.rawValue)")
     statusLabel.text = state.rawValue
     
-    // setup side bar
-    sideBar = SideBar(sourceView: self.view, menuItems: ["Start sensor", "Stop sensor", "Add double calibration"])
-    sideBar.delegate = self
+  
   }
   
   override func viewWillAppear(animated: Bool) {
@@ -44,7 +43,7 @@ class MainViewController: UIViewController, DxtrModelDelegate, SideBarDelegate {
   }
   
   @IBAction func configMenuButton(sender: AnyObject) {
-    sideBar.toggleMenu()
+    toggleSideMenuView()
   }
 
   //MARK: Seque control
@@ -126,21 +125,6 @@ class MainViewController: UIViewController, DxtrModelDelegate, SideBarDelegate {
   }
 
   
-  // Side bar delegate
-  func sideBarDidSelectButtonAtIndex(index: Int) {
-    
-    if index == 0{
-      writeDisplayLog("start sensor")
-      performSegueWithIdentifier("startSensorSegue", sender: self)
-      sideBar.toggleMenu()
-    } else if index == 1{
-      writeDisplayLog("stop sensor")
-      sideBar.toggleMenu()
-    } else if index == 2{
-      writeDisplayLog("double calibration")
-      sideBar.toggleMenu()
-    }
-  }
 
   
   private func writeDisplayLog(message: String) {

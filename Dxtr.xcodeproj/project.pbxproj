@@ -34,6 +34,10 @@
 		43027B171A7FBD1C00DE47F8 /* TestRawData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43027B161A7FBD1C00DE47F8 /* TestRawData.swift */; };
 		4304DFC91ABC879400856AD8 /* XCGLogger.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 43CFB80A1AB89B4500C70423 /* XCGLogger.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		430669811ABC27F000F5A7C0 /* XCGLogger.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 43CFB80A1AB89B4500C70423 /* XCGLogger.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		430A8B561AED7EB300A54C77 /* MainMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430A8B551AED7EB300A54C77 /* MainMenuTableViewController.swift */; };
+		430A8B571AED7EB300A54C77 /* MainMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430A8B551AED7EB300A54C77 /* MainMenuTableViewController.swift */; };
+		430A8B5B1AED80A800A54C77 /* MainViewNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430A8B5A1AED80A800A54C77 /* MainViewNavigationController.swift */; };
+		430A8B5C1AED80A800A54C77 /* MainViewNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430A8B5A1AED80A800A54C77 /* MainViewNavigationController.swift */; };
 		4324ED8A1A812DDA0002BEE6 /* _BGReading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4324ED861A812DDA0002BEE6 /* _BGReading.swift */; };
 		4324ED8B1A812DDA0002BEE6 /* _Calibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4324ED871A812DDA0002BEE6 /* _Calibration.swift */; };
 		4324ED8C1A812DDA0002BEE6 /* _Sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4324ED881A812DDA0002BEE6 /* _Sensor.swift */; };
@@ -66,10 +70,6 @@
 		43B2239F1AD2D70E002F1FFF /* short term@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43B223991AD2D70E002F1FFF /* short term@3x.png */; };
 		43B223A11AD2DB69002F1FFF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B223A01AD2DB69002F1FFF /* MainViewController.swift */; };
 		43B223A21AD2DB69002F1FFF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B223A01AD2DB69002F1FFF /* MainViewController.swift */; };
-		43B223A91AD2ED12002F1FFF /* SideBarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B223A71AD2ED12002F1FFF /* SideBarTableViewController.swift */; };
-		43B223AA1AD2ED12002F1FFF /* SideBarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B223A71AD2ED12002F1FFF /* SideBarTableViewController.swift */; };
-		43B223AB1AD2ED12002F1FFF /* SideBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B223A81AD2ED12002F1FFF /* SideBar.swift */; };
-		43B223AC1AD2ED12002F1FFF /* SideBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B223A81AD2ED12002F1FFF /* SideBar.swift */; };
 		43BBDF9A1A642D850006B61F /* BTDiscovery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BBDF981A642D850006B61F /* BTDiscovery.swift */; };
 		43BBDF9B1A642D850006B61F /* BTService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BBDF991A642D850006B61F /* BTService.swift */; };
 		43BBDF9E1A642DC50006B61F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BBDF9D1A642DC40006B61F /* Constants.swift */; };
@@ -99,8 +99,6 @@
 		43CFB7E81AB73DA300C70423 /* default_background.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4300FCD01A82C3DB00CC8CE1 /* default_background.jpeg */; };
 		43CFB7E91AB73DAB00C70423 /* B68UIFloatLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D890BB1A891EBA009C9F40 /* B68UIFloatLabelTextField.swift */; };
 		43CFB7F21AB76E5D00C70423 /* SensorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CFB7F11AB76E5D00C70423 /* SensorTests.swift */; };
-		43CFB8131AB8C05300C70423 /* SwiftOverlays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CFB8121AB8C05300C70423 /* SwiftOverlays.swift */; };
-		43CFB8141AB8C05300C70423 /* SwiftOverlays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CFB8121AB8C05300C70423 /* SwiftOverlays.swift */; };
 		43D890BC1A891EBA009C9F40 /* B68UIFloatLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D890BB1A891EBA009C9F40 /* B68UIFloatLabelTextField.swift */; };
 		43D890C31A8921A6009C9F40 /* AddBGReadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D890C21A8921A6009C9F40 /* AddBGReadingViewController.swift */; };
 		43DF0D061A6D96B700686779 /* dxtrDBModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 43DF0D041A6D96B700686779 /* dxtrDBModel.xcdatamodeld */; };
@@ -196,6 +194,8 @@
 		4300FCD01A82C3DB00CC8CE1 /* default_background.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = default_background.jpeg; sourceTree = "<group>"; };
 		4300FCD31A82C75E00CC8CE1 /* StartSensorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartSensorViewController.swift; sourceTree = "<group>"; };
 		43027B161A7FBD1C00DE47F8 /* TestRawData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestRawData.swift; sourceTree = "<group>"; };
+		430A8B551AED7EB300A54C77 /* MainMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuTableViewController.swift; sourceTree = "<group>"; };
+		430A8B5A1AED80A800A54C77 /* MainViewNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewNavigationController.swift; sourceTree = "<group>"; };
 		4324ED861A812DDA0002BEE6 /* _BGReading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _BGReading.swift; sourceTree = "<group>"; };
 		4324ED871A812DDA0002BEE6 /* _Calibration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Calibration.swift; sourceTree = "<group>"; };
 		4324ED881A812DDA0002BEE6 /* _Sensor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Sensor.swift; sourceTree = "<group>"; };
@@ -217,15 +217,12 @@
 		43B223981AD2D70E002F1FFF /* short term@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "short term@2x.png"; sourceTree = "<group>"; };
 		43B223991AD2D70E002F1FFF /* short term@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "short term@3x.png"; sourceTree = "<group>"; };
 		43B223A01AD2DB69002F1FFF /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		43B223A71AD2ED12002F1FFF /* SideBarTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBarTableViewController.swift; sourceTree = "<group>"; };
-		43B223A81AD2ED12002F1FFF /* SideBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBar.swift; sourceTree = "<group>"; };
 		43BBDF981A642D850006B61F /* BTDiscovery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTDiscovery.swift; sourceTree = "<group>"; };
 		43BBDF991A642D850006B61F /* BTService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTService.swift; sourceTree = "<group>"; };
 		43BBDF9D1A642DC40006B61F /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		43CFB7F11AB76E5D00C70423 /* SensorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorTests.swift; sourceTree = "<group>"; };
 		43CFB7F81AB7724B00C70423 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
 		43CFB8011AB89B4500C70423 /* XCGLogger.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = XCGLogger.xcodeproj; path = XCGLogger/XCGLogger/Library/XCGLogger.xcodeproj; sourceTree = SOURCE_ROOT; };
-		43CFB8121AB8C05300C70423 /* SwiftOverlays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftOverlays.swift; path = SwiftOverlays/SwiftOverlays/SwiftOverlays.swift; sourceTree = SOURCE_ROOT; };
 		43D890BB1A891EBA009C9F40 /* B68UIFloatLabelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = B68UIFloatLabelTextField.swift; sourceTree = "<group>"; };
 		43D890C21A8921A6009C9F40 /* AddBGReadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBGReadingViewController.swift; sourceTree = "<group>"; };
 		43DF0D051A6D96B700686779 /* dxtrDBModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = dxtrDBModel.xcdatamodel; sourceTree = "<group>"; };
@@ -299,6 +296,8 @@
 				432771B51A8A8BC900F42162 /* AddDoubleCalibrationViewController.swift */,
 				1DCAA65D1ABF4EB000A3F2CC /* ChartViewController.swift */,
 				432771BE1A8AA47D00F42162 /* EulaViewController.swift */,
+				430A8B551AED7EB300A54C77 /* MainMenuTableViewController.swift */,
+				430A8B5A1AED80A800A54C77 /* MainViewNavigationController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -306,9 +305,7 @@
 		43583B421A664E3000940764 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				43B223A61AD2ECF1002F1FFF /* SideBar */,
 				43D890BB1A891EBA009C9F40 /* B68UIFloatLabelTextField.swift */,
-				43CFB8121AB8C05300C70423 /* SwiftOverlays.swift */,
 				43CFB8011AB89B4500C70423 /* XCGLogger.xcodeproj */,
 			);
 			name = Libraries;
@@ -350,15 +347,6 @@
 			name = assets;
 			path = "Graphics Resources/assets";
 			sourceTree = SOURCE_ROOT;
-		};
-		43B223A61AD2ECF1002F1FFF /* SideBar */ = {
-			isa = PBXGroup;
-			children = (
-				43B223A71AD2ED12002F1FFF /* SideBarTableViewController.swift */,
-				43B223A81AD2ED12002F1FFF /* SideBar.swift */,
-			);
-			name = SideBar;
-			sourceTree = "<group>";
 		};
 		43BBDF9C1A642D910006B61F /* BluetoothStack */ = {
 			isa = PBXGroup;
@@ -780,11 +768,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				43CFB8131AB8C05300C70423 /* SwiftOverlays.swift in Sources */,
 				43D890C31A8921A6009C9F40 /* AddBGReadingViewController.swift in Sources */,
 				4324ED8B1A812DDA0002BEE6 /* _Calibration.swift in Sources */,
 				4324ED8C1A812DDA0002BEE6 /* _Sensor.swift in Sources */,
-				43B223A91AD2ED12002F1FFF /* SideBarTableViewController.swift in Sources */,
 				43027B171A7FBD1C00DE47F8 /* TestRawData.swift in Sources */,
 				1DCAA65E1ABF4EB000A3F2CC /* ChartViewController.swift in Sources */,
 				434534AC1A751E70000D591E /* Sensor.swift in Sources */,
@@ -803,9 +789,10 @@
 				1DCAA6681ABF4EEF00A3F2CC /* SettingsManager.swift in Sources */,
 				43DF0D061A6D96B700686779 /* dxtrDBModel.xcdatamodeld in Sources */,
 				43DF0D081A6D9ADD00686779 /* DxtrModel.swift in Sources */,
-				43B223AB1AD2ED12002F1FFF /* SideBar.swift in Sources */,
 				43D890BC1A891EBA009C9F40 /* B68UIFloatLabelTextField.swift in Sources */,
 				43BBDF9A1A642D850006B61F /* BTDiscovery.swift in Sources */,
+				430A8B5B1AED80A800A54C77 /* MainViewNavigationController.swift in Sources */,
+				430A8B561AED7EB300A54C77 /* MainMenuTableViewController.swift in Sources */,
 				43E536261A62CE480037EED0 /* AppDelegate.swift in Sources */,
 				435C921C1A6F9C9B00807847 /* TransmitterData.swift in Sources */,
 				434534AA1A751E70000D591E /* BGReading.swift in Sources */,
@@ -820,7 +807,7 @@
 			files = (
 				43CFB7E41AB73D8700C70423 /* TestRawData.swift in Sources */,
 				43CFB7F21AB76E5D00C70423 /* SensorTests.swift in Sources */,
-				43B223AC1AD2ED12002F1FFF /* SideBar.swift in Sources */,
+				430A8B5C1AED80A800A54C77 /* MainViewNavigationController.swift in Sources */,
 				43CFB7DB1AB73D7700C70423 /* EulaViewController.swift in Sources */,
 				43CFB7D91AB73D7700C70423 /* AddBGReadingViewController.swift in Sources */,
 				43CFB7D21AB73D4E00C70423 /* AppDelegate.swift in Sources */,
@@ -831,7 +818,6 @@
 				43B223A21AD2DB69002F1FFF /* MainViewController.swift in Sources */,
 				1DCAA66B1ABF4EEF00A3F2CC /* StateManager.swift in Sources */,
 				43CFB7E31AB73D7D00C70423 /* TransmitterData.swift in Sources */,
-				43CFB8141AB8C05300C70423 /* SwiftOverlays.swift in Sources */,
 				43CFB7DE1AB73D7D00C70423 /* _Sensor.swift in Sources */,
 				43CFB7DD1AB73D7D00C70423 /* _Calibration.swift in Sources */,
 				43CFB7D41AB73D6A00C70423 /* BTDiscovery.swift in Sources */,
@@ -842,13 +828,13 @@
 				43CFB7D71AB73D7700C70423 /* MasterViewController.swift in Sources */,
 				1DCAA6631ABF4ECA00A3F2CC /* _FailedUpload.swift in Sources */,
 				1DCAA65F1ABF4EB000A3F2CC /* ChartViewController.swift in Sources */,
+				430A8B571AED7EB300A54C77 /* MainMenuTableViewController.swift in Sources */,
 				1DCAA6651ABF4ECA00A3F2CC /* FailedUpload.swift in Sources */,
 				43CFB7E01AB73D7D00C70423 /* BGReading.swift in Sources */,
 				43CFB7E91AB73DAB00C70423 /* B68UIFloatLabelTextField.swift in Sources */,
 				1DCAA6691ABF4EEF00A3F2CC /* SettingsManager.swift in Sources */,
 				43CFB7DF1AB73D7D00C70423 /* _TransmitterData.swift in Sources */,
 				43CFB7D61AB73D7200C70423 /* NightscoutUploader.swift in Sources */,
-				43B223AA1AD2ED12002F1FFF /* SideBarTableViewController.swift in Sources */,
 				43CFB7E51AB73D9300C70423 /* DxtrModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
