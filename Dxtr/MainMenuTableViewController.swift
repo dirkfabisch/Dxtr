@@ -9,6 +9,25 @@
 import UIKit
 import ENSwiftSideMenu
 
+enum MenuEntryType {
+  case Segue
+  case Action
+}
+
+struct MenuEntry {
+  let displayName : String
+  let active : Bool
+  let segueName: String
+  let image : UIImage
+  let type : MenuEntryType
+}
+
+let menuEntry : [MenuEntry] = [
+  MenuEntry(displayName: "Dxtr", active: true, segueName: "mainMenu", image: UIImage(named: "dxtrMenuLogo.png")!, type: .Segue),
+  MenuEntry(displayName: "Start Sensor", active: true, segueName: "startSensorSegue", image: UIImage(named: "dexcomMenuLogo.png")!, type: .Segue),
+  MenuEntry(displayName: "Stop Sensor", active: false, segueName: "stopSensorSegue", image: UIImage(named: "dexcomMenuLogo.png")!, type: .Action),
+  MenuEntry(displayName: "Calibrate Sensor", active: true, segueName: "", image: UIImage(named: "calibrateMenuLogo.png")!, type: .Segue)
+]
 
 class MainMenuTableViewController: UITableViewController {
   var selectedMenuItem : Int = 0
@@ -44,7 +63,7 @@ class MainMenuTableViewController: UITableViewController {
   
   override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     // Return the number of rows in the section.
-    return 4
+    return menuEntry.count
   }
   
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -54,14 +73,18 @@ class MainMenuTableViewController: UITableViewController {
     if (cell == nil) {
       cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "CELL")
       cell!.backgroundColor = UIColor.clearColor()
-      cell!.textLabel?.textColor = UIColor.darkGrayColor()
+      cell!.textLabel?.textColor = UIColor.whiteColor()
       let selectedBackgroundView = UIView(frame: CGRectMake(0, 0, cell!.frame.size.width, cell!.frame.size.height))
       selectedBackgroundView.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.2)
       cell!.selectedBackgroundView = selectedBackgroundView
+      
     }
     
-    cell!.textLabel?.text = "ViewController #\(indexPath.row+1)"
-    
+    cell!.textLabel?.text = menuEntry[indexPath.row].displayName
+    cell!.imageView?.image = menuEntry[indexPath.row].image
+    if !menuEntry[indexPath.row].active {
+      cell!.textLabel?.textColor = UIColor.grayColor()
+    }
     return cell!
   }
   
@@ -71,51 +94,30 @@ class MainMenuTableViewController: UITableViewController {
   
   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     
-    println("did select row: \(indexPath.row)")
+    logger.debug("did select row: \(indexPath.row)")
     
     if (indexPath.row == selectedMenuItem) {
       smc?.hideSideMenuView()
       return
     }
-    selectedMenuItem = indexPath.row
 
-//    // Side bar delegate
-//    func sideBarDidSelectButtonAtIndex(index: Int) {
-//      
-//      if index == 0{
-//        writeDisplayLog("start sensor")
-//        performSegueWithIdentifier("startSensorSegue", sender: self)
-//        sideBar.toggleMenu()
-//      } else if index == 1{
-//        writeDisplayLog("stop sensor")
-//        sideBar.toggleMenu()
-//      } else if index == 2{
-//        writeDisplayLog("double calibration")
-//        sideBar.toggleMenu()
-//      }
-//    }
-
-    
-    
-    //Present new view controller
-    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main",bundle: nil)
-    var destViewController : UIViewController
-    switch (indexPath.row) {
-    case 0:
-      destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("ViewController1") as! UIViewController
-      break
-    case 1:
-      destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("ViewController2")as! UIViewController
-      break
-    case 2:
-      destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("ViewController3")as! UIViewController
-      break
-    default:
-      destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("ViewController4") as! UIViewController
-      break
+    if !menuEntry[indexPath.row].active {
+      return
     }
-    sideMenuController()?.setContentViewController(destViewController)
-  }
+    
+    selectedMenuItem = indexPath.row
+    
+    if menuEntry[indexPath.row].type == .Segue {
+      //      smc!.performSegueWithIdentifier(menuEntry[indexPath.row].segueName, sender: self)
+      
+      let pvc = smc!.presentedViewController
+      
+      let nv = smc!.navigationController
+      
+      smc!.navigationController?.presentedViewController?.performSegueWithIdentifier(menuEntry[indexPath.row].segueName, sender: self)
+      smc?.hideSideMenuView()
+    }
+ }
   
   /*
   // MARK: - Navigation

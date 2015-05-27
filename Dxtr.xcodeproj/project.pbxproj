@@ -38,6 +38,24 @@
 		430A8B571AED7EB300A54C77 /* MainMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430A8B551AED7EB300A54C77 /* MainMenuTableViewController.swift */; };
 		430A8B5B1AED80A800A54C77 /* MainViewNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430A8B5A1AED80A800A54C77 /* MainViewNavigationController.swift */; };
 		430A8B5C1AED80A800A54C77 /* MainViewNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430A8B5A1AED80A800A54C77 /* MainViewNavigationController.swift */; };
+		430A8B671AEE0A6D00A54C77 /* calibrateMenuLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 430A8B5E1AEE0A6D00A54C77 /* calibrateMenuLogo.png */; };
+		430A8B681AEE0A6D00A54C77 /* calibrateMenuLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 430A8B5E1AEE0A6D00A54C77 /* calibrateMenuLogo.png */; };
+		430A8B691AEE0A6D00A54C77 /* calibrateMenuLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 430A8B5F1AEE0A6D00A54C77 /* calibrateMenuLogo@2x.png */; };
+		430A8B6A1AEE0A6D00A54C77 /* calibrateMenuLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 430A8B5F1AEE0A6D00A54C77 /* calibrateMenuLogo@2x.png */; };
+		430A8B6B1AEE0A6D00A54C77 /* calibrateMenuLogo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 430A8B601AEE0A6D00A54C77 /* calibrateMenuLogo@3x.png */; };
+		430A8B6C1AEE0A6D00A54C77 /* calibrateMenuLogo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 430A8B601AEE0A6D00A54C77 /* calibrateMenuLogo@3x.png */; };
+		430A8B6D1AEE0A6D00A54C77 /* dexcomMenuLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 430A8B611AEE0A6D00A54C77 /* dexcomMenuLogo.png */; };
+		430A8B6E1AEE0A6D00A54C77 /* dexcomMenuLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 430A8B611AEE0A6D00A54C77 /* dexcomMenuLogo.png */; };
+		430A8B6F1AEE0A6D00A54C77 /* dexcomMenuLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 430A8B621AEE0A6D00A54C77 /* dexcomMenuLogo@2x.png */; };
+		430A8B701AEE0A6D00A54C77 /* dexcomMenuLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 430A8B621AEE0A6D00A54C77 /* dexcomMenuLogo@2x.png */; };
+		430A8B711AEE0A6D00A54C77 /* dexcomMenuLogo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 430A8B631AEE0A6D00A54C77 /* dexcomMenuLogo@3x.png */; };
+		430A8B721AEE0A6D00A54C77 /* dexcomMenuLogo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 430A8B631AEE0A6D00A54C77 /* dexcomMenuLogo@3x.png */; };
+		430A8B731AEE0A6D00A54C77 /* dxtrMenuLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 430A8B641AEE0A6D00A54C77 /* dxtrMenuLogo.png */; };
+		430A8B741AEE0A6D00A54C77 /* dxtrMenuLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 430A8B641AEE0A6D00A54C77 /* dxtrMenuLogo.png */; };
+		430A8B751AEE0A6D00A54C77 /* dxtrMenuLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 430A8B651AEE0A6D00A54C77 /* dxtrMenuLogo@2x.png */; };
+		430A8B761AEE0A6D00A54C77 /* dxtrMenuLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 430A8B651AEE0A6D00A54C77 /* dxtrMenuLogo@2x.png */; };
+		430A8B771AEE0A6D00A54C77 /* dxtrMenuLogo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 430A8B661AEE0A6D00A54C77 /* dxtrMenuLogo@3x.png */; };
+		430A8B781AEE0A6D00A54C77 /* dxtrMenuLogo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 430A8B661AEE0A6D00A54C77 /* dxtrMenuLogo@3x.png */; };
 		4324ED8A1A812DDA0002BEE6 /* _BGReading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4324ED861A812DDA0002BEE6 /* _BGReading.swift */; };
 		4324ED8B1A812DDA0002BEE6 /* _Calibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4324ED871A812DDA0002BEE6 /* _Calibration.swift */; };
 		4324ED8C1A812DDA0002BEE6 /* _Sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4324ED881A812DDA0002BEE6 /* _Sensor.swift */; };
@@ -196,6 +214,15 @@
 		43027B161A7FBD1C00DE47F8 /* TestRawData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestRawData.swift; sourceTree = "<group>"; };
 		430A8B551AED7EB300A54C77 /* MainMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuTableViewController.swift; sourceTree = "<group>"; };
 		430A8B5A1AED80A800A54C77 /* MainViewNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewNavigationController.swift; sourceTree = "<group>"; };
+		430A8B5E1AEE0A6D00A54C77 /* calibrateMenuLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calibrateMenuLogo.png; sourceTree = "<group>"; };
+		430A8B5F1AEE0A6D00A54C77 /* calibrateMenuLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calibrateMenuLogo@2x.png"; sourceTree = "<group>"; };
+		430A8B601AEE0A6D00A54C77 /* calibrateMenuLogo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calibrateMenuLogo@3x.png"; sourceTree = "<group>"; };
+		430A8B611AEE0A6D00A54C77 /* dexcomMenuLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dexcomMenuLogo.png; sourceTree = "<group>"; };
+		430A8B621AEE0A6D00A54C77 /* dexcomMenuLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dexcomMenuLogo@2x.png"; sourceTree = "<group>"; };
+		430A8B631AEE0A6D00A54C77 /* dexcomMenuLogo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dexcomMenuLogo@3x.png"; sourceTree = "<group>"; };
+		430A8B641AEE0A6D00A54C77 /* dxtrMenuLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dxtrMenuLogo.png; sourceTree = "<group>"; };
+		430A8B651AEE0A6D00A54C77 /* dxtrMenuLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dxtrMenuLogo@2x.png"; sourceTree = "<group>"; };
+		430A8B661AEE0A6D00A54C77 /* dxtrMenuLogo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dxtrMenuLogo@3x.png"; sourceTree = "<group>"; };
 		4324ED861A812DDA0002BEE6 /* _BGReading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _BGReading.swift; sourceTree = "<group>"; };
 		4324ED871A812DDA0002BEE6 /* _Calibration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Calibration.swift; sourceTree = "<group>"; };
 		4324ED881A812DDA0002BEE6 /* _Sensor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Sensor.swift; sourceTree = "<group>"; };
@@ -294,10 +321,10 @@
 				4300FCD31A82C75E00CC8CE1 /* StartSensorViewController.swift */,
 				43D890C21A8921A6009C9F40 /* AddBGReadingViewController.swift */,
 				432771B51A8A8BC900F42162 /* AddDoubleCalibrationViewController.swift */,
-				1DCAA65D1ABF4EB000A3F2CC /* ChartViewController.swift */,
 				432771BE1A8AA47D00F42162 /* EulaViewController.swift */,
 				430A8B551AED7EB300A54C77 /* MainMenuTableViewController.swift */,
 				430A8B5A1AED80A800A54C77 /* MainViewNavigationController.swift */,
+				1DCAA65D1ABF4EB000A3F2CC /* ChartViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -331,6 +358,15 @@
 		43B223601AD2C854002F1FFF /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				430A8B5E1AEE0A6D00A54C77 /* calibrateMenuLogo.png */,
+				430A8B5F1AEE0A6D00A54C77 /* calibrateMenuLogo@2x.png */,
+				430A8B601AEE0A6D00A54C77 /* calibrateMenuLogo@3x.png */,
+				430A8B611AEE0A6D00A54C77 /* dexcomMenuLogo.png */,
+				430A8B621AEE0A6D00A54C77 /* dexcomMenuLogo@2x.png */,
+				430A8B631AEE0A6D00A54C77 /* dexcomMenuLogo@3x.png */,
+				430A8B641AEE0A6D00A54C77 /* dxtrMenuLogo.png */,
+				430A8B651AEE0A6D00A54C77 /* dxtrMenuLogo@2x.png */,
+				430A8B661AEE0A6D00A54C77 /* dxtrMenuLogo@3x.png */,
 				43E834C81AD4F40700F0F23E /* Dexcom.png */,
 				43E834C91AD4F40700F0F23E /* Dexcom@2x.png */,
 				43E834CA1AD4F40700F0F23E /* Dexcom@3x.png */,
@@ -591,25 +627,34 @@
 			buildActionMask = 2147483647;
 			files = (
 				43E5362B1A62CE480037EED0 /* Main.storyboard in Resources */,
+				430A8B6F1AEE0A6D00A54C77 /* dexcomMenuLogo@2x.png in Resources */,
 				43E834CB1AD4F40700F0F23E /* Dexcom.png in Resources */,
+				430A8B6B1AEE0A6D00A54C77 /* calibrateMenuLogo@3x.png in Resources */,
 				43B2239E1AD2D70E002F1FFF /* short term@3x.png in Resources */,
 				43B223721AD2CECA002F1FFF /* rightArrow@2x.png in Resources */,
+				430A8B6D1AEE0A6D00A54C77 /* dexcomMenuLogo.png in Resources */,
 				43E834CC1AD4F40700F0F23E /* Dexcom@2x.png in Resources */,
 				43B223741AD2CECA002F1FFF /* rightArrow@3x.png in Resources */,
+				430A8B711AEE0A6D00A54C77 /* dexcomMenuLogo@3x.png in Resources */,
 				43B223661AD2C854002F1FFF /* settingsCog@2x.png in Resources */,
 				1DCAA65B1ABF4EA000A3F2CC /* jquery.min.js in Resources */,
+				430A8B671AEE0A6D00A54C77 /* calibrateMenuLogo.png in Resources */,
 				43B0C4B61AC8422400033BF3 /* Settings.bundle in Resources */,
+				430A8B691AEE0A6D00A54C77 /* calibrateMenuLogo@2x.png in Resources */,
 				43E834CD1AD4F40700F0F23E /* Dexcom@3x.png in Resources */,
 				43B2239A1AD2D70E002F1FFF /* short term.png in Resources */,
 				43E536301A62CE480037EED0 /* LaunchScreen.xib in Resources */,
 				43E5362D1A62CE480037EED0 /* Images.xcassets in Resources */,
 				1DCAA6551ABF4EA000A3F2CC /* chart.html in Resources */,
+				430A8B771AEE0A6D00A54C77 /* dxtrMenuLogo@3x.png in Resources */,
 				43B223641AD2C854002F1FFF /* settingsCog.png in Resources */,
 				43B223761AD2CECA002F1FFF /* settingsCog@3x.png in Resources */,
+				430A8B751AEE0A6D00A54C77 /* dxtrMenuLogo@2x.png in Resources */,
 				1DCAA6531ABF4EA000A3F2CC /* chart.css in Resources */,
 				1DCAA6591ABF4EA000A3F2CC /* d3.min.js in Resources */,
 				43B2239C1AD2D70E002F1FFF /* short term@2x.png in Resources */,
 				43B223701AD2CECA002F1FFF /* rightArrow.png in Resources */,
+				430A8B731AEE0A6D00A54C77 /* dxtrMenuLogo.png in Resources */,
 				1DCAA6571ABF4EA000A3F2CC /* client.js in Resources */,
 				4300FCD11A82C3DB00CC8CE1 /* default_background.jpeg in Resources */,
 			);
@@ -619,7 +664,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				430A8B681AEE0A6D00A54C77 /* calibrateMenuLogo.png in Resources */,
+				430A8B741AEE0A6D00A54C77 /* dxtrMenuLogo.png in Resources */,
+				430A8B721AEE0A6D00A54C77 /* dexcomMenuLogo@3x.png in Resources */,
 				43B223751AD2CECA002F1FFF /* rightArrow@3x.png in Resources */,
+				430A8B761AEE0A6D00A54C77 /* dxtrMenuLogo@2x.png in Resources */,
+				430A8B6A1AEE0A6D00A54C77 /* calibrateMenuLogo@2x.png in Resources */,
+				430A8B6E1AEE0A6D00A54C77 /* dexcomMenuLogo.png in Resources */,
 				43CFB7D31AB73D5E00C70423 /* Main.storyboard in Resources */,
 				1DCAA65C1ABF4EA000A3F2CC /* jquery.min.js in Resources */,
 				43B2239D1AD2D70E002F1FFF /* short term@2x.png in Resources */,
@@ -630,9 +681,12 @@
 				43CFB7E61AB73D9700C70423 /* Images.xcassets in Resources */,
 				43B223671AD2C854002F1FFF /* settingsCog@2x.png in Resources */,
 				1DCAA6561ABF4EA000A3F2CC /* chart.html in Resources */,
+				430A8B6C1AEE0A6D00A54C77 /* calibrateMenuLogo@3x.png in Resources */,
 				43B2239B1AD2D70E002F1FFF /* short term.png in Resources */,
+				430A8B781AEE0A6D00A54C77 /* dxtrMenuLogo@3x.png in Resources */,
 				43B223731AD2CECA002F1FFF /* rightArrow@2x.png in Resources */,
 				1DCAA6541ABF4EA000A3F2CC /* chart.css in Resources */,
+				430A8B701AEE0A6D00A54C77 /* dexcomMenuLogo@2x.png in Resources */,
 				1DCAA65A1ABF4EA000A3F2CC /* d3.min.js in Resources */,
 				1DCAA6581ABF4EA000A3F2CC /* client.js in Resources */,
 				43B223711AD2CECA002F1FFF /* rightArrow.png in Resources */,

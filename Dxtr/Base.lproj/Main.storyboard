@@ -36,9 +36,6 @@
                                 <state key="normal" title="Start Sensor">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="QnB-cJ-8SA" kind="show" identifier="startSensorSegue" id="Rft-XM-pRU"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cJo-wX-HAJ">
                                 <rect key="frame" x="16" y="151" width="85" height="30"/>
@@ -100,9 +97,6 @@
                                 <state key="normal" title="Main View">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="L2r-EM-HO4" kind="show" identifier="mainViewSegue" id="tdE-9t-Spq"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -226,7 +220,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DP0-uW-aEK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2820" y="-156"/>
+            <point key="canvasLocation" x="2792" y="-870"/>
         </scene>
         <!--Add Reading-->
         <scene sceneID="XjM-re-ew4">
@@ -465,7 +459,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3ka-Op-q4P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2008" y="-156"/>
+            <point key="canvasLocation" x="2036" y="-870"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kaJ-US-47F">
@@ -759,8 +753,5 @@
         <image name="settingsCog.png" width="22" height="22"/>
         <image name="short term.png" width="375" height="225"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="BOx-PI-NFY"/>
-    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.44551348686218262" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

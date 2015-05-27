@@ -46,6 +46,8 @@ class MainViewController: UIViewController, ENSideMenuDelegate, DxtrModelDelegat
     toggleSideMenuView()
   }
 
+  
+  
   //MARK: Seque control
   
   override func prepareForSegue(segue: (UIStoryboardSegue!),
