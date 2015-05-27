@@ -7,15 +7,18 @@ PODS:
   - QueryKit/Swift (0.9.2):
     - QueryKit/Attribute/Swift
     - QueryKit/QuerySet/Swift
+  - SwiftOverlays (0.11)
 
 DEPENDENCIES:
   - Alamofire (~> 1.1)
   - CryptoSwift (~> 0.0)
   - QueryKit/Swift (>= 0.9.2)
+  - SwiftOverlays (~> 0.11)
 
 SPEC CHECKSUMS:
   Alamofire: d765c5c1713aa64106b0228aaa600a1e6851f68d
   CryptoSwift: 95ed33cc40339bd80c64a5a527da7dcf121b9649
   QueryKit: fb44b555d4c0f6942a2fe49395fe0229f6f0d08c
+  SwiftOverlays: 2e50c399053e20d4b694549cea3724c655db2ad9
 
-COCOAPODS: 0.36.3
+COCOAPODS: 0.37.1
