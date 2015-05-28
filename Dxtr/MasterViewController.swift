@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import SwiftOverlays
 
 class MasterViewController: UIViewController, UIAlertViewDelegate, DxtrModelDelegate {
   
@@ -158,11 +159,11 @@ class MasterViewController: UIViewController, UIAlertViewDelegate, DxtrModelDele
   
   override func prepareForSegue(segue: (UIStoryboardSegue!),
     sender: AnyObject!) {
-      let nav = segue.destinationViewController as UINavigationController
+      let nav = segue.destinationViewController as! UINavigationController
       
       switch segue.identifier! {
       case "startSensorSegue":
-        let startSensorView = nav.topViewController as StartSensorViewController
+        let startSensorView = nav.topViewController as! StartSensorViewController
         startSensorView.managedObjectContext = managedObjectContext
         startSensorView.didCancel = { cont in
           let loc_nav = self.navigationController!
@@ -178,7 +179,7 @@ class MasterViewController: UIViewController, UIAlertViewDelegate, DxtrModelDele
           self.setProcessState()
         }
       case "addBGReadingSegue":
-        let bGReadingView = nav.topViewController as AddBGReadingViewController
+        let bGReadingView = nav.topViewController as! AddBGReadingViewController
         bGReadingView.managedObjectContext = managedObjectContext
         bGReadingView.didCancel = { cont in
           let loc_nav = self.navigationController!
@@ -203,7 +204,7 @@ class MasterViewController: UIViewController, UIAlertViewDelegate, DxtrModelDele
           self.setProcessState()
         }
       case "addDoubleCalibrationSegue":
-        let doubleCalibrationView = nav.topViewController as AddDoubleCalibrationViewController
+        let doubleCalibrationView = nav.topViewController as! AddDoubleCalibrationViewController
         doubleCalibrationView.managedObjectContext = managedObjectContext
         doubleCalibrationView.didCancel = { cont in
           let loc_nav = self.navigationController!
@@ -217,10 +218,10 @@ class MasterViewController: UIViewController, UIAlertViewDelegate, DxtrModelDele
           self.setProcessState()
         }
       case "viewChartSegue":
-        let chartView = nav.topViewController as ChartViewController
+        let chartView = nav.topViewController as! ChartViewController
         chartView.managedObjectContext = managedObjectContext
       case "eulaSegue":
-        let eulaView = nav.topViewController as EulaViewController
+        let eulaView = nav.topViewController as! EulaViewController
         eulaView.managedObjectContext = managedObjectContext
         eulaView.didFinish = { cont in
           let loc_nav = self.navigationController!
@@ -299,7 +300,7 @@ class MasterViewController: UIViewController, UIAlertViewDelegate, DxtrModelDele
   */
   func connectionChanged(notification: NSNotification) {
     // Connection status changed. Indicate on GUI.
-    let userInfo = notification.userInfo as [String: Bool]
+    let userInfo = notification.userInfo as! [String: Bool]
     
     dispatch_async(dispatch_get_main_queue(), {
       // Set image based on connection status
@@ -328,7 +329,7 @@ class MasterViewController: UIViewController, UIAlertViewDelegate, DxtrModelDele
   */
   func btScanning(notification: NSNotification) {
     // Connection status changed. Indicate on GUI.
-    let userInfo = notification.userInfo as [String: Bool]
+    let userInfo = notification.userInfo as! [String: Bool]
     
     dispatch_async(dispatch_get_main_queue(), {
       // Set image based on connection status
@@ -346,7 +347,7 @@ class MasterViewController: UIViewController, UIAlertViewDelegate, DxtrModelDele
   
   func nightscoutStatus(notification: NSNotification) {
     if notification.name == NightscoutUploadSuccessNotification {
-      let userInfo = notification.userInfo as [String: AnyObject]
+      let userInfo = notification.userInfo as! [String: AnyObject]
       if let entity: AnyObject = userInfo["entity"] {
         if let reading = entity as? BGReading {
           dispatch_async(dispatch_get_main_queue(), {
@@ -367,7 +368,7 @@ class MasterViewController: UIViewController, UIAlertViewDelegate, DxtrModelDele
         }
       }
     } else if notification.name == NightscoutUploadErrorNotification {
-      let userInfo = notification.userInfo as [String: NSError]
+      let userInfo = notification.userInfo as! [String: NSError]
       if let error: NSError = userInfo["error"] {
         dispatch_async(dispatch_get_main_queue(), {
           self.writeDisplayLog("Error uploading to Nightscout: \(error)")

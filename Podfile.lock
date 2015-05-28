@@ -1,30 +1,40 @@
 PODS:
-  - Alamofire (1.1.4)
-  - CryptoSwift (0.0.8)
-  - QueryKit/Attribute/Swift (0.9.2):
+  - Alamofire (1.2.2)
+  - B68UIFloatLabelTextField (0.1.1)
+  - CryptoSwift (0.0.10)
+  - QueryKit/Attribute/Swift (0.9.1):
     - QueryKit/QuerySet/Swift
-  - QueryKit/QuerySet/Swift (0.9.2)
-  - QueryKit/Swift (0.9.2):
+  - QueryKit/QuerySet/Swift (0.9.1)
+  - QueryKit/Swift (0.9.1):
     - QueryKit/Attribute/Swift
     - QueryKit/QuerySet/Swift
+  - SwiftOverlays (0.11)
+  - XCGLogger (2.0)
 
 DEPENDENCIES:
-  - Alamofire (~> 1.1)
-  - CryptoSwift (~> 0.0)
-  - QueryKit/Swift (from `https://github.com/QueryKit/QueryKit`)
+  - Alamofire (~> 1.2)
+  - B68UIFloatLabelTextField (~> 0.1)
+  - CryptoSwift (~> 0.0.10)
+  - QueryKit/Swift (from `https://github.com/QueryKit/QueryKit`, tag `swift-1.2`)
+  - SwiftOverlays (~> 0.11)
+  - XCGLogger (~> 2.0)
 
 EXTERNAL SOURCES:
   QueryKit:
     :git: https://github.com/QueryKit/QueryKit
+    :tag: swift-1.2
 
 CHECKOUT OPTIONS:
   QueryKit:
-    :commit: c3b309271b4572b845c0248957d45870229d8626
     :git: https://github.com/QueryKit/QueryKit
+    :tag: swift-1.2
 
 SPEC CHECKSUMS:
-  Alamofire: 6a2cbaebe78a6d469bc55ee37f0a24ba22af76ac
-  CryptoSwift: 6d1b93af5b48e02e57366bfad28b00170af405ee
-  QueryKit: fb44b555d4c0f6942a2fe49395fe0229f6f0d08c
+  Alamofire: 11a6022f5089887d92ffb5a3014c97a0a915ab98
+  B68UIFloatLabelTextField: e42b343e5f0bde3fd103e8e94a0d2063830d9363
+  CryptoSwift: 3b886d001f50deb65623a8967d68f6b8bf8d9ba1
+  QueryKit: 7e11bce924368eb670e4079f49ca062b0938eb6b
+  SwiftOverlays: 2e50c399053e20d4b694549cea3724c655db2ad9
+  XCGLogger: 90570901ddf86d5479672d61a1b0a639235b851a
 
-COCOAPODS: 0.36.0
+COCOAPODS: 0.37.1

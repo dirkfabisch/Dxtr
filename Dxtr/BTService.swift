@@ -63,7 +63,7 @@ class BTService: NSObject, CBPeripheralDelegate {
       if service.UUID == BLEServiceUUID {
         logger.verbose("matching BLE service")
         //        peripheral.discoverCharacteristics(uuidsForBTService, forService: service as CBService)
-        peripheral.discoverCharacteristics(nil, forService: service as CBService)
+        peripheral.discoverCharacteristics(nil, forService: service as! CBService)
       }
     }
   }
@@ -81,8 +81,8 @@ class BTService: NSObject, CBPeripheralDelegate {
     logger.verbose(">> didDiscoversCharacteristics")
     for characteristic in service.characteristics {
       if characteristic.UUID == BLECharacteristicsUUID {
-        recieverCharacteristic = (characteristic as CBCharacteristic)
-        peripheral.setNotifyValue(true, forCharacteristic: characteristic as CBCharacteristic)
+        recieverCharacteristic = (characteristic as! CBCharacteristic)
+        peripheral.setNotifyValue(true, forCharacteristic: characteristic as! CBCharacteristic)
 
         logger.verbose("matching characteristics")
       }
@@ -120,8 +120,8 @@ class BTService: NSObject, CBPeripheralDelegate {
       // [1] battery level of the wixel HW
       
       // split the datastring
-      var data_components = datastring.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceCharacterSet()) as [String]
-      data_components = data_components.filter { countElements($0) > 0 }
+      var data_components = datastring.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceCharacterSet()) as! [String]
+      data_components = data_components.filter { count($0) > 0 }
       
       fileLog.debug("\(data_components)")
 

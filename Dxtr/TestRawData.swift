@@ -264,10 +264,10 @@ class TestRawData {
   
 
   
-  func random(range: Range<Int>) -> Int {
-    return range.startIndex + Int(arc4random_uniform(range.endIndex - range.startIndex + 1))
-  }
-  
+//  func random(range: Range<Int>) -> Int {
+//    return range.startIndex + Int(arc4random_uniform(range.endIndex - range.startIndex + 1))
+//  }
+//  
   // create random values
   func createTestRawData(moc: NSManagedObjectContext) {
     
@@ -276,7 +276,7 @@ class TestRawData {
 
     for var num = 0; num < NUMBER_OF_READINGS; num++ {
       var td = TransmitterData(managedObjectContext: moc, timeStamp: (startTime.dateByAddingTimeInterval(Double(num * 300)).getTime()))
-      td.rawData = NSNumber(double: Double(random(170000...180000)))
+//      td.rawData = NSNumber(double: Double(random(170000...180000)))
       td.sensorBatteryLevel = NSNumber(int: Int32(sensorBatteryLevel))
       DxtrModel.sharedInstance.saveContext()
     }
@@ -285,7 +285,7 @@ class TestRawData {
   // create on random test data value
   func createOneTestRawData(moc: NSManagedObjectContext, rd: rawData) {
       var td = TransmitterData(managedObjectContext: moc)
-      td.rawData = NSNumber(double: Double(random(170000...180000)))
+//      td.rawData = NSNumber(double: Double(random(170000...180000)))
       td.sensorBatteryLevel = NSNumber(int: Int32(sensorBatteryLevel))
       td.sendTDNewValueNotificcation()
       DxtrModel.sharedInstance.saveContext()

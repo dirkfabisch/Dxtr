@@ -190,7 +190,7 @@ class Calibration: _Calibration {
       var thisCalibration = calibrations[0]
       if calibrations.count == 3 {
         if (abs(thisCalibration.bg!.doubleValue - thisCalibration.estimateBgAtTimeOfCalibration!.doubleValue) < 30) &&
-            ((calibrations[1].possibleBad? != nil) && (calibrations[1].possibleBad?.boolValue == true)) {
+            ((calibrations[1].possibleBad != nil) && (calibrations[1].possibleBad?.boolValue == true)) {
           return calibrations[1].slope?.doubleValue
         } else {
           return max(((-0.048) * (thisCalibration.sensorAgeAtTimeOfEstimation!.doubleValue / (60000 * 60 * 24))) + 1.1,1)

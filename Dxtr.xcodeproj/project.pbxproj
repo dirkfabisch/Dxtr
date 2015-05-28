@@ -32,8 +32,6 @@
 		4300FCD11A82C3DB00CC8CE1 /* default_background.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4300FCD01A82C3DB00CC8CE1 /* default_background.jpeg */; };
 		4300FCD41A82C75E00CC8CE1 /* StartSensorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4300FCD31A82C75E00CC8CE1 /* StartSensorViewController.swift */; };
 		43027B171A7FBD1C00DE47F8 /* TestRawData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43027B161A7FBD1C00DE47F8 /* TestRawData.swift */; };
-		4304DFC91ABC879400856AD8 /* XCGLogger.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 43CFB80A1AB89B4500C70423 /* XCGLogger.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		430669811ABC27F000F5A7C0 /* XCGLogger.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 43CFB80A1AB89B4500C70423 /* XCGLogger.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4324ED8A1A812DDA0002BEE6 /* _BGReading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4324ED861A812DDA0002BEE6 /* _BGReading.swift */; };
 		4324ED8B1A812DDA0002BEE6 /* _Calibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4324ED871A812DDA0002BEE6 /* _Calibration.swift */; };
 		4324ED8C1A812DDA0002BEE6 /* _Sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4324ED881A812DDA0002BEE6 /* _Sensor.swift */; };
@@ -44,7 +42,6 @@
 		434534AB1A751E70000D591E /* Calibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434534A51A751E70000D591E /* Calibration.swift */; };
 		434534AC1A751E70000D591E /* Sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434534A61A751E70000D591E /* Sensor.swift */; };
 		435C921C1A6F9C9B00807847 /* TransmitterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435C921A1A6F9C9B00807847 /* TransmitterData.swift */; };
-		4388DE711ABC207200DB2F30 /* XCGLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43CFB80A1AB89B4500C70423 /* XCGLogger.framework */; };
 		43B0C4B61AC8422400033BF3 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 43B0C4B51AC8422400033BF3 /* Settings.bundle */; };
 		43BBDF9A1A642D850006B61F /* BTDiscovery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BBDF981A642D850006B61F /* BTDiscovery.swift */; };
 		43BBDF9B1A642D850006B61F /* BTService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BBDF991A642D850006B61F /* BTService.swift */; };
@@ -73,11 +70,7 @@
 		43CFB7E61AB73D9700C70423 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43E5362C1A62CE480037EED0 /* Images.xcassets */; };
 		43CFB7E71AB73D9F00C70423 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43E5362E1A62CE480037EED0 /* LaunchScreen.xib */; };
 		43CFB7E81AB73DA300C70423 /* default_background.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4300FCD01A82C3DB00CC8CE1 /* default_background.jpeg */; };
-		43CFB7E91AB73DAB00C70423 /* B68UIFloatLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D890BB1A891EBA009C9F40 /* B68UIFloatLabelTextField.swift */; };
 		43CFB7F21AB76E5D00C70423 /* SensorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CFB7F11AB76E5D00C70423 /* SensorTests.swift */; };
-		43CFB8131AB8C05300C70423 /* SwiftOverlays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CFB8121AB8C05300C70423 /* SwiftOverlays.swift */; };
-		43CFB8141AB8C05300C70423 /* SwiftOverlays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CFB8121AB8C05300C70423 /* SwiftOverlays.swift */; };
-		43D890BC1A891EBA009C9F40 /* B68UIFloatLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D890BB1A891EBA009C9F40 /* B68UIFloatLabelTextField.swift */; };
 		43D890C31A8921A6009C9F40 /* AddBGReadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D890C21A8921A6009C9F40 /* AddBGReadingViewController.swift */; };
 		43DF0D061A6D96B700686779 /* dxtrDBModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 43DF0D041A6D96B700686779 /* dxtrDBModel.xcdatamodeld */; };
 		43DF0D081A6D9ADD00686779 /* DxtrModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DF0D071A6D9ADD00686779 /* DxtrModel.swift */; };
@@ -91,34 +84,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		4304DFCA1ABC879400856AD8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 43CFB8011AB89B4500C70423 /* XCGLogger.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 55E3EE4419D76F280068C3A7;
-			remoteInfo = "XCGLogger (iOS)";
-		};
-		43CFB8091AB89B4500C70423 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 43CFB8011AB89B4500C70423 /* XCGLogger.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 55E3EE4519D76F280068C3A7;
-			remoteInfo = "XCGLogger (iOS)";
-		};
-		43CFB80B1AB89B4500C70423 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 43CFB8011AB89B4500C70423 /* XCGLogger.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 554DF41719D76FE7005708BE;
-			remoteInfo = "XCGLogger (OS X)";
-		};
-		43CFB80D1AB89B4500C70423 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 43CFB8011AB89B4500C70423 /* XCGLogger.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 55E3EE5019D76F280068C3A7;
-			remoteInfo = XCGLoggerTests;
-		};
 		43E536361A62CE480037EED0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 43E536181A62CE480037EED0 /* Project object */;
@@ -135,7 +100,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				4304DFC91ABC879400856AD8 /* XCGLogger.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -146,7 +110,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				430669811ABC27F000F5A7C0 /* XCGLogger.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -185,9 +148,6 @@
 		43BBDF9D1A642DC40006B61F /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		43CFB7F11AB76E5D00C70423 /* SensorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorTests.swift; sourceTree = "<group>"; };
 		43CFB7F81AB7724B00C70423 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
-		43CFB8011AB89B4500C70423 /* XCGLogger.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = XCGLogger.xcodeproj; path = XCGLogger/XCGLogger/Library/XCGLogger.xcodeproj; sourceTree = SOURCE_ROOT; };
-		43CFB8121AB8C05300C70423 /* SwiftOverlays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftOverlays.swift; path = SwiftOverlays/SwiftOverlays/SwiftOverlays.swift; sourceTree = SOURCE_ROOT; };
-		43D890BB1A891EBA009C9F40 /* B68UIFloatLabelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = B68UIFloatLabelTextField.swift; sourceTree = "<group>"; };
 		43D890C21A8921A6009C9F40 /* AddBGReadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBGReadingViewController.swift; sourceTree = "<group>"; };
 		43DF0D051A6D96B700686779 /* dxtrDBModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = dxtrDBModel.xcdatamodel; sourceTree = "<group>"; };
 		43DF0D071A6D9ADD00686779 /* DxtrModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DxtrModel.swift; sourceTree = "<group>"; };
@@ -219,7 +179,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4388DE711ABC207200DB2F30 /* XCGLogger.framework in Frameworks */,
 				215C6EE6E3F65D14315957DD /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -263,9 +222,6 @@
 		43583B421A664E3000940764 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				43D890BB1A891EBA009C9F40 /* B68UIFloatLabelTextField.swift */,
-				43CFB8121AB8C05300C70423 /* SwiftOverlays.swift */,
-				43CFB8011AB89B4500C70423 /* XCGLogger.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -294,16 +250,6 @@
 				43BBDF991A642D850006B61F /* BTService.swift */,
 			);
 			name = BluetoothStack;
-			sourceTree = "<group>";
-		};
-		43CFB8021AB89B4500C70423 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				43CFB80A1AB89B4500C70423 /* XCGLogger.framework */,
-				43CFB80C1AB89B4500C70423 /* XCGLogger.framework */,
-				43CFB80E1AB89B4500C70423 /* XCGLoggerTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		43DF0D011A6D969600686779 /* Model */ = {
@@ -413,7 +359,6 @@
 			buildConfigurationList = 43E5363F1A62CE480037EED0 /* Build configuration list for PBXNativeTarget "Dxtr" */;
 			buildPhases = (
 				2F57E84C083ED5172E7329EF /* Check Pods Manifest.lock */,
-				435C92151A6F9A0400807847 /* Object Model Generator */,
 				435854B11A6687AB00940764 /* Increase Build Number */,
 				43CB86CA1A66D19200CA6D84 /* Insert Sketch Ressources */,
 				43E5361C1A62CE480037EED0 /* Sources */,
@@ -426,7 +371,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				4304DFCB1ABC879400856AD8 /* PBXTargetDependency */,
 			);
 			name = Dxtr;
 			productName = Dxtr;
@@ -486,12 +430,6 @@
 			mainGroup = 43E536171A62CE480037EED0;
 			productRefGroup = 43E536211A62CE480037EED0 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 43CFB8021AB89B4500C70423 /* Products */;
-					ProjectRef = 43CFB8011AB89B4500C70423 /* XCGLogger.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				43E5361F1A62CE480037EED0 /* Dxtr */,
@@ -499,30 +437,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		43CFB80A1AB89B4500C70423 /* XCGLogger.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = XCGLogger.framework;
-			remoteRef = 43CFB8091AB89B4500C70423 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		43CFB80C1AB89B4500C70423 /* XCGLogger.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = XCGLogger.framework;
-			remoteRef = 43CFB80B1AB89B4500C70423 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		43CFB80E1AB89B4500C70423 /* XCGLoggerTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = XCGLoggerTests.xctest;
-			remoteRef = 43CFB80D1AB89B4500C70423 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		43E5361E1A62CE480037EED0 /* Resources */ = {
@@ -605,20 +519,6 @@
 			shellPath = /bin/sh;
 			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=`echo $buildNumber +1|bc`\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"";
 		};
-		435C92151A6F9A0400807847 /* Object Model Generator */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Object Model Generator";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "source ~/.bash_profile\ncd \"$PROJECT_DIR/Dxtr\" && /usr/local/bin/mogenerator --swift -m dxtrDBModel.xcdatamodeld/dxtrDBModel.xcdatamodel  --output-dir ./ModelObjects --template-path ~/.querykit-mogenerator-template";
-		};
 		43CB86CA1A66D19200CA6D84 /* Insert Sketch Ressources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -700,7 +600,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				43CFB8131AB8C05300C70423 /* SwiftOverlays.swift in Sources */,
 				43D890C31A8921A6009C9F40 /* AddBGReadingViewController.swift in Sources */,
 				4324ED8B1A812DDA0002BEE6 /* _Calibration.swift in Sources */,
 				4324ED8C1A812DDA0002BEE6 /* _Sensor.swift in Sources */,
@@ -721,7 +620,6 @@
 				1DCAA6681ABF4EEF00A3F2CC /* SettingsManager.swift in Sources */,
 				43DF0D061A6D96B700686779 /* dxtrDBModel.xcdatamodeld in Sources */,
 				43DF0D081A6D9ADD00686779 /* DxtrModel.swift in Sources */,
-				43D890BC1A891EBA009C9F40 /* B68UIFloatLabelTextField.swift in Sources */,
 				43BBDF9A1A642D850006B61F /* BTDiscovery.swift in Sources */,
 				43E536261A62CE480037EED0 /* AppDelegate.swift in Sources */,
 				435C921C1A6F9C9B00807847 /* TransmitterData.swift in Sources */,
@@ -746,7 +644,6 @@
 				43CFB7D51AB73D6E00C70423 /* BTService.swift in Sources */,
 				1DCAA66B1ABF4EEF00A3F2CC /* StateManager.swift in Sources */,
 				43CFB7E31AB73D7D00C70423 /* TransmitterData.swift in Sources */,
-				43CFB8141AB8C05300C70423 /* SwiftOverlays.swift in Sources */,
 				43CFB7DE1AB73D7D00C70423 /* _Sensor.swift in Sources */,
 				43CFB7DD1AB73D7D00C70423 /* _Calibration.swift in Sources */,
 				43CFB7D41AB73D6A00C70423 /* BTDiscovery.swift in Sources */,
@@ -759,7 +656,6 @@
 				1DCAA65F1ABF4EB000A3F2CC /* ChartViewController.swift in Sources */,
 				1DCAA6651ABF4ECA00A3F2CC /* FailedUpload.swift in Sources */,
 				43CFB7E01AB73D7D00C70423 /* BGReading.swift in Sources */,
-				43CFB7E91AB73DAB00C70423 /* B68UIFloatLabelTextField.swift in Sources */,
 				1DCAA6691ABF4EEF00A3F2CC /* SettingsManager.swift in Sources */,
 				43CFB7DF1AB73D7D00C70423 /* _TransmitterData.swift in Sources */,
 				43CFB7D61AB73D7200C70423 /* NightscoutUploader.swift in Sources */,
@@ -770,11 +666,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		4304DFCB1ABC879400856AD8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "XCGLogger (iOS)";
-			targetProxy = 4304DFCA1ABC879400856AD8 /* PBXContainerItemProxy */;
-		};
 		43E536371A62CE480037EED0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 43E5361F1A62CE480037EED0 /* Dxtr */;

@@ -1,9 +1,0 @@
-[submodule "B68FloatingLabelTextField"]
-	path = B68FloatingLabelTextField
-	url = https://github.com/dirkfabisch/B68FloatingLabelTextField.git
-[submodule "SwiftOverlays"]
-	path = SwiftOverlays
-	url = https://github.com/peterprokop/SwiftOverlays.git
-[submodule "XCGLogger"]
-	path = XCGLogger
-	url = https://github.com/DaveWoodCom/XCGLogger.git
