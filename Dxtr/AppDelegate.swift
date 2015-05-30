@@ -22,7 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Override point for customization after application launch.
     let settings = UIUserNotificationSettings(forTypes: .Alert, categories: nil)
     application.registerUserNotificationSettings(settings)
-    
+    application.setStatusBarStyle(.LightContent, animated: true)
+
     // Start BLE discovery
     BTDiscovery.sharedInstance
     
