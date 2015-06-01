@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import ENSwiftSideMenu
 
 enum MenuEntryType {
   case Segue

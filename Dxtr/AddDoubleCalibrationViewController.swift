@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import CoreData
+import B68UIFloatLabelTextField
 
 
 class AddDoubleCalibrationViewController : UIViewController, UITextFieldDelegate {

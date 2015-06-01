@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 import CoreData
-
+import B68UIFloatLabelTextField
 
 class AddBGReadingViewController : UIViewController, UITextFieldDelegate {
   

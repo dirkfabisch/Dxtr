@@ -8,7 +8,6 @@
 
 
 import UIKit
-import ENSwiftSideMenu
 
 class MainViewNavigationController: ENSideMenuNavigationController {
   
@@ -17,7 +16,7 @@ class MainViewNavigationController: ENSideMenuNavigationController {
 
     var mmtvc = MainMenuTableViewController()
     mmtvc.smc = self
-    sideMenu = ENSideMenu(sourceView: view, menuTableViewController: mmtvc, menuPosition: .Left)
+    sideMenu = ENSideMenu(sourceView: view, menuViewController: mmtvc, menuPosition: .Left)
     
     // sideMenu?.menuWidth = 180.0 // optional, default is 160
     //sideMenu?.bouncingEnabled = false

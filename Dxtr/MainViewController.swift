@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreData
-import ENSwiftSideMenu
 
 
 class MainViewController: UIViewController, ENSideMenuDelegate, DxtrModelDelegate {
